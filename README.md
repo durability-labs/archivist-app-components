@@ -26,3 +26,17 @@ npm install
 ```
 npm run storybook
 ```
+
+## Build (for deployment)
+
+```
+npm run build-storybook
+```
+
+The files are generated under the folder storybook-static.
+
+You can preview by using the command:
+
+```
+npm run preview
+```

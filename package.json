@@ -9,7 +9,7 @@
   "type": "module",
   "scripts": {
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
+    "preview": "npx http-server ./storybook-static",
     "format": "prettier --write ./src",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
