@@ -3,7 +3,7 @@ import { fn } from "@storybook/test";
 import { InputGroup } from "../components/InputGroup/InputGroup";
 
 const meta = {
-  title: "Components/InputGroup",
+  title: "Forms/InputGroup",
   component: InputGroup,
   parameters: {
     layout: "centered",
