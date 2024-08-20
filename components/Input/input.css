@@ -1,0 +1,100 @@
+.input {
+  background-color: var(
+    --codex-input-background,
+    var(--codex-background-secondary)
+  );
+  color: var(--codex-color);
+  border-radius: var(--codex-border-radius);
+  border: var(--codex-input-border, 1px solid var(--codex-border-color));
+  padding: 0.75rem 1rem;
+  outline: none;
+  display: inline-block;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  display: block;
+  color: var(--codex-color);
+}
+
+.input:not(.input[disabled]):active,
+.input:not(.input[disabled]):focus {
+  box-shadow: 0 0 0 1px var(--codex-border-color);
+}
+
+.input-icon {
+  position: relative;
+}
+
+.input-iconElement {
+  position: absolute;
+  height: 100%;
+  padding: 0 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon-input {
+  padding-left: 2.5rem;
+}
+
+.input[disabled] {
+  background-color: var(
+    --codex-input-background-disabled,
+    var(--codex-background-light)
+  );
+  cursor: not-allowed;
+}
+
+.input-floating {
+  position: relative;
+}
+
+.input-full {
+  width: 100%;
+}
+
+.input-spacing {
+  margin-bottom: 1.5rem;
+}
+
+.input-floating-label {
+  position: absolute;
+  font-weight: 600;
+  color: white;
+  left: 1rem;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  transition:
+    top 0.15s,
+    font-size 0.15s;
+}
+
+.input-floating-input {
+  padding-top: 1.75rem;
+}
+
+.input.input-floating-input:not(:placeholder-shown) ~ .input-floating-label,
+.input.input-floating-input:focus ~ .input-floating-label {
+  top: -25px;
+  font-size: 0.875rem;
+  mix-blend-mode: difference;
+}
+
+.input-helper-text {
+  margin-top: 0.25rem;
+  display: inline-block;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 801px) {
+  .input {
+    min-width: 20rem;
+  }
+}

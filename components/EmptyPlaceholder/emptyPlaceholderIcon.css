@@ -1,0 +1,20 @@
+.dark\:fill-neutral-800 {
+  fill: #262626;
+}
+
+.dark\:fill-neutral-700 {
+  fill: #404040;
+}
+
+.dark\:fill-neutral-700\/30 {
+  fill: rgb(64 64 64 / 0.3);
+}
+
+.dark\:fill-neutral-700\/70 {
+  fill: rgb(64 64 64 / 0.7);
+}
+
+.emptyPlaceholderIcon {
+  border: none;
+  color: var(--codex-background-secondary);
+}

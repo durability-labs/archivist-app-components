@@ -1,0 +1,96 @@
+.button {
+  border-radius: var(--codex-border-radius);
+  outline: none;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  place-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  position: relative;
+  border: none;
+  transition:
+    box-shadow 0.35s,
+    opacity 0.35s;
+  font-family: var(--codex-font-family);
+  border: 1px solid transparent;
+}
+
+.button--primary {
+  background-color: var(--codex-color-primary);
+  color: var(--codex-color-on-primary);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+.button--primary:disabled {
+  background-color: var(--codex-color-disabled);
+}
+
+.button--outline:disabled {
+  color: var(--codex-color-disabled);
+}
+
+.button-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.button--outline {
+  color: var(--codex-color-outline, var(--codex-color-contrast));
+  border-color: var(--codex-border-color);
+  border-width: 1px;
+  border-style: solid;
+  background-color: transparent;
+}
+
+.button[aria-busy] {
+  cursor: wait;
+}
+
+.button-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  place-items: center;
+}
+
+.button[aria-busy]::after {
+  content: " ";
+  display: block;
+  background-image: var(
+    --codex-button-loader,
+    url('data:image/svg+xml,<svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background: new 0 0 50 50" xml:space="preserve"><path fill="%23FFF" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg>')
+  );
+  position: absolute;
+  background-color: var(
+    --codex-button-background-busy,
+    var(--codex-background-backdrop)
+  );
+
+  /**
+   * Set full size and add border.
+   */
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 28px;
+  left: -1px;
+  right: 0;
+  border-radius: var(--codex-border-radius);
+}
+
+.button--primary:not(:disabled):hover {
+  cursor: pointer;
+  box-shadow: 0 0 0 3px
+    var(--codex-button-color-box-shadow, var(--codex-color-primary-variant));
+}
+
+.button--outline:not(:disabled):hover {
+  cursor: pointer;
+  box-shadow: 0 0 0 2px var(--codex-border-color);
+}

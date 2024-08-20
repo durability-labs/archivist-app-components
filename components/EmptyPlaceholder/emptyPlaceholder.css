@@ -1,0 +1,17 @@
+.emptyPlaceholder {
+  text-align: center;
+}
+
+.emptyPlaceholder-icon {
+  display: block;
+  margin: auto auto 0.75rem;
+}
+
+.emptyPlaceholder-title {
+  margin-bottom: 0.25rem;
+  display: inline-block;
+}
+
+.emptyPlaceholder-button {
+  margin: 0.75rem auto 0;
+}

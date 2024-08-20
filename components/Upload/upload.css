@@ -1,0 +1,181 @@
+.upload {
+  border: 1px dashed var(--codex-border-color);
+  background-color: var(
+    --codex-upload-background,
+    var(--codex-background-secondary)
+  );
+  min-height: 150px;
+  border-radius: var(--codex-border-radius);
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.5rem 2rem;
+}
+
+.upload-selected {
+  border-color: var(--codex-color-primary);
+}
+
+.uploadFile {
+  background-color: var(
+    --codex-upload-background,
+    var(--codex-background-secondary)
+  );
+  border-radius: var(--codex-border-radius);
+  border: 1px solid var(--codex-border-color);
+  padding: 0.5rem 2rem;
+  margin-top: 0.5rem;
+}
+
+.uploadFile-info {
+  flex-grow: 1;
+  gap: 0.5rem;
+}
+
+.upload-actions {
+  gap: 0.5rem;
+}
+
+.upload-action-close {
+  color: var(--codex-color);
+  border: 1px solid var(--codex-color);
+}
+
+.upload-action-confirm {
+  color: var(--codex-color-primary);
+  border: 1px solid var(--codex-color-primary);
+}
+
+.uploadFile-progressBar {
+  flex-grow: 1;
+  background-color: var(
+    --codex-upload-background,
+    var(--codex-background-secondary)
+  );
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  border-radius: var(--codex-border-radius);
+}
+
+.uploadFile-progressBar[value] {
+  height: 0.5rem;
+  width: 100%;
+  border: none;
+}
+
+.uploadFile-progressBar[value]::-webkit-progress-bar {
+  border-radius: var(--codex-border-radius);
+  background-color: var(
+    --codex-upload-background,
+    var(--codex-background-secondary)
+  );
+}
+
+.uploadFile-progressBar[value]::-webkit-progress-value {
+  border-radius: var(--codex-border-radius);
+  background-color: var(--codex-color-primary);
+}
+
+.uploadFile-progressBar[aria-invalid]::-webkit-progress-value {
+  background-color: var(--codex-color-error);
+}
+
+.uploadFile-progressBar[aria-invalid]::-moz-progress-bar {
+  border-radius: var(--codex-border-radius);
+  background-color: var(--codex-color-primary);
+}
+
+.uploadFile-progressBar[value]::-moz-progress-bar {
+  background-color: var(--codex-color-error);
+}
+
+.uploadFile-filename {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 150px;
+  display: inline-block;
+}
+
+.uploadFile-progressBarPercent {
+  white-space: nowrap;
+  display: inline-block;
+  text-align: right;
+}
+
+.upload-progress-check {
+  color: var(--codex-color-primary);
+}
+
+.upload-progress-cancelled {
+  color: var(--codex-color-error);
+}
+
+.uploadFile-preview {
+  border-radius: var(--codex-border-radius);
+}
+
+.uploadFile-infoLeft {
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.uploadFile-progress {
+  gap: 0.5rem;
+}
+
+.uploadFile-progress {
+  margin: 0.25 0;
+}
+
+.uploadFile-infoRight,
+.uploadFile-progress,
+.upload,
+.uploadFile-info,
+.uploadFile-infoLeft,
+.uploadFile-name {
+  display: flex;
+  align-items: center;
+}
+
+.uploadFile-name[aria-invalid] {
+  color: var(--codex-color-error);
+}
+
+.uploadFile-name[data-done] {
+  color: var(--codex-color-primary);
+}
+
+.uploadFile-infoText {
+  flex-grow: 1;
+}
+
+.uploadFile-infoRight {
+  justify-content: space-around;
+  gap: 0.25rem;
+}
+
+.uploadFile-progressBarPercent,
+.uploadFile-right {
+  width: 5rem;
+}
+
+.uploadFile-cid {
+  transition: color 0.35s;
+  cursor: pointer;
+}
+
+.uploadFile-cid:hover {
+  color: var(--codex-color-primary);
+}
+
+.upload-warning {
+  border-color: var(--codex-color-warning);
+}
+
+.upload-text {
+  text-align: center;
+}

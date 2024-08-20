@@ -1,0 +1,26 @@
+.toast {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: var(--codex-toast-background, var(--codex-background-light));
+  min-width: 150px;
+  transform: translateX(0px);
+  transition: transform 0.35s;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid var(--codex-toast-border-color, var(--codex-border-color));
+  border-radius: var(--codex-border-radius);
+  padding: 0.75rem;
+  padding-left: 1.5rem;
+  color: var(--codex-toast-color, --codex-color);
+  word-break: break-word;
+}
+
+.toast-close {
+  margin-left: 0.75rem;
+}
+
+.toast[aria-hidden] {
+  transform: translateX(1000px);
+}

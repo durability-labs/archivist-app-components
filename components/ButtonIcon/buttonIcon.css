@@ -1,0 +1,37 @@
+.buttonIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(
+    --codex-button-icon-background,
+    var(--codex-background-light)
+  );
+  border-radius: 50%;
+  cursor: pointer;
+  transition: box-shadow 0.35s;
+  border: none;
+}
+
+.buttonIcon--big {
+  width: 4rem;
+  height: 4rem;
+}
+
+.buttonIcon--small {
+  width: 2rem;
+  height: 2rem;
+}
+
+.buttonIcon svg {
+  mix-blend-mode: difference;
+}
+
+.buttonIcon:not(:disabled):hover {
+  cursor: pointer;
+  box-shadow: 0 0 0 2px var(--codex-border-color);
+}
+
+.buttonIcon:disabled {
+  color: var(--codex-color-disabled);
+  cursor: not-allowed;
+}
