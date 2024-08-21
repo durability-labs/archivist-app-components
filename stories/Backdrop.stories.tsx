@@ -1,7 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Backdrop } from "../components/Backdrop/Backdrop";
+import type { Meta } from "@storybook/react";
+import { Backdrop } from "../src/components/Backdrop/Backdrop";
 import { useState } from "react";
-import React from "react";
 
 const meta = {
   title: "Overlays/Backdrop",
@@ -14,7 +13,6 @@ const meta = {
 } satisfies Meta<typeof Backdrop>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 const Template = () => {
   const [open, setOpen] = useState(false);
@@ -29,4 +27,4 @@ const Template = () => {
   );
 };
 
-export const Default: Story = Template.bind({});
+export const Default = Template.bind({});

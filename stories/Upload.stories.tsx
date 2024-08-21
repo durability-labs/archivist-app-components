@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Upload } from "../components/Upload/Upload";
-import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { UploadResponse } from "@codex/sdk-js";
+import { Upload } from "../src/components/Upload/Upload";
 
 const meta = {
   title: "Advanced/Upload",
@@ -15,7 +14,6 @@ const meta = {
 } satisfies Meta<typeof Upload>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 const queryClient = new QueryClient();
 
@@ -27,13 +25,13 @@ const Template = () => {
   );
 };
 
-export const Multiple: Story = Template.bind({});
+export const Multiple = Template.bind({});
 
 const slowProvider = () =>
   Promise.resolve(
     (_: File, onProgress: (loaded: number, total: number) => void) => {
       return new Promise<UploadResponse>((resolve) => {
-        let timeout;
+        let timeout: number;
 
         resolve({
           abort: () => {
@@ -41,7 +39,7 @@ const slowProvider = () =>
           },
           result: new Promise((resolve) => {
             let count = 0;
-            timeout = setInterval(() => {
+            timeout = window.setInterval(() => {
               count++;
 
               onProgress(500 * count, 1500);
@@ -71,7 +69,7 @@ const SlowTemplate = () => {
   );
 };
 
-export const Slow: Story = SlowTemplate.bind({});
+export const Slow = SlowTemplate.bind({});
 
 const SingleTemplate = () => {
   return (
@@ -90,4 +88,4 @@ const SingleTemplate = () => {
   );
 };
 
-export const Single: Story = SingleTemplate.bind({});
+export const Single = SingleTemplate.bind({});

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Dropdown, DropdownOption } from "../components/Dropdown/Dropdown";
-import { PdfIcon } from "../components/WebFileIcon/PdfIcon";
-import { ImageIcon } from "../components/WebFileIcon/ImageIcon";
-import React, { ChangeEvent, useState } from "react";
+import { Dropdown, DropdownOption } from "../src/components/Dropdown/Dropdown";
+import { PdfIcon } from "../src/components/WebFileIcon/PdfIcon";
+import { ImageIcon } from "../src/components/WebFileIcon/ImageIcon";
+import { ChangeEvent, useState } from "react";
 
 const meta = {
   title: "Forms/Dropdown",
@@ -46,7 +46,7 @@ const Template = () => {
   );
 };
 
-export const Default: Story = Template.bind({});
+export const Default = Template.bind({});
 
 export const CustomStyle: Story = {
   args: {

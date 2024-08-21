@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { SpaceAllocation } from "../components/SpaceAllocation/SpaceAllocation";
+import { SpaceAllocation } from "../src/components/SpaceAllocation/SpaceAllocation";
 
 const meta = {
   title: "Advanced/SpaceAllocation",

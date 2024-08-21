@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Stepper } from "../components/Stepper/Stepper";
-import React, { CSSProperties, useState } from "react";
+import { Stepper } from "../src/components/Stepper/Stepper";
+import React, { useState } from "react";
 
 const meta = {
   title: "Advanced/Stepper",
@@ -45,4 +45,4 @@ const Template = () => {
   );
 };
 
-export const Default: Story = Template.bind({});
+export const Default = Template.bind({});

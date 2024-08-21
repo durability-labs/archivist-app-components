@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { SimpleText } from "../components/SimpleText/SimpleText";
+import { SimpleText } from "../src/components/SimpleText/SimpleText";
 
 const meta = {
   title: "Components/SimpleText",

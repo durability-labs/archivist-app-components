@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import { InputGroup } from "../components/InputGroup/InputGroup";
+import { InputGroup } from "../src/components/InputGroup/InputGroup";
 
 const meta = {
   title: "Forms/InputGroup",

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import { Input } from "../components/Input/Input";
+import { Input } from "../src/components/Input/Input";
 import { InputIcon } from "./InputIcon";
 
 const meta = {
