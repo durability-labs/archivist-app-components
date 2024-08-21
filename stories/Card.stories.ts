@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
-import { Plus } from "lucide-react";
-import { Card } from "../components/Card/Card";
-import React, { CSSProperties } from "react";
+import { Card } from "../src/components/Card/Card";
+import React from "react";
 
 const meta = {
   title: "Components/Card",

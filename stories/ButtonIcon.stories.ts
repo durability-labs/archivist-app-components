@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import { Plus } from "lucide-react";
-import { ButtonIcon } from "../components/ButtonIcon/ButtonIcon";
+import { ButtonIcon } from "../src/components/ButtonIcon/ButtonIcon";
 
 const meta = {
   title: "Components/ButtonIcon",

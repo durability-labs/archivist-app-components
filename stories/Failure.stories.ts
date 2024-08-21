@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Failure } from "../components/Failure/Failure";
+import { Failure } from "../src/components/Failure/Failure";
 
 const meta = {
   title: "Content/Failure",

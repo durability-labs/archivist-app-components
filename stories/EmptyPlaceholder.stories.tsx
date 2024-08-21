@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { EmptyPlaceholder } from "../components/EmptyPlaceholder/EmptyPlaceholder";
+import { EmptyPlaceholder } from "../src/components/EmptyPlaceholder/EmptyPlaceholder";
 
 const meta = {
   title: "Content/EmptyPlaceholder",

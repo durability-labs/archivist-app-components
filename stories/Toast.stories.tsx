@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { CircleCheck } from "lucide-react";
-import { Toast } from "../components/Toast/Toast";
+import { Toast } from "../src/components/Toast/Toast";
 import { MouseEvent, useState } from "react";
-import React from "react";
 
 const meta = {
   title: "Overlays/Toast",
@@ -44,4 +43,4 @@ const Template = () => {
   );
 };
 
-export const Default: Story = Template.bind({});
+export const Default = Template.bind({});
