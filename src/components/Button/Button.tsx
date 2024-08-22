@@ -23,6 +23,10 @@ type Props = {
 
   onClick?: () => unknown | Promise<unknown>;
 
+  onMouseEnter?: () => unknown | Promise<unknown>;
+
+  onMouseLeave?: () => unknown | Promise<unknown>;
+
   label: string;
 
   /**
@@ -67,6 +71,8 @@ export function Button({
   label,
   className = "",
   Icon,
+  onMouseEnter,
+  onMouseLeave,
   fetching = false,
   disabled = false,
   style,
@@ -76,6 +82,8 @@ export function Button({
   return (
     <button
       onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       style={style}
       className={`button ${className} button--${variant}`}
       {...attributes({

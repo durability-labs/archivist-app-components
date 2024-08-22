@@ -15,7 +15,7 @@ const meta = {
       control: { type: "select" },
     },
   },
-  args: { onClick: fn() },
+  args: { onClick: fn(), onMouseEnter: fn(), onMouseLeave: fn() },
 } satisfies Meta<typeof ButtonIcon>;
 
 export default meta;

@@ -27,6 +27,12 @@ type Props = {
 
   onBlur?: () => unknown | Promise<unknown>;
 
+  onClick?: (() => void) | undefined;
+
+  onMouseEnter?: () => void;
+
+  onMouseLeave?: () => void;
+
   placeholder?: string;
 
   value?: string;
@@ -74,6 +80,9 @@ export function Input({
   onFocus,
   placeholder,
   onChange,
+  onMouseEnter,
+  onMouseLeave,
+  onClick,
   className,
   style,
   Icon,
@@ -95,6 +104,9 @@ export function Input({
           </div>
         )}
         <input
+          onClick={onClick}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
           className={classnames(
             ["input"],
             ["input-icon-input", !!Icon],

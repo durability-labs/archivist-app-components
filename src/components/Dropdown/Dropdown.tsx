@@ -52,6 +52,14 @@ type Props = {
    */
   onSelected?: (o: DropdownOption) => void;
 
+  onBlur?: () => void;
+
+  onFocus?: () => void;
+
+  onMouseEnter?: () => void;
+
+  onMouseLeave?: () => void;
+
   /**
    * Apply custom css variables.
    * --codex-dropdown-panel-background
@@ -65,6 +73,10 @@ export function Dropdown({
   placeholder,
   style,
   options,
+  onMouseEnter,
+  onMouseLeave,
+  onFocus,
+  onBlur,
   onChange,
   onSelected,
   value = "",
@@ -78,11 +90,17 @@ export function Dropdown({
   );
   const [focused, setFocused] = useState(false);
 
-  const onFocus = () => setFocused(true);
+  const onInternalFocus = () => {
+    setFocused(true);
+    onFocus?.();
+  };
 
-  const onBlur = () => () => window.setTimeout(() => setFocused(false), 150);
+  const onInternalBlur = () => {
+    onBlur?.();
+    window.setTimeout(() => setFocused(false), 150);
+  };
 
-  const onClick = (o: DropdownOption) => {
+  const onSelect = (o: DropdownOption) => {
     onSelected?.(o);
     setFocused(false);
   };
@@ -98,12 +116,14 @@ export function Dropdown({
       <Input
         className="dropdown-input"
         onChange={onChange}
-        onFocus={onFocus}
-        onBlur={onBlur}
+        onFocus={onInternalFocus}
+        onBlur={onInternalBlur}
         placeholder={placeholder}
         value={value}
         label={""}
         id={""}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       />
 
       <div className="dropdown-panel" {...attr}>
@@ -111,7 +131,7 @@ export function Dropdown({
           filtered.map((o) => (
             <div
               className="dropdown-option"
-              onClick={() => onClick(o)}
+              onClick={() => onSelect(o)}
               key={o.title}
             >
               {o.Icon && <o.Icon />}
