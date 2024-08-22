@@ -32,6 +32,8 @@ type Props = {
   size?: "normal" | "small";
 
   center?: boolean;
+
+  bold?: boolean;
 };
 
 export function SimpleText({
@@ -41,8 +43,9 @@ export function SimpleText({
   size = "normal",
   style,
   children,
+  bold,
 }: Props) {
-  const c = `text text--${variant} ${className} ${center ? "text--center" : ""}`;
+  const c = `text text--${variant} ${className} ${center ? "text--center" : ""} ${bold ? "text--bold" : ""}`;
 
   if (size === "small") {
     return (

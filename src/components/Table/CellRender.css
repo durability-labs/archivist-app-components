@@ -1,0 +1,22 @@
+.cell--break {
+  word-break: break-all;
+}
+
+.cell--action {
+  text-decoration: none;
+  transition: text-shadow 0.35s;
+}
+
+.cell--action:hover {
+  text-shadow: var(--codex-color-primary) 0px 0 20px;
+}
+
+.cell-state {
+  border-radius: var(--codex-border-radius);
+  padding: 0.5rem 0.75rem;
+}
+
+.cell-state--error {
+  background-color: var(--codex-color-error);
+  mix-blend-mode: difference;
+}

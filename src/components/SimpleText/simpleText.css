@@ -21,3 +21,7 @@
 .text--warning {
   color: var(--codex-color-warning);
 }
+
+.text--bold {
+  font-weight: bold;
+}

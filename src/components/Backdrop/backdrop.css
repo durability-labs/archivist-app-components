@@ -10,3 +10,7 @@
   display: block;
   z-index: 1;
 }
+
+.document-noOverflow {
+  overflow: hidden;
+}
