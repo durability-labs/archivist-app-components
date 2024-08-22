@@ -32,11 +32,11 @@
     "React"
   ],
   "dependencies": {
-    "lucide-react": "^0.428.0"
+    "lucide-react": "^0.428.0",
+    "pretty-ms": "^9.1.0"
   },
   "peerDependencies": {
     "@codex/sdk-js": "@codex/sdk-js#master",
-    "@tanstack/react-query": "^5.51.24",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

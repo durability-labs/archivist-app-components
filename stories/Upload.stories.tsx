@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta } from "@storybook/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { UploadResponse } from "@codex/sdk-js";
 import { Upload } from "../src/components/Upload/Upload";
