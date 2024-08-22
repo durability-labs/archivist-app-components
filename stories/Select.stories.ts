@@ -10,7 +10,13 @@ const meta = {
   },
   tags: ["autodocs"],
   argTypes: {},
-  args: { onChange: fn() },
+  args: {
+    onFocus: fn(),
+    onBlur: fn(),
+    onMouseEnter: fn(),
+    onMouseLeave: fn(),
+    onChange: fn(),
+  },
 } satisfies Meta<typeof Select>;
 
 export default meta;

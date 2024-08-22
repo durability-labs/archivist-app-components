@@ -3,6 +3,7 @@ import { Dropdown, DropdownOption } from "../src/components/Dropdown/Dropdown";
 import { PdfIcon } from "../src/components/WebFileIcon/PdfIcon";
 import { ImageIcon } from "../src/components/WebFileIcon/ImageIcon";
 import { ChangeEvent, useState } from "react";
+import { fn } from "@storybook/test";
 
 const meta = {
   title: "Forms/Dropdown",
@@ -12,20 +13,46 @@ const meta = {
   },
   tags: ["autodocs"],
   argTypes: {},
+  args: {
+    onChange: fn(),
+    onSelected: fn(),
+    onFocus: fn(),
+    onBlur: fn(),
+    onMouseEnter: fn(),
+    onMouseLeave: fn(),
+  },
 } satisfies Meta<typeof Dropdown>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const Template = () => {
-  const [value, setValue] = useState<string>("");
-  const onChange = (e: ChangeEvent<HTMLInputElement>) =>
-    setValue(e.currentTarget.value);
+type Props = {
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 
-  const onSelected = (o: DropdownOption) => setValue(o.title);
+  onSelected?: (o: DropdownOption) => void;
+
+  onClick?: () => void;
+
+  onMouseEnter?: () => void;
+
+  onBlur?: () => void;
+};
+
+const Template = (p: Props) => {
+  const [value, setValue] = useState<string>("");
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    p.onChange(e);
+    setValue(e.currentTarget.value);
+  };
+
+  const onSelected = (o: DropdownOption) => {
+    setValue(o.title);
+    p.onSelected?.(o);
+  };
 
   return (
     <Dropdown
+      {...p}
       placeholder="Select your file"
       onChange={onChange}
       onSelected={onSelected}
@@ -46,7 +73,7 @@ const Template = () => {
   );
 };
 
-export const Default = Template.bind({});
+export const Default = Template;
 
 export const CustomStyle: Story = {
   args: {
@@ -54,6 +81,5 @@ export const CustomStyle: Story = {
     options: [],
     style: { "--codex-input-border": "1px solid red" },
     value: "",
-    onChange: () => "",
   },
 };

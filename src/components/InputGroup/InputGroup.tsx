@@ -43,6 +43,14 @@ type Props = {
    */
   onGroupChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
 
+  onBlur?: () => void;
+
+  onFocus?: () => void;
+
+  onMouseEnter?: () => void;
+
+  onMouseLeave?: () => void;
+
   id: string;
 
   step?: string;
@@ -63,9 +71,13 @@ export function InputGroup({
   className,
   onChange,
   onGroupChange,
+  onMouseEnter,
+  onMouseLeave,
+  onFocus,
+  onBlur,
   id,
   step,
-  value = "",
+  value = undefined,
   groupValue = "",
 }: Props) {
   return (
@@ -81,6 +93,10 @@ export function InputGroup({
               type={type}
               value={value}
               step={step}
+              onMouseEnter={onMouseEnter}
+              onMouseLeave={onMouseLeave}
+              onFocus={onFocus}
+              onBlur={onBlur}
             />
           </div>
 

@@ -15,6 +15,10 @@ type Props = {
 
   onClick?: () => void;
 
+  onMouseEnter?: () => unknown | Promise<unknown>;
+
+  onMouseLeave?: () => unknown | Promise<unknown>;
+
   disabled?: boolean;
 
   /**
@@ -32,12 +36,16 @@ export function ButtonIcon({
   Icon,
   onClick,
   style,
+  onMouseEnter,
+  onMouseLeave,
   disabled = false,
   variant = "big",
 }: Props) {
   return (
     <button
       className={`buttonIcon buttonIcon--${variant}`}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       onClick={onClick}
       style={style}
       {...attributes({ disabled: disabled, "aria-disabled": disabled })}

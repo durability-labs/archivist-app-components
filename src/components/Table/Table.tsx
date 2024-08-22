@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import "./Table.css";
 import { CellRender } from "./CellRender";
 

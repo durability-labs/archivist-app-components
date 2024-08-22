@@ -24,6 +24,14 @@ type Props = {
    */
   onChange?: (e: ChangeEvent<HTMLSelectElement>) => void | Promise<void>;
 
+  onFocus?: () => void | Promise<void>;
+
+  onBlur?: () => unknown | Promise<unknown>;
+
+  onMouseEnter?: () => void;
+
+  onMouseLeave?: () => void;
+
   /**
    * Apply custom css variables.
    */
@@ -39,6 +47,10 @@ export function Select({
   id,
   options,
   onChange,
+  onBlur,
+  onFocus,
+  onMouseEnter,
+  onMouseLeave,
   style,
   className,
   defaultValue,
@@ -53,6 +65,10 @@ export function Select({
           id={id}
           className={`select ${className}`}
           onChange={onChange}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
           style={style}
           defaultValue={defaultValue}
         >

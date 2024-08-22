@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Stepper } from "../src/components/Stepper/Stepper";
 import React, { useState } from "react";
+import { fn } from "@storybook/test";
 
 const meta = {
   title: "Advanced/Stepper",
@@ -10,13 +11,16 @@ const meta = {
   },
   tags: ["autodocs"],
   argTypes: {},
-  //   args: { onClick: fn() },
+  args: { onChangeStep: fn() },
 } satisfies Meta<typeof Stepper>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-const Template = () => {
+type Props = {
+  onChangeStep: (s: number, state: "before" | "end") => void | Promise<void>;
+};
+
+const Template = (p: Props) => {
   const [step, setStep] = useState(0);
   const [progress, setProgress] = useState(false);
 
@@ -24,6 +28,8 @@ const Template = () => {
   const title = titles[step];
 
   const onChangeStep = (newStep: number, event: "before" | "end") => {
+    p.onChangeStep(newStep, event);
+
     if (event === "before") {
       setProgress(true);
       return;

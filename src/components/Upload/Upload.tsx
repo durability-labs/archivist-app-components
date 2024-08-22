@@ -32,11 +32,22 @@ type Props = {
    */
   onSuccess?: (cid: string) => void;
 
+  /*
+   * Event triggered when the user selected files to upload.
+   */
+  onFileChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+
   /**
    * Event triggered when a file is deleted.
    * The id is generated after the file are selected by the user.
    */
   onDeleteItem?: (id: string) => void;
+
+  onClick?: (() => void) | undefined;
+
+  onMouseEnter?: () => void;
+
+  onMouseLeave?: () => void;
 
   /**
    * Allow to override the previous file(s).
@@ -86,6 +97,10 @@ const defaultProvider = () =>
   );
 
 export function Upload({
+  onMouseEnter,
+  onMouseLeave,
+  onClick,
+  onFileChange,
   multiple = true,
   editable = true,
   onDeleteItem,
@@ -109,7 +124,7 @@ export function Upload({
     uploadFiles(e.dataTransfer.files);
   };
 
-  const onFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const onInternalFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       uploadFiles(e.target.files);
     }
@@ -117,6 +132,8 @@ export function Upload({
     if (input.current) {
       input.current.value = "";
     }
+
+    onFileChange?.(e);
   };
 
   const onClose = (id: string) => {
@@ -124,17 +141,22 @@ export function Upload({
     onDeleteItem?.(id);
   };
 
-  const onClick = () => input.current?.click();
+  const onInternalClick = () => {
+    onClick?.();
+    input.current?.click();
+  };
 
   return (
     <>
       <div
         className={classnames(["upload"], ["upload-warning", !!warning])}
         tabIndex={1}
-        onClick={onClick}
+        onClick={onInternalClick}
         onDragOver={onDragPrevents}
         onDragEnter={onDragPrevents}
         onDrop={onDrop}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       >
         <ButtonIcon Icon={multiple ? FileStack : UploadIcon}></ButtonIcon>
         <div className="upload-text">
@@ -152,7 +174,7 @@ export function Upload({
           type="file"
           hidden
           ref={input}
-          onChange={onFileChange}
+          onChange={onInternalFileChange}
           {...attributes({ multiple: multiple })}
         />
 

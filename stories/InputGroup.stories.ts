@@ -10,7 +10,14 @@ const meta = {
   },
   tags: ["autodocs"],
   argTypes: {},
-  args: { onChange: fn() },
+  args: {
+    onGroupChange: fn(),
+    onChange: fn(),
+    onFocus: fn(),
+    onBlur: fn(),
+    onMouseEnter: fn(),
+    onMouseLeave: fn(),
+  },
 } satisfies Meta<typeof InputGroup>;
 
 export default meta;
