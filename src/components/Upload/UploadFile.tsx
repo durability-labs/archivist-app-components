@@ -1,4 +1,11 @@
-import { useRef, useState, useReducer, Reducer, useEffect } from "react";
+import {
+  useRef,
+  useState,
+  useReducer,
+  Reducer,
+  useEffect,
+  useCallback,
+} from "react";
 import { attributes } from "../utils/attributes";
 import { PrettyBytes } from "../utils/bytes";
 import { Toast } from "../Toast/Toast";
@@ -161,20 +168,23 @@ export function UploadFile({
   });
   const init = useRef(false);
 
-  const onInternalSuccess = (cid: string) => {
-    worker.current?.terminate();
+  const onInternalSuccess = useCallback(
+    (cid: string) => {
+      worker.current?.terminate();
 
-    queryClient.invalidateQueries({
-      queryKey: ["cids"],
-    });
+      queryClient.invalidateQueries({
+        queryKey: ["cids"],
+      });
 
-    if (onSuccess) {
-      onSuccess(cid);
-      dispatch({ type: "reset" });
-    } else {
-      dispatch({ type: "completed", cid });
-    }
-  };
+      if (onSuccess) {
+        onSuccess(cid);
+        dispatch({ type: "reset" });
+      } else {
+        dispatch({ type: "completed", cid });
+      }
+    },
+    [onSuccess, dispatch, queryClient]
+  );
 
   const onProgress = (loaded: number, total: number) => {
     dispatch({
@@ -238,7 +248,7 @@ export function UploadFile({
       console.info("running file !!");
       mutateAsync(file);
     }
-  }, []);
+  }, [file, mutateAsync, onInternalSuccess, useWorker, provider]);
 
   const onCancel = () => {
     if (worker.current) {

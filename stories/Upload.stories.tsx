@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { UploadResponse } from "@codex/sdk-js";
 import { Upload } from "../src/components/Upload/Upload";
 import { fn } from "@storybook/test";
+import "./Upload.stories.css";
 
 const meta = {
   title: "Advanced/Upload",
@@ -69,7 +70,7 @@ const slowProvider = () =>
                 window.clearInterval(timeout);
 
                 resolve({
-                  error: false as false,
+                  error: false,
                   data: Date.now().toString(),
                 });
               }

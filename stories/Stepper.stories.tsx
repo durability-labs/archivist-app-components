@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta } from "@storybook/react";
 import { Stepper } from "../src/components/Stepper/Stepper";
 import React, { useState } from "react";
 import { fn } from "@storybook/test";
@@ -41,7 +41,7 @@ const Template = (p: Props) => {
 
   return (
     <Stepper
-      Body={() => React.createElement("p", {}, title)}
+      Body={() => React.createElement("div", {}, title)}
       titles={titles}
       onChangeStep={onChangeStep}
       progress={progress}

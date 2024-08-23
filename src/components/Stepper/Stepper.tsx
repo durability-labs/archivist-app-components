@@ -118,14 +118,3 @@ export function Stepper({
     </div>
   );
 }
-
-// <div className="stepper-success">
-// <video src="/animations/success.webm" autoPlay />
-// <p>
-//   <b>Success ! </b>
-// </p>
-// <p className="text-center">
-//   Your request has been submitted. Check your purchases list to get
-//   more information about the status.
-// </p>
-// </div>

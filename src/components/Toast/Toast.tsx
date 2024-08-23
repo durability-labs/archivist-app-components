@@ -72,7 +72,7 @@ export function Toast({
     if (message) {
       timeout.current = window.setTimeout(() => setMsg(""), duration);
     }
-  }, [message, time]);
+  }, [message, time, duration]);
 
   const onClose = () => {
     if (timeout.current) {

@@ -35,7 +35,7 @@ export function Failure({
     <div className="failure">
       <h1 className="failure-code">{code}</h1>
       <h2 className="failure-title">{title}</h2>
-      <p className="failure-message">{message}</p>
+      <div className="failure-message">{message}</div>
       {onClick && <Button label={button} onClick={onClick} />}
     </div>
   );
