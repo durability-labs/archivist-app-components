@@ -37,6 +37,7 @@
   },
   "peerDependencies": {
     "@codex/sdk-js": "@codex/sdk-js#master",
+    "@tanstack/react-query": "^5.51.24",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -53,6 +54,11 @@
     "@storybook/test": "^8.2.9",
     "@tanstack/react-query": "^5.51.24",
     "@vitejs/plugin-react": "^4.3.1",
+    "@typescript-eslint/eslint-plugin": "^7.15.0",
+    "@typescript-eslint/parser": "^7.15.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.7",
+    "eslint": "^8.57.0",
     "glob": "^7.2.3",
     "prettier": "^3.3.3",
     "react": "^18.3.1",

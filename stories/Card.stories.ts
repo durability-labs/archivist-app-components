@@ -18,14 +18,14 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     title: "Hello",
-    children: React.createElement("p", {}, "Hello World !"),
+    children: React.createElement("div", {}, "Hello World !"),
   },
 };
 
 export const CustomStyle: Story = {
   args: {
     title: "Hello",
-    children: React.createElement("p", {}, "Hello World !"),
+    children: React.createElement("div", {}, "Hello World !"),
     style: { "--codex-border-radius": "0px" },
   },
 };

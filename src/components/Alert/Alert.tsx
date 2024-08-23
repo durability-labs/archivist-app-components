@@ -38,10 +38,8 @@ export function Alert({
       style={style}
       {...rest}
     >
-      <p>
-        <b className="alert-message">{variant} ! </b>
-      </p>
-      <p>{message}</p>
+      <b className="alert-message">{variant} ! </b>
+      <div>{message}</div>
     </div>
   );
 }

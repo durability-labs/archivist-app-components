@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta } from "@storybook/react";
 import { CircleCheck } from "lucide-react";
 import { Toast } from "../src/components/Toast/Toast";
-import { MouseEvent, useState } from "react";
+import { useState } from "react";
 
 const meta = {
   title: "Overlays/Toast",
@@ -17,12 +17,11 @@ const meta = {
 } satisfies Meta<typeof Toast>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 const Template = () => {
   const [time, setTime] = useState(0);
 
-  const onClick = (_: MouseEvent) => setTime(Date.now());
+  const onClick = () => setTime(Date.now());
 
   return (
     <div style={{ padding: "2rem" }}>

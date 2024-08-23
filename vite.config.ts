@@ -12,7 +12,7 @@ const { glob } = pkg;
 export default defineConfig({
   worker: {
     rollupOptions: {
-      external: ["@codex/sdk-js"],
+      external: ["@codex/sdk-js", "@tanstack/react-query"],
       output: {
         globals: {
           "@codex/sdk-js": "codex-sdk-js",

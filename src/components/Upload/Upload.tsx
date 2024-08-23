@@ -89,7 +89,7 @@ const defaultProvider = () =>
       return Promise.resolve({
         abort: () => {},
         result: Promise.resolve({
-          error: false as false,
+          error: false,
           data: Date.now().toString(),
         }),
       } satisfies UploadResponse);

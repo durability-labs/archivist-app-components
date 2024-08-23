@@ -13,7 +13,7 @@ export function EmptyPlaceholder({ title, message, onRetry }: Props) {
     <div className="emptyPlaceholder">
       <EmptyPlaceholderIcon className="emptyPlaceholder-icon" width={178} />
       <b className="emptyPlaceholder-title">{title}</b>
-      <p className="emptyPlaceholder-message">{message} </p>
+      <div className="emptyPlaceholder-message">{message} </div>
 
       {onRetry && (
         <Button
