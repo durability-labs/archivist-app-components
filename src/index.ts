@@ -29,3 +29,4 @@ export {
 } from "./components/Menu/Menu";
 export { AppBar } from "./components/AppBar/AppBar";
 export { Page } from "./components/Page/Page";
+export { NetworkIndicator } from "./components/NetworkIndicator/NetworkIndicator";
