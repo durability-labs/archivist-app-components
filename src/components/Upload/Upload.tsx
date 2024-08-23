@@ -66,7 +66,7 @@ type Props = {
    * If true, the upload will run in a separate web worker.
    * Default is !!window.Worker.
    */
-  useWorker?: boolean;
+  // useWorker?: boolean;
 
   /**
    * Apply custom css variables.
@@ -106,7 +106,7 @@ export function Upload({
   onDeleteItem,
   onSuccess,
   provider = defaultProvider,
-  useWorker = !!window.Worker,
+  // useWorker = !!window.Worker,
 }: Props) {
   const { deleteFile, files, uploadFiles, warning } = useUploadStategy(
     multiple ? "multiple" : "single",
@@ -189,7 +189,7 @@ export function Upload({
           id={id}
           onSuccess={onSuccess}
           provider={provider}
-          useWorker={useWorker}
+          // useWorker={useWorker}
         />
       ))}
     </>

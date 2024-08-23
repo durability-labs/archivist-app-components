@@ -30,7 +30,7 @@ type UploadFileProps = {
   id: string;
   onSuccess: ((cid: string) => void) | undefined;
   provider: () => Promise<CodexData["upload"]>;
-  useWorker: boolean;
+  // useWorker: boolean;
 };
 
 type State = {
@@ -128,7 +128,7 @@ export function UploadFile({
   id,
   onSuccess,
   provider,
-  useWorker,
+  // useWorker,
 }: UploadFileProps) {
   const abort = useRef<(() => void) | null>(null);
   const queryClient = useQueryClient();
@@ -214,41 +214,42 @@ export function UploadFile({
       reader.readAsDataURL(file);
     }
 
-    if (useWorker) {
-      worker.current = new Worker(new URL("./worker", import.meta.url), {
-        type: "module",
-      });
+    mutateAsync(file);
 
-      provider().then(() => {
-        worker.current?.postMessage({ type: "init", upload: "" });
-      });
+    // if (useWorker) {
+    //   worker.current = new Worker(new URL("./worker", import.meta.url), {
+    //     type: "module",
+    //   });
 
-      worker.current.onmessage = function (e) {
-        const data = e.data;
+    //   provider().then(() => {
+    //     worker.current?.postMessage({ type: "init", upload: "" });
+    //   });
 
-        if (e.data.type === "progress") {
-          onProgress(data.loaded, data.total);
-        } else if (e.data.type === "completed") {
-          onInternalSuccess(e.data.value.data);
-        } else if (e.data.error) {
-          // TODO report with sentry
-          dispatch({ type: "error", error: e.data.error });
-        }
-      };
+    //   worker.current.onmessage = function (e) {
+    //     const data = e.data;
 
-      worker.current.onerror = function (e) {
-        // TODO report to sentry
-        console.error("Error in worker:", e);
-        dispatch({ type: "error", error: e.message });
-        worker.current?.terminate();
-      };
+    //     if (e.data.type === "progress") {
+    //       onProgress(data.loaded, data.total);
+    //     } else if (e.data.type === "completed") {
+    //       onInternalSuccess(e.data.value.data);
+    //     } else if (e.data.error) {
+    //       // TODO report with sentry
+    //       dispatch({ type: "error", error: e.data.error });
+    //     }
+    //   };
 
-      worker.current.postMessage({ type: "file", file });
-    } else {
-      console.info("running file !!");
-      mutateAsync(file);
-    }
-  }, [file, mutateAsync, onInternalSuccess, useWorker, provider]);
+    //   worker.current.onerror = function (e) {
+    //     // TODO report to sentry
+    //     console.error("Error in worker:", e);
+    //     dispatch({ type: "error", error: e.message });
+    //     worker.current?.terminate();
+    //   };
+
+    //   worker.current.postMessage({ type: "file", file });
+    // } else {
+    //   mutateAsync(file);
+    // }
+  }, [file, mutateAsync, onInternalSuccess, provider]);
 
   const onCancel = () => {
     if (worker.current) {
