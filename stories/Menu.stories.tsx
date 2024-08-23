@@ -20,7 +20,7 @@ const meta = {
   title: "Overlays/Menu",
   component: Menu,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   tags: ["autodocs"],
   argTypes: {},

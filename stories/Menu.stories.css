@@ -2,11 +2,9 @@
   min-height: 500px;
 }
 
-@media (min-width: 1000px) {
-  .menu-noSticky {
-    transform: translatex(-500px) !important;
-    position: fixed;
-  }
+.menu-noSticky {
+  transform: translatex(-1000px) !important;
+  position: fixed;
 }
 
 .menu-noSticky[aria-expanded] {
