@@ -40,6 +40,7 @@ type Props = {
 
 const Template = (p: Props) => {
   const [value, setValue] = useState<string>("");
+
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     p.onChange(e);
     setValue(e.currentTarget.value);
@@ -57,6 +58,8 @@ const Template = (p: Props) => {
       onChange={onChange}
       onSelected={onSelected}
       value={value}
+      id={"dropdown"}
+      label={"Dropdown"}
       options={[
         {
           title: "File1.pdf",
@@ -81,5 +84,7 @@ export const CustomStyle: Story = {
     options: [],
     style: { "--codex-input-border": "1px solid red" },
     value: "",
+    id: "dropdown",
+    label: "Dropdown",
   },
 };
