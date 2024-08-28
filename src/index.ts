@@ -16,11 +16,10 @@ export { Spinner } from "./components/Spinner/Spinner";
 export { WebFileIcon } from "./components/WebFileIcon/WebFileIcon";
 export { Stepper } from "./components/Stepper/Stepper";
 export { Backdrop } from "./components/Backdrop/Backdrop";
-export { ActionCellRender } from "./components/Table/ActionCellRender";
-export { BreakCellRender } from "./components/Table/BreakCellRender";
-export { DefaultCellRender } from "./components/Table/CellRender";
-export { DurationCellRender } from "./components/Table/DurationCellRender";
-export { StateCellRender } from "./components/Table/StateCellRender";
+export { ActionCell } from "./components/Table/ActionCell";
+export { BreakCell } from "./components/Table/BreakCell";
+export { Cell } from "./components/Table/Cell";
+export { StateCell } from "./components/Table/StateCell";
 export { Table } from "./components/Table/Table";
 export {
   Menu,
@@ -30,3 +29,5 @@ export {
 export { AppBar } from "./components/AppBar/AppBar";
 export { Page } from "./components/Page/Page";
 export { NetworkIndicator } from "./components/NetworkIndicator/NetworkIndicator";
+export { Tooltip } from "./components/Tooltip/Tooltip";
+export { Collapse } from "./components/Collapse/Collapse";
