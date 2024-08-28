@@ -28,7 +28,7 @@ type UploadFileProps = {
   file: File;
   onClose: (id: string) => void;
   id: string;
-  onSuccess: ((cid: string) => void) | undefined;
+  onSuccess: ((cid: string, file: File) => void) | undefined;
   provider: () => Promise<CodexData["upload"]>;
   // useWorker: boolean;
 };
@@ -147,7 +147,6 @@ export function UploadFile({
       return provider()
         .then((upload) => upload(file, onProgress))
         .then((res) => {
-          console.info("abort", res.abort);
           abort.current = res.abort;
           return res.result;
         })
@@ -177,13 +176,13 @@ export function UploadFile({
       });
 
       if (onSuccess) {
-        onSuccess(cid);
+        onSuccess(cid, file);
         dispatch({ type: "reset" });
       } else {
         dispatch({ type: "completed", cid });
       }
     },
-    [onSuccess, dispatch, queryClient]
+    [onSuccess, dispatch, queryClient, file]
   );
 
   const onProgress = (loaded: number, total: number) => {

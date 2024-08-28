@@ -2,11 +2,14 @@
   border-radius: var(--codex-border-radius);
   border: 1px solid var(--codex-border-color);
   font-family: var(--codex-font-family);
+  background-color: var(--codex-background-secondary);
 }
 
 .card-header {
   border-bottom: 1px solid var(--codex-border-color);
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 1.5rem;
+  font-size: 1.15rem;
+  font-weight: bold;
 }
 
 .card-body {

@@ -1,4 +1,10 @@
-import { ChangeEvent, ComponentType, CSSProperties } from "react";
+import {
+  ChangeEvent,
+  ComponentType,
+  CSSProperties,
+  forwardRef,
+  KeyboardEvent,
+} from "react";
 import { attributes } from "../utils/attributes";
 import { classnames } from "../utils/classnames";
 import "./input.css";
@@ -32,6 +38,8 @@ type Props = {
   onMouseEnter?: () => void;
 
   onMouseLeave?: () => void;
+
+  onKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void;
 
   placeholder?: string;
 
@@ -70,71 +78,79 @@ type Props = {
   step?: string;
 };
 
-export function Input({
-  id,
-  label,
-  helper,
-  disabled,
-  value,
-  onBlur,
-  onFocus,
-  placeholder,
-  onChange,
-  onMouseEnter,
-  onMouseLeave,
-  onClick,
-  className,
-  style,
-  Icon,
-  step,
-  type = "text",
-}: Props) {
-  return (
-    <>
-      {label && (
-        <label className="input-label" htmlFor={id}>
-          {label}
-        </label>
-      )}
+export const Input = forwardRef<HTMLInputElement, Props>(
+  (
+    {
+      id,
+      label,
+      helper,
+      disabled,
+      value,
+      onBlur,
+      onFocus,
+      placeholder,
+      onChange,
+      onMouseEnter,
+      onMouseLeave,
+      onClick,
+      onKeyUp,
+      className,
+      style,
+      Icon,
+      step,
+      type = "text",
+    },
+    ref
+  ) => {
+    return (
+      <>
+        {label && (
+          <label className="input-label" htmlFor={id}>
+            {label}
+          </label>
+        )}
 
-      <div className={classnames(["input-icon", !!Icon])}>
-        {Icon && (
-          <div className="input-iconElement">
-            <Icon />
+        <div className={classnames(["input-icon", !!Icon])}>
+          {Icon && (
+            <div className="input-iconElement">
+              <Icon />
+            </div>
+          )}
+          <input
+            ref={ref}
+            onClick={onClick}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+            className={classnames(
+              ["input"],
+              ["input-icon-input", !!Icon],
+              [className || ""]
+            )}
+            id={id}
+            style={style}
+            {...attributes({
+              disabled,
+              "aria-disabled": disabled,
+            })}
+            value={value}
+            placeholder={placeholder}
+            onBlur={onBlur}
+            onFocus={onFocus}
+            onChange={onChange}
+            onKeyUp={onKeyUp}
+            type={type}
+            step={step}
+          />
+        </div>
+
+        {helper && (
+          <div>
+            <SimpleText className="input-helper-text" variant="light">
+              {helper}
+            </SimpleText>
           </div>
         )}
-        <input
-          onClick={onClick}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
-          className={classnames(
-            ["input"],
-            ["input-icon-input", !!Icon],
-            [className || ""]
-          )}
-          id={id}
-          style={style}
-          {...attributes({
-            disabled,
-            "aria-disabled": disabled,
-          })}
-          value={value}
-          placeholder={placeholder}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          onChange={onChange}
-          type={type}
-          step={step}
-        />
-      </div>
-
-      {helper && (
-        <div>
-          <SimpleText className="input-helper-text" variant="light">
-            {helper}
-          </SimpleText>
-        </div>
-      )}
-    </>
-  );
-}
+      </>
+    );
+  }
+);

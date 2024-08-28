@@ -15,11 +15,11 @@
 }
 
 .text--error {
-  color: var(--codex-color-error);
+  color: rgb(var(--codex-color-error));
 }
 
 .text--warning {
-  color: var(--codex-color-warning);
+  color: rgb(var(--codex-color-warning));
 }
 
 .text--bold {
