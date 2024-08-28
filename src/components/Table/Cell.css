@@ -1,0 +1,8 @@
+.cell--action {
+  text-decoration: none;
+  transition: text-shadow 0.35s;
+}
+
+.cell--action:hover {
+  text-shadow: var(--codex-color-primary) 0px 0 20px;
+}
