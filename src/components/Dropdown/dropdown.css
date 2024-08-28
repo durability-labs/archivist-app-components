@@ -24,11 +24,17 @@
   z-index: -1;
 }
 
+.dropdown-label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  display: block;
+  color: var(--codex-color);
+}
+
 .dropdown-panel[aria-expanded] {
-  z-index: 2;
   transform: translateY(0.5rem);
   opacity: 1;
-  z-index: 2;
+  z-index: 10;
 }
 
 .dropdown-input {

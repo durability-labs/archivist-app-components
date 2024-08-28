@@ -1,4 +1,10 @@
-import { ChangeEvent, ComponentType, useState } from "react";
+import {
+  ChangeEvent,
+  ComponentType,
+  useState,
+  KeyboardEvent,
+  useRef,
+} from "react";
 import "./dropdown.css";
 import { attributes } from "../utils/attributes";
 import { Backdrop } from "../Backdrop/Backdrop";
@@ -67,12 +73,20 @@ type Props = {
    * --codex-dropdown-option-background-hover
    */
   style?: CustomStyleCSS;
+
+  label: string;
+
+  id: string;
+
+  Component?: ComponentType<DropdownOption>;
 };
 
 export function Dropdown({
   placeholder,
   style,
   options,
+  label,
+  id,
   onMouseEnter,
   onMouseLeave,
   onFocus,
@@ -82,6 +96,7 @@ export function Dropdown({
   value = "",
   className = "",
 }: Props) {
+  const inputRef = useRef<HTMLInputElement>(null);
   const lower = value.toLocaleLowerCase();
   const filtered = options.filter(
     (o) =>
@@ -105,48 +120,63 @@ export function Dropdown({
     setFocused(false);
   };
 
+  const onKeyUp = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Escape") {
+      onClose();
+      inputRef.current?.blur();
+    }
+  };
+
   const onClose = () => setFocused(false);
 
   const attr = attributes({ "aria-expanded": focused });
 
   return (
-    <div className={`dropdown ${className}`} style={style}>
-      <Backdrop onClose={onClose} open={focused} />
+    <>
+      <label className="dropdown-label" htmlFor={id}>
+        {label}
+      </label>
 
-      <Input
-        className="dropdown-input"
-        onChange={onChange}
-        onFocus={onInternalFocus}
-        onBlur={onInternalBlur}
-        placeholder={placeholder}
-        value={value}
-        label={""}
-        id={""}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-      />
+      <div className={`dropdown ${className}`} style={style}>
+        <Backdrop onClose={onClose} open={focused} />
 
-      <div className="dropdown-panel" {...attr}>
-        {filtered.length ? (
-          filtered.map((o) => (
-            <div
-              className="dropdown-option"
-              onClick={() => onSelect(o)}
-              key={o.title}
-            >
-              {o.Icon && <o.Icon />}
-              <div>
-                <span className="dropdown-title">{o.title}</span>
-                {o.subtitle && (
-                  <span className="dropdown-subtitle">{o.subtitle}</span>
-                )}
+        <Input
+          ref={inputRef}
+          className="dropdown-input"
+          onChange={onChange}
+          onFocus={onInternalFocus}
+          onBlur={onInternalBlur}
+          onKeyUp={onKeyUp}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          placeholder={placeholder}
+          value={value}
+          label={""}
+          id={id}
+        />
+
+        <div className="dropdown-panel" {...attr}>
+          {filtered.length ? (
+            filtered.map((o) => (
+              <div
+                className="dropdown-option"
+                onClick={() => onSelect(o)}
+                key={o.title}
+              >
+                {o.Icon && <o.Icon />}
+                <div>
+                  <span className="dropdown-title">{o.title}</span>
+                  {o.subtitle && (
+                    <span className="dropdown-subtitle">{o.subtitle}</span>
+                  )}
+                </div>
               </div>
-            </div>
-          ))
-        ) : (
-          <p className="dropdown-noResults">No results found</p>
-        )}
+            ))
+          ) : (
+            <p className="dropdown-noResults">No results found</p>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
