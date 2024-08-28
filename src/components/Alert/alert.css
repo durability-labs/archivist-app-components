@@ -1,23 +1,42 @@
 .alert {
-  border: 1px solid var(--codex-alert-border-color);
-  color: 1px solid var(--codex-alert-border-color);
+  border-top: 2px solid rgb(var(--codex-alert-color));
+  background-color: rgba(var(--codex-alert-color), 0.1);
+  color: 1px solid var(--codex-alert-color);
   border-radius: var(--codex-border-radius);
   padding: 0.75rem 1.5rem;
   font-family: var(--codex-font-family);
-  color: var(--codex-alert-color);
+  color: var(--codex-color);
   word-break: break-word;
+  display: flex;
+  gap: 1rem;
 }
 
-.alert-message {
+.alert-icon {
+  display: flex;
+  width: 1rem;
+  color: rgb(var(--codex-alert-color));
+}
+
+.alert-circleIcon {
+  background: rgba(var(--codex-alert-color), 0.2);
+  border-radius: 75px;
+  height: 1.75rem;
+  width: 1.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alert-title {
   text-transform: capitalize;
+  margin-bottom: 0.25rem;
+  display: inline-block;
 }
 
 .alert--success {
-  --codex-alert-border-color: var(--codex-color-primary);
-  --codex-alert-color: var(--codex-color-primary);
+  --codex-alert-color: var(--codex-color-success);
 }
 
 .alert--warning {
-  --codex-alert-border-color: var(--codex-color-warning);
   --codex-alert-color: var(--codex-color-warning);
 }

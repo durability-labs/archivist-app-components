@@ -1,5 +1,5 @@
 import "./alert.css";
-import { CSSProperties } from "react";
+import { CSSProperties, ReactNode } from "react";
 
 interface CustomStyleCSS extends CSSProperties {
   "--codex-border-radius"?: string;
@@ -11,7 +11,9 @@ interface CustomStyleCSS extends CSSProperties {
 type Props = {
   variant: "success" | "warning" | "toast";
 
-  message: string;
+  title: string;
+
+  children: ReactNode;
 
   className?: string;
 
@@ -23,12 +25,16 @@ type Props = {
    * --codex-font-family
    */
   style?: CustomStyleCSS;
+
+  Icon?: ReactNode;
 };
 
 export function Alert({
   variant,
-  message,
   style,
+  title,
+  Icon,
+  children,
   className = "",
   ...rest
 }: Props) {
@@ -38,8 +44,16 @@ export function Alert({
       style={style}
       {...rest}
     >
-      <b className="alert-message">{variant} ! </b>
-      <div>{message}</div>
+      {Icon && (
+        <span className="alert-circleIcon">
+          <span className="alert-icon">{Icon}</span>
+        </span>
+      )}
+
+      <div className="alert-body">
+        <b className="alert-title">{title}</b>
+        <div className="alert-message">{children}</div>
+      </div>
     </div>
   );
 }

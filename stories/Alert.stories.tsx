@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Alert } from "../src/components/Alert/Alert";
+import { AlertCircle, CircleIcon, InfoIcon } from "lucide-react";
 
 const meta = {
   title: "Overlays/Alert",
@@ -20,21 +21,33 @@ type Story = StoryObj<typeof meta>;
 
 export const Success: Story = {
   args: {
-    message: "This is a success message.",
+    title: "Success",
+    children: "This is a success message.",
     variant: "success",
   },
 };
 
 export const Warning: Story = {
   args: {
-    message: "This is a warning message.",
+    children: "This is a warning message.",
     variant: "warning",
+    title: "Warning",
+  },
+};
+
+export const Icon: Story = {
+  args: {
+    Icon: <InfoIcon />,
+    children: "This is a warning message.",
+    variant: "success",
+    title: "Success",
   },
 };
 
 export const CustomStyle: Story = {
   args: {
-    message: "This is a custom style message.",
+    title: "Warning",
+    children: "This is a custom style message.",
     variant: "warning",
     style: { "--codex-color-warning": "red" },
   },
