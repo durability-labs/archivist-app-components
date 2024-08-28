@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Alert } from "../src/components/Alert/Alert";
-import { AlertCircle, CircleIcon, InfoIcon } from "lucide-react";
+import { InfoIcon } from "lucide-react";
 
 const meta = {
   title: "Overlays/Alert",
