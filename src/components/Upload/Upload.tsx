@@ -30,7 +30,7 @@ type Props = {
    * Event triggered when a file is uploaded.
    * The cid is the unique identifier of the file in Codex network.
    */
-  onSuccess?: (cid: string) => void;
+  onSuccess?: (cid: string, file: File) => void;
 
   /*
    * Event triggered when the user selected files to upload.
@@ -76,7 +76,7 @@ type Props = {
    * --codex-color-primary
    * --codex-color
    * --codex-color-error
-   *  --codex-color-warning
+   * --codex-color-warning
    */
   style?: CustomStyleCSS;
 };

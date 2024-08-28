@@ -1,6 +1,6 @@
 import { Button } from "../Button/Button";
 import "./stepper.css";
-import { CSSProperties } from "react";
+import { CSSProperties, ReactNode } from "react";
 import { Spinner } from "../Spinner/Spinner";
 import { Step } from "./Step";
 
@@ -21,7 +21,7 @@ type Props = {
   /**
    * The current component to show.
    */
-  Body: () => JSX.Element;
+  Body: ReactNode;
 
   // The current step to display in stepper state.
   step: number;
@@ -98,7 +98,7 @@ export function Stepper({
             <Spinner width={"3rem"} />
           </div>
         ) : (
-          <Body />
+          <>{Body}</>
         )}
       </div>
 
