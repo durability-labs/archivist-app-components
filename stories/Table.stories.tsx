@@ -1,14 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Table } from "../src/components/Table/Table";
-import { DefaultCellRender } from "../src/components/Table/CellRender";
-import { ActionCellRender } from "../src/components/Table/ActionCellRender";
-import { BreakCellRender } from "../src/components/Table/BreakCellRender";
 import "./Table.stories.css";
-import { StateCellRender } from "../src/components/Table/StateCellRender";
-import prettyMilliseconds from "pretty-ms";
-import { DurationCellRender } from "../src/components/Table/DurationCellRender";
-
-console.info(prettyMilliseconds(1337000000n, { compact: true }));
+import { StateCell } from "../src/components/Table/StateCell";
+import { ActionCell } from "../src/components/Table/ActionCell";
+import { BreakCell } from "../src/components/Table/BreakCell";
 
 const meta = {
   title: "Components/Table",
@@ -26,12 +21,16 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     cells: [
-      DefaultCellRender,
-      DefaultCellRender,
-      DefaultCellRender,
-      ActionCellRender("Action", (row) => console.info(row)),
+      [
+        <span>Ox45678FDGHJKLBSA21</span>,
+        <span>My file</span>,
+        <span>Some data</span>,
+        <ActionCell
+          action="Action"
+          onClick={() => console.info("Hello")}
+        ></ActionCell>,
+      ],
     ],
-    data: [["Ox45678FDGHJKL", "My file", "Some data"]],
     headers: ["id", "title", "other", "actions"],
   },
 };
@@ -40,12 +39,16 @@ export const Scroll: Story = {
   args: {
     className: "tableSmall",
     cells: [
-      DefaultCellRender,
-      DefaultCellRender,
-      DefaultCellRender,
-      ActionCellRender("Action", (row) => console.info(row)),
+      [
+        <span>Ox45678FDGHJKLBSA21</span>,
+        <span>My file</span>,
+        <span>Some data</span>,
+        <ActionCell
+          action="Action"
+          onClick={() => console.info("Hello")}
+        ></ActionCell>,
+      ],
     ],
-    data: [["Ox45678FDGHJKLBSA21", "My file", "Some data"]],
     headers: ["id", "title", "other", "actions"],
   },
 };
@@ -53,39 +56,34 @@ export const Scroll: Story = {
 export const BreakableCell: Story = {
   args: {
     cells: [
-      BreakCellRender,
-      DefaultCellRender,
-      DefaultCellRender,
-      ActionCellRender("Action", (row) => console.info(row)),
+      [
+        <BreakCell value="veryverylongvaluetobreak"></BreakCell>,
+        <span>My file</span>,
+        <span>Some data</span>,
+        <ActionCell
+          action="Action"
+          onClick={() => console.info("Hello")}
+        ></ActionCell>,
+      ],
     ],
-    data: [["veryverylongvaluetobreak", "My file", "Some data"]],
     headers: ["break", "title", "other", "actions"],
     className: "tableSmall",
   },
 };
 
-export const StateCell: Story = {
+export const State: Story = {
   args: {
     cells: [
-      DefaultCellRender,
-      DefaultCellRender,
-      StateCellRender({ cancelled: "error" }),
-      ActionCellRender("Action", (row) => console.info(row)),
+      [
+        <BreakCell value="veryverylongvaluetobreak"></BreakCell>,
+        <span>My file</span>,
+        <StateCell type="error" value="cancelled"></StateCell>,
+        <ActionCell
+          action="Action"
+          onClick={() => console.info("Hello")}
+        ></ActionCell>,
+      ],
     ],
-    data: [["Ox45678FDGHJKL", "My file", "cancelled", "Action"]],
     headers: ["id", "title", "state", "actions"],
-  },
-};
-
-export const DurationCell: Story = {
-  args: {
-    cells: [
-      DefaultCellRender,
-      DefaultCellRender,
-      DurationCellRender,
-      ActionCellRender("Action", (row) => console.info(row)),
-    ],
-    data: [["Ox45678FDGHJKL", "My file", "3600000", "Action"]],
-    headers: ["id", "title", "duration", "actions"],
   },
 };
