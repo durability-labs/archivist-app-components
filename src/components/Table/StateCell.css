@@ -19,6 +19,6 @@
 }
 
 .cell-state--loading {
-  background-color: rgba(var(--codex-color-blue), 0.2);
-  color: rgb(var(--codex-color-blue));
+  background-color: rgba(var(--codex-color-grey), 0.2);
+  color: rgb(var(--codex-color-grey));
 }

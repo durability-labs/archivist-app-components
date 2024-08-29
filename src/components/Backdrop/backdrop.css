@@ -11,6 +11,8 @@
   z-index: 9;
 }
 
-.document-noOverflow {
-  overflow: hidden;
+@media (min-width: 800px) {
+  .document-noOverflow {
+    overflow: hidden;
+  }
 }

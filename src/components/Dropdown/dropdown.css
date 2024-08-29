@@ -78,3 +78,8 @@
   mix-blend-mode: difference;
   font-size: 0.75rem;
 }
+
+.dropdown-title,
+.dropdown-subtitle {
+  word-break: break-all;
+}
