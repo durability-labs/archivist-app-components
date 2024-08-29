@@ -21,7 +21,7 @@
   background: rgba(var(--codex-alert-color), 0.2);
   border-radius: 75px;
   height: 1.75rem;
-  width: 1.75rem;
+  min-width: 1.75rem;
   display: flex;
   justify-content: center;
   align-items: center;

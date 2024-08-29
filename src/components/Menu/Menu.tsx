@@ -71,6 +71,7 @@ export function Menu({ expanded, onClose, onOpen, items, className }: Props) {
             <LogoInverse width={50} />
             <span className="menu-separator">|</span>
             <span className="menu-name">Codex</span>
+            <span className="menu-version">ALPHA</span>
           </div>
           {items.map((item, index) => renderItem(item, index))}
         </div>
