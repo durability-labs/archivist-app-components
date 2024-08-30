@@ -1,17 +1,17 @@
-.emptyPlaceholder {
+.placeholder {
   text-align: center;
 }
 
-.emptyPlaceholder-icon {
+.placeholder-icon {
   display: block;
   margin: auto auto 0.75rem;
 }
 
-.emptyPlaceholder-title {
+.placeholder-title {
   margin-bottom: 0.25rem;
   display: inline-block;
 }
 
-.emptyPlaceholder-button {
+.placeholder-button {
   margin: 0.75rem auto 0;
 }

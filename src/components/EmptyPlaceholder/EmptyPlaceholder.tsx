@@ -1,5 +1,4 @@
-import { Button } from "../Button/Button";
-import "./emptyPlaceholder.css";
+import { Placeholder } from "../Placeholder/Placeholder";
 import { EmptyPlaceholderIcon } from "./EmptyPlaceholderIcon";
 
 type Props = {
@@ -10,18 +9,11 @@ type Props = {
 
 export function EmptyPlaceholder({ title, message, onRetry }: Props) {
   return (
-    <div className="emptyPlaceholder">
-      <EmptyPlaceholderIcon className="emptyPlaceholder-icon" width={178} />
-      <b className="emptyPlaceholder-title">{title}</b>
-      <div className="emptyPlaceholder-message">{message} </div>
-
-      {onRetry && (
-        <Button
-          label="Retry"
-          onClick={onRetry}
-          className="emptyPlaceholder-button"
-        />
-      )}
-    </div>
+    <Placeholder
+      title={title}
+      message={message}
+      onRetry={onRetry}
+      Icon={<EmptyPlaceholderIcon width={178} />}
+    ></Placeholder>
   );
 }
