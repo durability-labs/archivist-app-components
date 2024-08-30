@@ -12,10 +12,10 @@ const { glob } = pkg;
 export default defineConfig({
   worker: {
     rollupOptions: {
-      external: ["@codex/sdk-js", "@tanstack/react-query"],
+      external: ["@codex-storage/sdk-js", "@tanstack/react-query"],
       output: {
         globals: {
-          "@codex/sdk-js": "codex-sdk-js",
+          "@codex-storage/sdk-js": "codex-sdk-js",
         },
       },
     },
@@ -37,7 +37,7 @@ export default defineConfig({
       external: [
         "react",
         "react/jsx-runtime",
-        "@codex/sdk-js",
+        "@codex-storage/sdk-js",
         "@tanstack/react-query",
       ],
       input: Object.fromEntries(
@@ -58,7 +58,7 @@ export default defineConfig({
         assetFileNames: "assets/[name][extname]",
         entryFileNames: "[name].js",
         globals: {
-          "@codex/sdk-js": "codex-sdk-js",
+          "@codex-storage/sdk-js": "codex-sdk-js",
         },
       },
     },

@@ -10,16 +10,10 @@ import { attributes } from "../utils/attributes";
 import { PrettyBytes } from "../utils/bytes";
 import { Toast } from "../Toast/Toast";
 import { UploadStatus } from "./types";
-import {
-  CircleCheck,
-  TriangleAlert,
-  CircleX,
-  CircleStop,
-  Info,
-} from "lucide-react";
+import { CircleCheck, TriangleAlert, CircleX, CircleStop } from "lucide-react";
 import { Spinner } from "../Spinner/Spinner";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { CodexData } from "@codex/sdk-js";
+import { CodexData } from "@codex-storage/sdk-js";
 import { WebFileIcon } from "../WebFileIcon/WebFileIcon";
 import { ButtonIcon } from "../ButtonIcon/ButtonIcon";
 import { SimpleText } from "../SimpleText/SimpleText";
@@ -361,7 +355,7 @@ export function UploadFile({
 
       {error && <SimpleText variant="error">{error}</SimpleText>}
 
-      <Toast message={toast.message} time={toast.time} Icon={Info} />
+      <Toast message={toast.message} time={toast.time} variant="success" />
     </div>
   );
 }

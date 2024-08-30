@@ -45,22 +45,6 @@ npm run preview
 
 ### Components
 
-In order to build the components library you need for to clone the [Codex SDK](https://github.com/codex-storage/codex-js) (it's currently in early stage so it is not published yet to the npm registry).
-
-Follow the instructions to install and build the SDK, then run this command in the SDK repository:
-
-```
-npm link
-```
-
-Now in the current repository, you'll we able to link your local SDK build by running:
-
-```
-npm link @codex/sdk-js
-```
-
-You can finally build the Components by running:
-
 ```
 npm run build
 ```

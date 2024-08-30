@@ -1,4 +1,4 @@
-import { Codex } from "@codex/sdk-js";
+import { Codex } from "@codex-storage/sdk-js";
 
 const codex = new Codex(import.meta.env.VITE_CODEX_API_URL);
 let abort: () => void;

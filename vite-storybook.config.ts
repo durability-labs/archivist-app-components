@@ -6,10 +6,10 @@ export default defineConfig({
   plugins: [react({ jsxRuntime: "automatic" })],
   worker: {
     rollupOptions: {
-      external: ["@codex/sdk-js"],
+      external: ["@codex-storage/sdk-js"],
       output: {
         globals: {
-          "@codex/sdk-js": "codex-sdk-js",
+          "@codex-storage/sdk-js": "codex-sdk-js",
         },
       },
     },
