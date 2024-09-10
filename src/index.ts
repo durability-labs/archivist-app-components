@@ -32,4 +32,5 @@ export { NetworkIndicator } from "./components/NetworkIndicator/NetworkIndicator
 export { Tooltip } from "./components/Tooltip/Tooltip";
 export { Collapse } from "./components/Collapse/Collapse";
 export { Placeholder } from "./components/Placeholder/Placeholder";
+export { Sheets } from "./components/Sheets/Sheets";
 export { Tabs } from "./components/Tabs/Tabs";

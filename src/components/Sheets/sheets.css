@@ -1,0 +1,48 @@
+.sheets {
+  position: fixed;
+  transition: transform 0.25s;
+  background-color: var(--codex-background-secondary);
+  z-index: 2;
+  justify-content: space-between;
+}
+
+.sheets-container {
+  position: relative;
+}
+
+.sheets-backdrop {
+  z-index: 2;
+}
+
+@media (min-width: 1000px) {
+  .sheets {
+    width: 300px;
+    height: 100%;
+    bottom: 0;
+    top: 0;
+    transform: translatex(300px);
+    right: 0;
+  }
+
+  .sheets[aria-expanded] {
+    transform: translatex(0);
+    z-index: 10;
+  }
+}
+
+@media (max-width: 999px) {
+  .sheets {
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    top: auto;
+    transform: translatey(1000px);
+    left: 0;
+    padding-bottom: 1.5rem;
+  }
+
+  .sheets[aria-expanded] {
+    transform: translatey(0);
+    z-index: 10;
+  }
+}

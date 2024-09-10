@@ -21,9 +21,17 @@ type Props = {
    * Default: true
    */
   removeScroll?: boolean;
+
+  className?: string;
 };
 
-export function Backdrop({ open, onClose, style, removeScroll = true }: Props) {
+export function Backdrop({
+  open,
+  onClose,
+  style,
+  className = "",
+  removeScroll = true,
+}: Props) {
   const attr = attributes({ "aria-expanded": open });
 
   useEffect(() => {
@@ -33,6 +41,11 @@ export function Backdrop({ open, onClose, style, removeScroll = true }: Props) {
   }, [open, removeScroll]);
 
   return (
-    <div {...attr} className="backdrop" onClick={onClose} style={style}></div>
+    <div
+      {...attr}
+      className={"backdrop " + className}
+      onClick={onClose}
+      style={style}
+    ></div>
   );
 }
