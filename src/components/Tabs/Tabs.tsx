@@ -5,7 +5,7 @@ import { classnames } from "../utils/classnames";
 type Props = {
   tabs: {
     label: string;
-    Icon?: ComponentType<{ size?: string }>;
+    Icon?: ComponentType;
   }[];
   onTabChange: (index: number) => void | Promise<void>;
   tabIndex: number;
@@ -23,7 +23,7 @@ export function Tabs({ tabs, onTabChange, tabIndex }: Props) {
           )}
           onClick={() => onTabChange(index)}
         >
-          {tab.Icon && <tab.Icon size={"1rem"} />}
+          {tab.Icon && <tab.Icon />}
           <span>{tab.label}</span>
         </div>
       ))}
