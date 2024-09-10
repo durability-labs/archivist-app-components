@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { Backdrop } from "../Backdrop/Backdrop";
 import "./sheets.css";
-import { attributes } from "../../utils/attributes";
+import { attributes } from "../utils/attributes";
 
 type Props = {
   open: boolean;
