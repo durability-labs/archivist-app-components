@@ -1,0 +1,45 @@
+.tabs {
+  display: flex;
+  margin-top: 1rem;
+  gap: 1rem;
+  position: relative;
+}
+
+.tabs-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding-bottom: 1rem;
+  cursor: pointer;
+  transition: 0.35s opacity;
+  z-index: 1;
+}
+
+.tabs-tab::after {
+  width: 100%;
+  background-color: var(--codex-background-light);
+  content: " ";
+  position: absolute;
+  height: 2px;
+  top: 11px;
+  top: 31px;
+}
+
+.tabs-tab:not(.files-headerTab--active) {
+  opacity: 0.7;
+}
+
+.tabs-tab:hover {
+  opacity: 0.85;
+}
+
+.tabs-tab--active {
+  border-bottom: 2px solid var(--codex-color-contrast);
+}
+
+.tabs-icon {
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  place-items: center;
+}

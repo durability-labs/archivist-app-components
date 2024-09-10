@@ -1,4 +1,4 @@
-import { classnames } from "../../utils/classnames";
+import { classnames } from "../utils/classnames";
 import "./networkIndicator.css";
 
 type Props = {

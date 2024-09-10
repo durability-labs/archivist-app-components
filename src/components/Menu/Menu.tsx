@@ -1,4 +1,4 @@
-import { attributes } from "../../utils/attributes";
+import { attributes } from "../utils/attributes";
 import "./menu.css";
 import { LogoInverse } from "../Logo/LogoInverse";
 import { ComponentType, useEffect } from "react";
