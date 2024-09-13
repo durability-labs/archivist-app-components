@@ -8,6 +8,7 @@ interface CustomStyleCSS extends CSSProperties {
 
 type Props = {
   open: boolean;
+
   onClose: () => void;
 
   /**
@@ -18,7 +19,7 @@ type Props = {
 
   /**
    * If true, it will remove the overflow scroll from the page when open.
-   * Default: true
+   * Default: false
    */
   removeScroll?: boolean;
 
@@ -30,7 +31,7 @@ export function Backdrop({
   onClose,
   style,
   className = "",
-  removeScroll = true,
+  removeScroll = false,
 }: Props) {
   const attr = attributes({ "aria-expanded": open });
 
