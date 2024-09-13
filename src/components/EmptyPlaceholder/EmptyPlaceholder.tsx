@@ -3,7 +3,14 @@ import { EmptyPlaceholderIcon } from "./EmptyPlaceholderIcon";
 
 type Props = {
   title: string;
+
   message: string;
+
+  /**
+   * If a retry function is passed to the component,
+   * a button will be displayed and the function will be called when the button
+   * is clicked.
+   */
   onRetry?: () => void | Promise<void>;
 };
 

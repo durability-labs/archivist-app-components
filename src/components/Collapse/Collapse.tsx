@@ -3,8 +3,19 @@ import "./Collapse.css";
 import { attributes } from "../utils/attributes";
 
 type Props = {
+  /**
+   * Summary always displayed
+   */
   summary: string;
+
+  /**
+   * Details to show after the component is collapsed
+   */
   details: string;
+
+  /**
+   * Apply custom classname.
+   */
   className?: string;
 };
 

@@ -2,6 +2,7 @@ import { SimpleText } from "../SimpleText/SimpleText";
 
 type Props = {
   action: string;
+
   onClick: (data: unknown) => unknown | Promise<unknown>;
 };
 

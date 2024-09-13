@@ -15,6 +15,9 @@ type Props = {
 
   children: ReactNode;
 
+  /**
+   * Apply custom classname.
+   */
   className?: string;
 
   /**

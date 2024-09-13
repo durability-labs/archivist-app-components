@@ -3,6 +3,7 @@ import "./networkIndicator.css";
 
 type Props = {
   online: boolean;
+
   text: string;
 };
 

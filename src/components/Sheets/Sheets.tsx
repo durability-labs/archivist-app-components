@@ -5,7 +5,9 @@ import { attributes } from "../utils/attributes";
 
 type Props = {
   open: boolean;
+
   onClose: () => void;
+
   children: ReactElement;
 };
 

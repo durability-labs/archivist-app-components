@@ -1,5 +1,6 @@
 type Props = {
   width?: string;
+
   className?: string;
 };
 

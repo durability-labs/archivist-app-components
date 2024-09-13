@@ -9,10 +9,25 @@ interface CustomStyleCSS extends CSSProperties {
 }
 
 type Props = {
+  /**
+   * Error code related to the error, example: 400, 500
+   */
   code: number;
+
   message: string;
+
   title: string;
+
+  /**
+   * If an action function is passed to the component,
+   * a button will be displayed and the function will be called when the button
+   * is clicked.
+   */
   onClick?: () => void | Promise<void>;
+
+  /**
+   * The button label
+   */
   button?: string;
 
   /**

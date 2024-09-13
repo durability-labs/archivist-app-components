@@ -3,8 +3,15 @@ import "./appBar.css";
 import { ReactNode } from "react";
 
 type Props = {
+  /**
+   * Event triggered when the menu is expanding, after a click on the
+   * menu button.
+   */
   onExpand: () => void;
 
+  /**
+   * React node to add to the right part of the application bar
+   */
   Right: ReactNode;
 };
 

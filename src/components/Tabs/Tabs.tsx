@@ -7,7 +7,12 @@ type Props = {
     label: string;
     Icon?: ComponentType;
   }[];
+
   onTabChange: (index: number) => void | Promise<void>;
+
+  /**
+   * Current tab selected index
+   */
   tabIndex: number;
 };
 

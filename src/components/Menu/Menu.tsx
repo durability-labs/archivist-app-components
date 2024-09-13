@@ -23,12 +23,18 @@ export type MenuItem =
     };
 
 type Props = {
+  /**
+   * If true, the menu will be displayed
+   */
   expanded: boolean;
 
   onClose: () => void;
 
   onOpen?: () => void;
 
+  /**
+   * The menu items to be displayed
+   */
   items: MenuItem[];
 
   className?: string;

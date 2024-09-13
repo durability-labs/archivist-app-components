@@ -39,6 +39,9 @@ type Props = {
    */
   placeholder: string;
 
+  /**
+   * List of values to be displayed in the dropdown
+   */
   options: DropdownOption[];
 
   /**
@@ -77,8 +80,6 @@ type Props = {
   label: string;
 
   id: string;
-
-  Component?: ComponentType<DropdownOption>;
 };
 
 export function Dropdown({

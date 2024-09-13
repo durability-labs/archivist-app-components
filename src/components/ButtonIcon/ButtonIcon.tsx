@@ -29,6 +29,9 @@ type Props = {
    */
   style?: CustomStyleCSS;
 
+  /**
+   * Apply custom classname.
+   */
   className?: string;
 };
 

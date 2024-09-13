@@ -4,9 +4,21 @@ import "./placeholder.css";
 
 type Props = {
   title: string;
+
   message: string;
+
+  /**
+   * If a retry function is passed to the component,
+   * a button will be displayed and the function will be called when the button
+   * is clicked.
+   */
   onRetry?: () => void | Promise<void>;
+
+  /**
+   * Icon to be displayed on top of the text
+   */
   Icon: ReactNode;
+
   className?: string;
 };
 

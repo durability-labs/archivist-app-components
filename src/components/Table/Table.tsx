@@ -7,6 +7,11 @@ type Props = {
    */
   headers: string[];
 
+  /**
+   * The ReactNode cells in two dimensions array,
+   * one for the lines
+   * one for the data representation
+   */
   cells: ReactNode[][];
 
   className?: string;

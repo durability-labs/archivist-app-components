@@ -4,11 +4,34 @@ import { attributes } from "../utils/attributes";
 import { classnames } from "../utils/classnames";
 
 type StepProps = {
+  /**
+   * Step title
+   */
   title: string;
+
+  /**
+   * Step index
+   */
   step: number;
+
+  /**
+   * If true, an active css class will be added
+   */
   isActive: boolean;
+
+  /**
+   * If true, a css class will be added to draw the line between two steps
+   */
   isLast: boolean;
+
+  /**
+   * If true, a done css class will be added to color the step
+   */
   isDone: boolean;
+
+  /**
+   * Event triggered when a step number is clicked on
+   */
   onClick?: (step: number) => void;
 };
 
