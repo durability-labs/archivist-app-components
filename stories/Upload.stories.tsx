@@ -1,9 +1,10 @@
 import type { Meta } from "@storybook/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { UploadResponse } from "@codex-storage/sdk-js";
+import { Codex, CodexData, UploadResponse } from "@codex-storage/sdk-js";
 import { Upload } from "../src/components/Upload/Upload";
 import { fn } from "@storybook/test";
 import "./Upload.stories.css";
+import { CodexDataSdk, CodexDataSlowSdk } from "./sdk";
 
 const meta = {
   title: "Advanced/Upload",
@@ -42,50 +43,18 @@ type Props = {
 const Template = (p: Props) => {
   return (
     <QueryClientProvider client={queryClient}>
-      {<Upload useWorker={false} multiple {...p} />}
+      {<Upload multiple {...p} codexData={CodexDataSdk} />}
     </QueryClientProvider>
   );
 };
 
 export const Multiple = Template.bind({});
 
-const slowProvider = () =>
-  Promise.resolve(
-    (_: File, onProgress: (loaded: number, total: number) => void) => {
-      return new Promise<UploadResponse>((resolve) => {
-        let timeout: number;
-
-        resolve({
-          abort: () => {
-            window.clearInterval(timeout);
-          },
-          result: new Promise((resolve) => {
-            let count = 0;
-            timeout = window.setInterval(() => {
-              count++;
-
-              onProgress(500 * count, 1500);
-
-              if (count === 3) {
-                window.clearInterval(timeout);
-
-                resolve({
-                  error: false,
-                  data: Date.now().toString(),
-                });
-              }
-            }, 1500);
-          }),
-        });
-      });
-    }
-  );
-
 const SlowTemplate = (p: Props) => {
   return (
     <div className="demo">
       <QueryClientProvider client={queryClient}>
-        {<Upload useWorker={false} multiple provider={slowProvider} {...p} />}
+        {<Upload multiple codexData={CodexDataSlowSdk} {...p} />}
       </QueryClientProvider>
     </div>
   );
@@ -99,10 +68,9 @@ const SingleTemplate = (p: Props) => {
       <QueryClientProvider client={queryClient}>
         {
           <Upload
-            useWorker={false}
             multiple={false}
             editable={false}
-            provider={slowProvider}
+            codexData={CodexDataSlowSdk}
             {...p}
           />
         }

@@ -60,7 +60,7 @@ type Props = {
    * If not provider is passed, the cid returned will be empty.
    * Default value: provider returning random cid.
    */
-  provider?: () => Promise<CodexData["upload"]>;
+  codexData: CodexData;
 
   /**
    * If true, the upload will run in a separate web worker.
@@ -81,21 +81,6 @@ type Props = {
   style?: CustomStyleCSS;
 };
 
-const defaultProvider = () =>
-  Promise.resolve(
-    (_: File, onProgress: (loaded: number, total: number) => void) => {
-      onProgress(100, 100);
-
-      return Promise.resolve({
-        abort: () => {},
-        result: Promise.resolve({
-          error: false,
-          data: Date.now().toString(),
-        }),
-      } satisfies UploadResponse);
-    }
-  );
-
 export function Upload({
   onMouseEnter,
   onMouseLeave,
@@ -105,7 +90,7 @@ export function Upload({
   editable = true,
   onDeleteItem,
   onSuccess,
-  provider = defaultProvider,
+  codexData,
   // useWorker = !!window.Worker,
 }: Props) {
   const { deleteFile, files, uploadFiles, warning } = useUploadStategy(
@@ -188,7 +173,7 @@ export function Upload({
           onClose={() => onClose(id)}
           id={id}
           onSuccess={onSuccess}
-          provider={provider}
+          codexData={codexData}
           // useWorker={useWorker}
         />
       ))}

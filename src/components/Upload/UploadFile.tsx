@@ -23,7 +23,7 @@ type UploadFileProps = {
   onClose: (id: string) => void;
   id: string;
   onSuccess: ((cid: string, file: File) => void) | undefined;
-  provider: () => Promise<CodexData["upload"]>;
+  codexData: CodexData;
   // useWorker: boolean;
 };
 
@@ -121,7 +121,7 @@ export function UploadFile({
   onClose,
   id,
   onSuccess,
-  provider,
+  codexData,
   // useWorker,
 }: UploadFileProps) {
   const abort = useRef<(() => void) | null>(null);
@@ -138,8 +138,8 @@ export function UploadFile({
   const { mutateAsync } = useMutation({
     mutationKey: ["upload"],
     mutationFn: (file: File) => {
-      return provider()
-        .then((upload) => upload(file, onProgress))
+      return codexData
+        .upload(file, onProgress)
         .then((res) => {
           abort.current = res.abort;
           return res.result;
@@ -152,7 +152,6 @@ export function UploadFile({
     },
     onError: (error) => {
       worker.current?.terminate();
-      // TODO report to Sentry
       dispatch({ type: "error", error: error.message });
     },
     onSuccess: (cid: string) => {
@@ -242,7 +241,7 @@ export function UploadFile({
     // } else {
     //   mutateAsync(file);
     // }
-  }, [file, mutateAsync, onInternalSuccess, provider]);
+  }, [file, mutateAsync, onInternalSuccess, codexData]);
 
   const onCancel = () => {
     if (worker.current) {
