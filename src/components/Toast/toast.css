@@ -16,7 +16,8 @@
   color: var(--codex-toast-color, --codex-color);
   word-break: break-word;
   border: 1px solid rgb(var(--codex-toast-color));
-  background: rgba(var(--codex-toast-color), 0.1);
+  background: rgba(var(--codex-toast-color), 1);
+  z-index: 20;
 }
 
 .toast-close {
@@ -33,7 +34,7 @@
 
 .toast-icon {
   fill: rgba(var(--codex-toast-color), 0.2);
-  stroke: rgb(var(--codex-toast-color));
+  stroke: white;
 }
 
 .toast--success {
