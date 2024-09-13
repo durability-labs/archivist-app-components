@@ -6,7 +6,7 @@ import { UploadFile } from "./UploadFile.tsx";
 import { useUploadStategy } from "./useUploadStrategy.ts";
 import { classnames } from "../utils/classnames.ts";
 import { ButtonIcon } from "../ButtonIcon/ButtonIcon.tsx";
-import { CodexData, UploadResponse } from "@codex-storage/sdk-js";
+import { CodexData } from "@codex-storage/sdk-js";
 import { SimpleText } from "../SimpleText/SimpleText.tsx";
 
 interface CustomStyleCSS extends CSSProperties {

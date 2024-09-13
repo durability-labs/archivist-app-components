@@ -1,4 +1,3 @@
-import { Codex } from "@codex-storage/sdk-js";
 import { CodexData, UploadResponse } from "@codex-storage/sdk-js";
 
 class CodexDataMock extends CodexData {

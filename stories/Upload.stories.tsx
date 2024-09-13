@@ -1,6 +1,5 @@
 import type { Meta } from "@storybook/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Codex, CodexData, UploadResponse } from "@codex-storage/sdk-js";
 import { Upload } from "../src/components/Upload/Upload";
 import { fn } from "@storybook/test";
 import "./Upload.stories.css";

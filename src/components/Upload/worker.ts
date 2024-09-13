@@ -22,9 +22,8 @@ self.addEventListener("message", function (e) {
     });
   };
 
-  return codex
-    .data()
-    .then((data) => data.upload(rest.file, onProgress))
+  return codex.data
+    .upload(rest.file, onProgress)
     .then((result) => {
       abort = result.abort;
 
