@@ -76,6 +76,8 @@ type Props = {
   type?: string;
 
   step?: string;
+
+  name?: string;
 };
 
 export const Input = forwardRef<HTMLInputElement, Props>(
@@ -98,6 +100,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
       style,
       Icon,
       step,
+      name,
       type = "text",
     },
     ref
@@ -117,6 +120,8 @@ export const Input = forwardRef<HTMLInputElement, Props>(
             </div>
           )}
           <input
+            id={id}
+            name={name}
             ref={ref}
             onClick={onClick}
             onMouseEnter={onMouseEnter}
@@ -126,7 +131,6 @@ export const Input = forwardRef<HTMLInputElement, Props>(
               ["input-icon-input", !!Icon],
               [className || ""]
             )}
-            id={id}
             style={style}
             {...attributes({
               disabled,
