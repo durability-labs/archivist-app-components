@@ -1,5 +1,8 @@
 import "./Table.css";
 import { ReactNode } from "react";
+import { EmptyPlaceholderIcon as EPI } from "../EmptyPlaceholder/EmptyPlaceholderIcon";
+import { EmptyPlaceholder } from "../EmptyPlaceholder/EmptyPlaceholder";
+import { Search } from "lucide-react";
 
 type Props = {
   /**
@@ -46,6 +49,13 @@ export function Table({ headers, cells, className }: Props) {
           ))}
         </tbody>
       </table>
+
+      {!cells.length && (
+        <div className="table-placeholder">
+          <Search />
+          <p className="table-placeholderText">No search results.</p>
+        </div>
+      )}
     </div>
   );
 }

@@ -151,7 +151,7 @@ export function UploadFile({
         );
     },
     onError: (error) => {
-      worker.current?.terminate();
+      // worker.current?.terminate();
       dispatch({ type: "error", error: error.message });
     },
     onSuccess: (cid: string) => {

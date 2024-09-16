@@ -87,3 +87,10 @@ export const State: Story = {
     headers: ["id", "title", "state", "actions"],
   },
 };
+
+export const Empty: Story = {
+  args: {
+    cells: [],
+    headers: ["id", "title", "state", "actions"],
+  },
+};

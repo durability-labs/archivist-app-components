@@ -3,6 +3,19 @@
   width: 100%;
 }
 
+.table-placeholder {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.table-placeholderText {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
 .table-container {
   border: 1px solid var(--codex-border-color);
   background-color: var(--codex-background-secondary);
