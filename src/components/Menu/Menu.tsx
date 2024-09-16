@@ -38,9 +38,21 @@ type Props = {
   items: MenuItem[];
 
   className?: string;
+
+  /**
+   * The application version
+   */
+  version?: string;
 };
 
-export function Menu({ expanded, onClose, onOpen, items, className }: Props) {
+export function Menu({
+  expanded,
+  onClose,
+  onOpen,
+  items,
+  className,
+  version = "",
+}: Props) {
   useEffect(() => {
     if (expanded && onOpen) {
       onOpen();
@@ -77,9 +89,18 @@ export function Menu({ expanded, onClose, onOpen, items, className }: Props) {
             <LogoInverse width={50} />
             <span className="menu-separator">|</span>
             <span className="menu-name">Codex</span>
-            <span className="menu-version">ALPHA</span>
+            <span className="menu-state">ALPHA</span>
           </div>
-          {items.map((item, index) => renderItem(item, index))}
+
+          <div className="menu-items">
+            {items.map((item, index) => renderItem(item, index))}
+          </div>
+
+          <div className="menu-footer">
+            {version && (
+              <small className="menu-version">Version: {version}</small>
+            )}
+          </div>
         </div>
       </aside>
     </>

@@ -9,9 +9,11 @@ type Props = {
   Right: ReactNode;
 
   items: MenuItem[];
+
+  version?: string;
 };
 
-export function Page({ children, Right, items }: Props) {
+export function Page({ children, Right, items, version = "" }: Props) {
   const [open, setOpen] = useState(false);
 
   const onClose = () => {
@@ -24,7 +26,12 @@ export function Page({ children, Right, items }: Props) {
 
   return (
     <div className="page">
-      <Menu expanded={open} onClose={onClose} items={items}></Menu>
+      <Menu
+        expanded={open}
+        onClose={onClose}
+        items={items}
+        version={version}
+      ></Menu>
 
       <main className="page-main">
         <AppBar onExpand={onExpand} Right={Right} />

@@ -126,6 +126,7 @@ const Template = (p: Props) => {
         onOpen={p.onOpen}
         items={items}
         className="menu-noSticky"
+        version="1.0.0"
       ></Menu>
     </div>
   );

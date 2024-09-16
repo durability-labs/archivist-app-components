@@ -98,5 +98,6 @@ export const Default: Story = {
       },
     ] satisfies MenuItem[],
     Right: <NetworkIndicator online={true} text="Online" />,
+    version: "1.0.0",
   },
 };

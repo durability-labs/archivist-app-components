@@ -15,11 +15,18 @@
 }
 
 .menu-container {
+  display: flex;
+  flex-direction: column;
   padding: 0.75rem;
+  flex: 1;
 }
 
 .menu-backdrop {
   display: none;
+}
+
+.menu-items {
+  flex: 1;
 }
 
 .menu[aria-expanded] {
@@ -64,13 +71,21 @@
   width: 100%;
 }
 
-.menu-version {
+.menu-state {
   font-size: 0.6rem;
   background-color: var(--codex-background-light);
   padding: 0.25rem;
   border-radius: var(--codex-border-radius);
   position: relative;
   top: 1px;
+}
+
+.menu-footer {
+  text-align: center;
+}
+
+.menu-version {
+  padding: 0;
 }
 
 @media (min-width: 1000px) {
