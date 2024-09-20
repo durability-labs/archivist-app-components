@@ -50,7 +50,7 @@ export function Menu({
   onClose,
   onOpen,
   items,
-  className,
+  className = "",
   version = "",
 }: Props) {
   useEffect(() => {

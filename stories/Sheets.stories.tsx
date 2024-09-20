@@ -7,9 +7,9 @@ const meta = {
   title: "Overlays/Sheets",
   component: Sheets,
   parameters: {
-    layout: "centered",
-    inlineStories: false,
+    layout: "fullscreen",
   },
+
   tags: ["autodocs"],
   argTypes: {},
   args: {
@@ -30,7 +30,7 @@ const DefaultTemplate = (props: { onClose: () => void }) => {
   };
 
   return (
-    <div style={{ padding: "2rem" }}>
+    <div style={{ padding: "6rem", position: "relative", overflow: "hidden" }}>
       <button onClick={onClick}>Make Sheets</button>
 
       <Sheets open={open} onClose={onClose}>
