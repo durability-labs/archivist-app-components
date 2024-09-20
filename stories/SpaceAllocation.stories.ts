@@ -18,18 +18,15 @@ export const Default: Story = {
   args: {
     data: [
       {
-        title: "Maximum storage space used by the node",
-        percent: 60,
+        title: "Space allocated",
         size: 10000000,
       },
       {
-        title: "Amount of storage space currently in use",
-        percent: 20,
+        title: "New space allocation",
         size: 10000000 * 0.2,
       },
       {
-        title: "Amount of storage space reserved",
-        percent: 20,
+        title: "Remaining space",
         size: 10000000 * 0.2,
       },
     ],
