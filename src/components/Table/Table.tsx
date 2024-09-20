@@ -1,7 +1,5 @@
 import "./Table.css";
 import { ReactNode } from "react";
-import { EmptyPlaceholderIcon as EPI } from "../EmptyPlaceholder/EmptyPlaceholderIcon";
-import { EmptyPlaceholder } from "../EmptyPlaceholder/EmptyPlaceholder";
 import { Search } from "lucide-react";
 
 type Props = {
