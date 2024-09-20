@@ -113,7 +113,6 @@ export function InputGroup({
               id={id}
               name={name}
               label={label}
-              helper={helper}
               onChange={onChange}
               inputClassName={"inputGroup-input " + inputClassName}
               type={type}
@@ -141,9 +140,9 @@ export function InputGroup({
             ) : (
               <div className="inputGroup-unit">{group}</div>
             )}
-            {helper && <div className="inputGroup-helper"></div>}
           </div>
         </div>
+        {helper && <small className="inputGroup-helper">{helper}</small>}
       </div>
     </div>
   );
