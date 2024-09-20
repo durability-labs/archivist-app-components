@@ -1,7 +1,9 @@
 import type { Meta } from "@storybook/react";
 import { Stepper } from "../src/components/Stepper/Stepper";
-import React, { useState } from "react";
 import { fn } from "@storybook/test";
+import { useStepperReducer } from "../src/components/Stepper/useStepperReducer";
+import { useEffect } from "react";
+import "./Stepper.stories.css";
 
 const meta = {
   title: "Advanced/Stepper",
@@ -11,43 +13,49 @@ const meta = {
   },
   tags: ["autodocs"],
   argTypes: {},
-  args: { onChangeStep: fn() },
+  args: { onNextStep: fn() },
 } satisfies Meta<typeof Stepper>;
 
 export default meta;
 
 type Props = {
-  onChangeStep: (s: number, state: "before" | "end") => void | Promise<void>;
+  onNextStep: (s: number) => void | Promise<void>;
 };
 
 const Template = (p: Props) => {
-  const [step, setStep] = useState(0);
-  const [progress, setProgress] = useState(false);
+  const { state, dispatch } = useStepperReducer(3);
+
+  useEffect(() => {
+    dispatch({
+      type: "toggle-next",
+      isNextEnable: true,
+    });
+  }, [dispatch]);
 
   const titles = ["Hello world", "Hello world 2", "Hello world 3"];
-  const title = titles[step];
+  const title = titles[state.step];
 
-  const onChangeStep = (newStep: number, event: "before" | "end") => {
-    p.onChangeStep(newStep, event);
+  const onNextStep = async (step: number) => {
+    p.onNextStep(step);
 
-    if (event === "before") {
-      setProgress(true);
-      return;
-    }
-
-    setProgress(false);
-    setStep(newStep);
+    dispatch({
+      step,
+      type: "next",
+    });
   };
 
   return (
-    <Stepper
-      Body={() => React.createElement("div", {}, title)}
-      titles={titles}
-      onChangeStep={onChangeStep}
-      progress={progress}
-      step={step}
-      isNextDisable={progress || step === 2}
-    />
+    <div style={{ padding: "6rem" }}>
+      <Stepper
+        titles={titles}
+        state={state}
+        dispatch={dispatch}
+        onNextStep={onNextStep}
+        className="stepper-padding"
+      >
+        <div>{title}</div>
+      </Stepper>
+    </div>
   );
 };
 

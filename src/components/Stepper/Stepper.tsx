@@ -1,8 +1,9 @@
 import { Button } from "../Button/Button";
 import "./stepper.css";
-import { CSSProperties, ReactNode } from "react";
+import { CSSProperties, Dispatch, ReactNode } from "react";
 import { Spinner } from "../Spinner/Spinner";
 import { Step } from "./Step";
+import { StepperAction, StepperState } from "./useStepperReducer";
 
 interface CustomStyleCSS extends CSSProperties {
   "--codex-background"?: string;
@@ -21,98 +22,117 @@ type Props = {
   /**
    * The current component to show.
    */
-  Body: ReactNode;
+  children: ReactNode;
 
-  // The current step to display in stepper state.
-  step: number;
-
-  // If it's true, the stepper will display a spinner.
-  // The progress is controlled by the parent component,
-  // to give flexibility when changing step.
-  progress: boolean;
+  style?: CustomStyleCSS;
 
   /**
-   * The duration between two steps in milliseconds.
-   * The default is 500.
+   * The duration between steps
    */
   duration?: number;
 
   /**
-   * Callback called whenever the step is changing.
-   * It's working in two phase:
-   * "before" - allow to do before actions like updating progress state
-   * "end" - executed after duration time
+   * Dispatch function created by the useStepperReducer
    */
-  onChangeStep: (s: number, state: "before" | "end") => void | Promise<void>;
+  dispatch: Dispatch<StepperAction>;
 
   /**
-   * Disable the next button.
-   * Default: progress == true
+   * State provided by useStepperReducer
    */
-  isNextDisable?: boolean;
+  state: StepperState;
 
-  style?: CustomStyleCSS;
+  /**
+   * Event called when a new step is triggered, after the loading function.
+   */
+  onNextStep: (step: number) => void | Promise<void>;
+
+  className?: string;
+
+  /**
+   * Default: Back
+   */
+  backLabel?: string;
+
+  /**
+   * Default: Next
+   */
+  nextLabel?: string;
 };
 
 type Step = {
   index: number;
   title: string;
+  className: string;
 };
 
 export function Stepper({
   titles,
-  Body,
-  step,
-  progress,
-  onChangeStep,
-  duration = 500,
-  isNextDisable = progress,
+  children,
+  state,
   style,
+  dispatch,
+  className,
+  backLabel = "Back",
+  nextLabel = "Next",
+  duration = 500,
+  onNextStep,
 }: Props) {
-  const onMoveStep = async (newStep: number) => {
-    await onChangeStep(newStep, "before");
-    setTimeout(() => onChangeStep(newStep, "end"), duration);
+  const label = state.step === titles.length - 1 ? "Finish" : "Next";
+
+  const onChangeStep = async (nextStep: number) => {
+    if (nextStep < 0) {
+      return dispatch({
+        type: "close",
+      });
+    }
+
+    dispatch({
+      type: "loading",
+      step: nextStep,
+    });
+
+    setTimeout(() => {
+      onNextStep(nextStep);
+    }, duration);
   };
 
-  const label = step === titles.length - 1 ? "Finish" : "Next";
-
   return (
-    <div className="stepper" style={style}>
+    <div className={"stepper " + className} style={style}>
       <div className="stepper-steps">
         {titles.map((title, index) => (
           <Step
             title={title}
             step={index}
-            isActive={index === step}
+            isActive={index === state.step}
             isLast={index === titles.length - 1}
-            isDone={index < step}
+            isDone={index < state.step}
             key={title}
-            onClick={step > index ? () => onMoveStep(index) : undefined}
+            onClick={state.step > index ? () => onChangeStep(index) : undefined}
           />
         ))}
       </div>
 
       <div className="stepper-body">
-        {progress ? (
+        {state.progress ? (
           <div className="stepper-progress">
             <Spinner width={"3rem"} />
           </div>
         ) : (
-          <>{Body}</>
+          <>{children}</>
         )}
       </div>
 
       <div className="stepper-buttons">
         <Button
-          label={step ? "Back" : "Close"}
+          label={backLabel}
           variant="outline"
-          onClick={() => onMoveStep(step - 1)}
-          disabled={progress}
+          onClick={() => onChangeStep(state.step - 1)}
+          disabled={!state.isBackEnable}
         />
         <Button
-          label={label}
-          onClick={() => onMoveStep(step + 1)}
-          disabled={isNextDisable}
+          label={nextLabel}
+          onClick={() => onChangeStep(state.step + 1)}
+          disabled={!state.isNextEnable}
         />
       </div>
     </div>
