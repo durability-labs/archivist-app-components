@@ -77,8 +77,6 @@ export function Stepper({
   duration = 500,
   onNextStep,
 }: Props) {
-  const label = state.step === titles.length - 1 ? "Finish" : "Next";
-
   const onChangeStep = async (nextStep: number) => {
     if (nextStep < 0) {
       return dispatch({
