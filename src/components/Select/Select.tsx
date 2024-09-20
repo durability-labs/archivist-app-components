@@ -40,6 +40,8 @@ type Props = {
 
   defaultValue?: string;
 
+  value: string;
+
   className?: string;
 };
 
@@ -55,6 +57,7 @@ export function Select({
   style,
   className,
   defaultValue,
+  value,
 }: Props) {
   return (
     <>
@@ -72,9 +75,10 @@ export function Select({
           onMouseLeave={onMouseLeave}
           style={style}
           defaultValue={defaultValue}
+          value={value}
         >
-          {options.map(([value, text]) => (
-            <option key={value} value={value}>
+          {options.map(([oval, text]) => (
+            <option key={oval} value={oval}>
               {text}
             </option>
           ))}
