@@ -68,7 +68,10 @@ type Props = {
    */
   Icon?: ComponentType;
 
-  className?: string;
+  /**
+   * Apply a class to the input element
+   */
+  inputClassName?: string;
 
   /**
    * Default is text
@@ -78,6 +81,10 @@ type Props = {
   step?: string;
 
   name?: string;
+
+  min?: number;
+
+  max?: number;
 };
 
 export const Input = forwardRef<HTMLInputElement, Props>(
@@ -96,12 +103,14 @@ export const Input = forwardRef<HTMLInputElement, Props>(
       onMouseLeave,
       onClick,
       onKeyUp,
-      className,
       style,
       Icon,
       step,
       name,
+      inputClassName,
       type = "text",
+      min,
+      max,
     },
     ref
   ) => {
@@ -129,7 +138,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
             className={classnames(
               ["input"],
               ["input-icon-input", !!Icon],
-              [className || ""]
+              [inputClassName || ""]
             )}
             style={style}
             {...attributes({
@@ -144,6 +153,8 @@ export const Input = forwardRef<HTMLInputElement, Props>(
             onKeyUp={onKeyUp}
             type={type}
             step={step}
+            min={min}
+            max={max}
           />
         </div>
 

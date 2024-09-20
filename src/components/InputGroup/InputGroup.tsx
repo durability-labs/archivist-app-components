@@ -11,6 +11,14 @@ export interface CustomStyleCSS extends CSSProperties {
 type Props = {
   label: string;
 
+  /**
+   * Apply a class to the input element
+   */
+  inputClassName?: string;
+
+  /**
+   * Apply a class to the parent element
+   */
   className?: string;
 
   /**
@@ -61,14 +69,28 @@ type Props = {
    * --codex-border-color
    */
   style?: CustomStyleCSS;
+
+  name?: string;
+
+  /**
+   * Helper text to add indication about your input.
+   */
+  helper?: string;
+
+  min?: number;
+
+  max?: number;
 };
 
 export function InputGroup({
   label,
+  name,
+  helper,
   type = "text",
   style,
   group,
   className,
+  inputClassName = "",
   onChange,
   onGroupChange,
   onMouseEnter,
@@ -79,6 +101,8 @@ export function InputGroup({
   step,
   value = undefined,
   groupValue = "",
+  min,
+  max,
 }: Props) {
   return (
     <div className={`inputGroup ${className}`} style={style}>
@@ -86,13 +110,17 @@ export function InputGroup({
         <div className="inputGroup-element">
           <div className="inputGroup-inputContainer">
             <Input
-              label={label}
-              onChange={onChange}
-              className="inputGroup-input"
               id={id}
+              name={name}
+              label={label}
+              helper={helper}
+              onChange={onChange}
+              inputClassName={"inputGroup-input " + inputClassName}
               type={type}
               value={value}
               step={step}
+              min={min}
+              max={max}
               onMouseEnter={onMouseEnter}
               onMouseLeave={onMouseLeave}
               onFocus={onFocus}
@@ -107,12 +135,13 @@ export function InputGroup({
                 id=""
                 onChange={onGroupChange}
                 className="inputGroup-select"
-                defaultValue={groupValue}
+                value={groupValue}
                 options={group}
               />
             ) : (
               <div className="inputGroup-unit">{group}</div>
             )}
+            {helper && <div className="inputGroup-helper"></div>}
           </div>
         </div>
       </div>

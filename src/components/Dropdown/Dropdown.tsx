@@ -143,7 +143,7 @@ export function Dropdown({
 
         <Input
           ref={inputRef}
-          className="dropdown-input"
+          inputClassName="dropdown-input"
           onChange={onChange}
           onFocus={onInternalFocus}
           onBlur={onInternalBlur}
