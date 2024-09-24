@@ -72,7 +72,7 @@ export function Modal({
       <Backdrop open={open} onClose={onClose} removeScroll={true} />
 
       <div className={classnames(["modal"], ["modal--open", open])}>
-        <div className="modal-body">{children}</div>
+        <div className="modal-body">{open && children}</div>
 
         <div
           className={classnames(

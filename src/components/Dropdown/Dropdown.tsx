@@ -9,6 +9,7 @@ import "./dropdown.css";
 import { attributes } from "../utils/attributes";
 import { Backdrop } from "../Backdrop/Backdrop";
 import { Input, InputCustomStyleCSS } from "../Input/Input";
+import { classnames } from "../utils/classnames";
 
 interface CustomStyleCSS extends InputCustomStyleCSS {
   "--codex-dropdown-panel-background"?: string;
@@ -143,7 +144,7 @@ export function Dropdown({
 
         <Input
           ref={inputRef}
-          inputClassName="dropdown-input"
+          inputClassName={classnames(["dropdown-input"])}
           onChange={onChange}
           onFocus={onInternalFocus}
           onBlur={onInternalBlur}

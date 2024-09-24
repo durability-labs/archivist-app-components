@@ -18,7 +18,7 @@ type Props = {
   className?: string;
 };
 
-export function Table({ headers, cells, className }: Props) {
+export function Table({ headers, cells, className = "" }: Props) {
   return (
     <div className={`table-container ${className}`}>
       <table className={"table"}>
@@ -34,15 +34,11 @@ export function Table({ headers, cells, className }: Props) {
         <tbody>
           {cells.map((row, index) => (
             <tr key={index} className="table-tbodyTr">
-              {headers.map((header, idx) => {
-                const cell = row[idx];
-
-                return (
-                  <td key={header} className="table-tbodyTd">
-                    {cell}
-                  </td>
-                );
-              })}
+              {headers.map((header, idx) => (
+                <td key={header} className="table-tbodyTd">
+                  {row[idx]}
+                </td>
+              ))}
             </tr>
           ))}
         </tbody>

@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { CSSProperties, ReactNode } from "react";
 import "./simpleText.css";
 
 interface CustomStyleCSS extends CSSProperties {
@@ -17,7 +17,7 @@ type Props = {
 
   className?: string;
 
-  children: string;
+  children: string | ReactNode;
 
   /**
    * Apply custom css variables.

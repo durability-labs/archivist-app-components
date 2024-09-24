@@ -1,9 +1,12 @@
 import { ReactNode } from "react";
 import { Button } from "../Button/Button";
 import "./placeholder.css";
+import { SimpleText } from "../SimpleText/SimpleText";
 
 type Props = {
   title: string;
+
+  subtitle?: string;
 
   message: string;
 
@@ -26,6 +29,7 @@ export function Placeholder({
   title,
   message,
   Icon,
+  subtitle,
   className = "",
   onRetry,
 }: Props) {
@@ -33,6 +37,13 @@ export function Placeholder({
     <div className={"placeholder " + className}>
       <div className="placeholder-icon">{Icon}</div>
       <b className="placeholder-title">{title}</b>
+
+      {subtitle && (
+        <div className="placeholder-subtitle">
+          <SimpleText variant="light">{subtitle}</SimpleText>
+        </div>
+      )}
+
       <div className="placeholder-message">{message} </div>
 
       {onRetry && (

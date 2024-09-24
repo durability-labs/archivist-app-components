@@ -1,4 +1,4 @@
-import { ChangeEvent, CSSProperties } from "react";
+import { ChangeEvent, CSSProperties, LegacyRef } from "react";
 import "./inputGroup.css";
 import { Input } from "../Input/Input";
 import { Select } from "../Select/Select";
@@ -77,9 +77,11 @@ type Props = {
    */
   helper?: string;
 
-  min?: number;
+  min?: number | string;
 
-  max?: number;
+  max?: number | string;
+
+  inputRef?: LegacyRef<HTMLInputElement>;
 };
 
 export function InputGroup({
@@ -89,7 +91,7 @@ export function InputGroup({
   type = "text",
   style,
   group,
-  className,
+  className = "",
   inputClassName = "",
   onChange,
   onGroupChange,
@@ -101,6 +103,7 @@ export function InputGroup({
   step,
   value = undefined,
   groupValue = "",
+  inputRef,
   min,
   max,
 }: Props) {
@@ -110,6 +113,7 @@ export function InputGroup({
         <div className="inputGroup-element">
           <div className="inputGroup-inputContainer">
             <Input
+              ref={inputRef}
               id={id}
               name={name}
               label={label}

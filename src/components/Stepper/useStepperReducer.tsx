@@ -37,6 +37,10 @@ export type StepperAction =
   | {
       type: "toggle-next";
       isNextEnable: boolean;
+    }
+  | {
+      type: "toggle-back";
+      isBackEnable: boolean;
     };
 
 export type StepperBodyProps = {
@@ -48,73 +52,57 @@ export type StepperBodyProps = {
  * The storage key allows to save the step when the user
  * move from a step to another.
  */
-const reducer =
-  (steps: number) => (state: StepperState, action: StepperAction) => {
-    switch (action.type) {
-      case "close": {
-        return {
-          ...state,
-          step: 0,
-          isNextDisable: true,
-          progress: false,
-          open: false,
-          isBackEnable: true,
-        };
-      }
-
-      case "open": {
-        return {
-          ...state,
-          step: 0,
-          isNextDisable: true,
-          progress: false,
-          open: true,
-          isBackEnable: true,
-        };
-      }
-
-      case "loading": {
-        if (action.step >= steps) {
-          return {
-            ...state,
-            step: 0,
-            isNextDisable: true,
-            progress: false,
-            open: false,
-            isBackEnable: true,
-          };
-        }
-
-        // WebStorage.set(storageKey, action.step);
-
-        return {
-          ...state,
-          step: action.step,
-          isNextDisable: true,
-          progress: true,
-          isBackEnable: action.step != steps - 1,
-        };
-      }
-
-      case "next": {
-        return {
-          ...state,
-          progress: false,
-        };
-      }
-
-      case "toggle-next": {
-        return {
-          ...state,
-          isNextEnable: action.isNextEnable,
-        };
-      }
+const reducer = () => (state: StepperState, action: StepperAction) => {
+  switch (action.type) {
+    case "close": {
+      return {
+        ...state,
+        open: false,
+      };
     }
-  };
 
-export function useStepperReducer(steps: number) {
+    case "open": {
+      return {
+        ...state,
+        open: true,
+      };
+    }
+
+    case "loading": {
+      return {
+        ...state,
+        step: action.step,
+        progress: true,
+      };
+    }
+
+    case "next": {
+      return {
+        ...state,
+        progress: false,
+        step: action.step,
+      };
+    }
+
+    case "toggle-next": {
+      return {
+        ...state,
+        isNextEnable: action.isNextEnable,
+      };
+    }
+
+    case "toggle-back": {
+      return {
+        ...state,
+        isBackEnable: action.isBackEnable,
+      };
+    }
+  }
+};
+
+export function useStepperReducer() {
   const [state, dispatch] = useReducer<Reducer<StepperState, StepperAction>>(
-    reducer(steps),
+    reducer(),
     {
       step: 0,
       isNextEnable: false,

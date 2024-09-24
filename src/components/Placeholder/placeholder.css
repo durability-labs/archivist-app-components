@@ -1,5 +1,6 @@
 .placeholder {
   text-align: center;
+  margin: auto;
 }
 
 .placeholder-icon {
@@ -10,6 +11,10 @@
 .placeholder-title {
   margin-bottom: 0.25rem;
   display: inline-block;
+}
+
+.placeholder-subtitle {
+  margin-bottom: 0.25rem;
 }
 
 .placeholder-button {

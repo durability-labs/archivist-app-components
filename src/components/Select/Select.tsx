@@ -55,7 +55,7 @@ export function Select({
   onMouseEnter,
   onMouseLeave,
   style,
-  className,
+  className = "",
   defaultValue,
   value,
 }: Props) {

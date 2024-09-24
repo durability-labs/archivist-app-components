@@ -82,9 +82,9 @@ type Props = {
 
   name?: string;
 
-  min?: number;
+  min?: number | string;
 
-  max?: number;
+  max?: number | string;
 };
 
 export const Input = forwardRef<HTMLInputElement, Props>(

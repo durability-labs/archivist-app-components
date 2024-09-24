@@ -71,7 +71,7 @@ export function Stepper({
   state,
   style,
   dispatch,
-  className,
+  className = "",
   backLabel = "Back",
   nextLabel = "Next",
   duration = 500,
