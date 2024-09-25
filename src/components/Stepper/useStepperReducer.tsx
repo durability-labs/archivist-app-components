@@ -35,11 +35,8 @@ export type StepperAction =
       step: number;
     }
   | {
-      type: "toggle-next";
+      type: "toggle-buttons";
       isNextEnable: boolean;
-    }
-  | {
-      type: "toggle-back";
       isBackEnable: boolean;
     };
 
@@ -71,6 +68,8 @@ const reducer = () => (state: StepperState, action: StepperAction) => {
     case "loading": {
       return {
         ...state,
+        isBackEnable: false,
+        isNextEnable: false,
         step: action.step,
         progress: true,
       };
@@ -84,17 +83,11 @@ const reducer = () => (state: StepperState, action: StepperAction) => {
       };
     }
 
-    case "toggle-next": {
-      return {
-        ...state,
-        isNextEnable: action.isNextEnable,
-      };
-    }
-
-    case "toggle-back": {
+    case "toggle-buttons": {
       return {
         ...state,
         isBackEnable: action.isBackEnable,
+        isNextEnable: action.isNextEnable,
       };
     }
   }

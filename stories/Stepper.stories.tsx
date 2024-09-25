@@ -27,8 +27,9 @@ const Template = (p: Props) => {
 
   useEffect(() => {
     dispatch({
-      type: "toggle-next",
+      type: "toggle-buttons",
       isNextEnable: true,
+      isBackEnable: true,
     });
   }, [dispatch]);
 
@@ -37,6 +38,12 @@ const Template = (p: Props) => {
 
   const onNextStep = async (step: number) => {
     p.onNextStep(step);
+
+    dispatch({
+      type: "toggle-buttons",
+      isNextEnable: true,
+      isBackEnable: true,
+    });
 
     dispatch({
       step,
