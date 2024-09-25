@@ -54,3 +54,9 @@
     min-width: 500px;
   }
 }
+
+@media (max-width: 800px) {
+  .modal {
+    width: calc(100% - 6rem);
+  }
+}
