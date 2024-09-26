@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/codex-storage/codex-marketplace-ui-components"
   },
-  "version": "0.0.8",
+  "version": "0.0.9",
   "type": "module",
   "scripts": {
     "prepack": "npm run build",
@@ -35,7 +35,7 @@
     "lucide-react": "^0.441.0"
   },
   "peerDependencies": {
-    "@codex-storage/sdk-js": "0.0.4",
+    "@codex-storage/sdk-js": "0.0.5",
     "@tanstack/react-query": "^5.51.24",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
