@@ -89,17 +89,11 @@ export function Menu({
             <LogoInverse width={50} />
             <span className="menu-separator">|</span>
             <span className="menu-name">Codex</span>
-            <span className="menu-state">ALPHA</span>
+            <span className="menu-state">ALPHA {version}</span>
           </div>
 
           <div className="menu-items">
             {items.map((item, index) => renderItem(item, index))}
-          </div>
-
-          <div className="menu-footer">
-            {version && (
-              <small className="menu-version">Version: {version}</small>
-            )}
           </div>
         </div>
       </aside>

@@ -23,7 +23,7 @@ type Props = {
 };
 
 const Template = (p: Props) => {
-  const { state, dispatch } = useStepperReducer(3);
+  const { state, dispatch } = useStepperReducer();
 
   useEffect(() => {
     dispatch({
