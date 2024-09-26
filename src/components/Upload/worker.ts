@@ -22,17 +22,14 @@ self.addEventListener("message", function (e) {
     });
   };
 
-  return codex.data
-    .upload(rest.file, onProgress)
-    .then((result) => {
-      abort = result.abort;
+  const res = codex.data.upload(rest.file, onProgress);
 
-      return result.result;
-    })
-    .then((value) => {
-      self.postMessage({
-        type: "completed",
-        value,
-      });
+  abort = res.abort;
+
+  return res.result.then((value) => {
+    self.postMessage({
+      type: "completed",
+      value,
     });
+  });
 });

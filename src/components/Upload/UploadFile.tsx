@@ -138,17 +138,15 @@ export function UploadFile({
   const { mutateAsync } = useMutation({
     mutationKey: ["upload"],
     mutationFn: (file: File) => {
-      return codexData
-        .upload(file, onProgress)
-        .then((res) => {
-          abort.current = res.abort;
-          return res.result;
-        })
-        .then((safe) =>
-          safe.error
-            ? Promise.reject(safe.data.message)
-            : Promise.resolve(safe.data)
-        );
+      const res = codexData.upload(file, onProgress);
+
+      abort.current = res.abort;
+
+      return res.result.then((safe) =>
+        safe.error
+          ? Promise.reject(safe.data.message)
+          : Promise.resolve(safe.data)
+      );
     },
     onError: (error) => {
       // worker.current?.terminate();
