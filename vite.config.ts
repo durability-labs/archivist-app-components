@@ -5,14 +5,13 @@ import react from "@vitejs/plugin-react";
 import { libInjectCss } from "vite-plugin-lib-inject-css";
 import { extname, relative } from "path";
 import { fileURLToPath } from "node:url";
-import pkg from "glob";
-const { glob } = pkg;
+import { globSync } from "glob";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   worker: {
     rollupOptions: {
-      external: ["@codex-storage/sdk-js", "@tanstack/react-query"],
+      external: ["@codex-storage/sdk-js"],
       output: {
         globals: {
           "@codex-storage/sdk-js": "codex-sdk-js",
@@ -39,13 +38,11 @@ export default defineConfig({
         "react",
         "react/jsx-runtime",
         "@codex-storage/sdk-js",
-        "@tanstack/react-query",
       ],
       input: Object.fromEntries(
-        glob
-          .sync("src/**/*.{ts,tsx}", {
-            ignore: ["src/**/*.d.ts"],
-          })
+        globSync("src/**/*.{ts,tsx}", {
+          ignore: ["src/**/*.d.ts"],
+        })
           .map((file) => [
             // The name of the entry point
             // lib/nested/foo.ts becomes nested/foo

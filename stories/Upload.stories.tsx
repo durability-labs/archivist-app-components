@@ -1,9 +1,8 @@
 import type { Meta } from "@storybook/react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Upload } from "../src/components/Upload/Upload";
 import { fn } from "@storybook/test";
 import "./Upload.stories.css";
-import { CodexDataSdk, CodexDataSlowSdk } from "./sdk";
+import { CodexDataSdk, CodexDataSlowSdk, CodexDataErrorSdk } from "./sdk";
 
 const meta = {
   title: "Advanced/Upload",
@@ -25,8 +24,6 @@ const meta = {
 
 export default meta;
 
-const queryClient = new QueryClient();
-
 type Props = {
   onClick?: () => void;
 
@@ -40,11 +37,7 @@ type Props = {
 };
 
 const Template = (p: Props) => {
-  return (
-    <QueryClientProvider client={queryClient}>
-      {<Upload multiple {...p} codexData={CodexDataSdk} />}
-    </QueryClientProvider>
-  );
+  return <Upload multiple {...p} codexData={CodexDataSdk} />;
 };
 
 export const Multiple = Template.bind({});
@@ -52,9 +45,7 @@ export const Multiple = Template.bind({});
 const SlowTemplate = (p: Props) => {
   return (
     <div className="demo">
-      <QueryClientProvider client={queryClient}>
-        {<Upload multiple codexData={CodexDataSlowSdk} {...p} />}
-      </QueryClientProvider>
+      <Upload multiple codexData={CodexDataSlowSdk} {...p} />
     </div>
   );
 };
@@ -64,18 +55,33 @@ export const Slow = SlowTemplate.bind({});
 const SingleTemplate = (p: Props) => {
   return (
     <div className="demo">
-      <QueryClientProvider client={queryClient}>
-        {
-          <Upload
-            multiple={false}
-            editable={false}
-            codexData={CodexDataSlowSdk}
-            {...p}
-          />
-        }
-      </QueryClientProvider>
+      {
+        <Upload
+          multiple={false}
+          editable={false}
+          codexData={CodexDataSlowSdk}
+          {...p}
+        />
+      }
     </div>
   );
 };
 
 export const Single = SingleTemplate.bind({});
+
+const ErrorTemplate = (p: Props) => {
+  return (
+    <div className="demo">
+      {
+        <Upload
+          multiple={false}
+          editable={false}
+          codexData={CodexDataErrorSdk}
+          {...p}
+        />
+      }
+    </div>
+  );
+};
+
+export const Error = ErrorTemplate.bind({});

@@ -1,36 +1,34 @@
-import { CodexData, UploadResponse } from "@codex-storage/sdk-js";
+import { CodexData, CodexError, UploadResponse } from "@codex-storage/sdk-js";
 
 class CodexDataMock extends CodexData {
   override upload(
     _: File,
     onProgress?: (loaded: number, total: number) => void
-  ): Promise<UploadResponse> {
-    return new Promise<UploadResponse>((resolve) => {
-      let timeout: number;
+  ): UploadResponse {
+    let timeout: number;
 
-      resolve({
-        abort: () => {
-          window.clearInterval(timeout);
-        },
-        result: new Promise((resolve) => {
-          let count = 0;
-          timeout = window.setInterval(() => {
-            count++;
+    return {
+      abort: () => {
+        window.clearInterval(timeout);
+      },
+      result: new Promise((resolve) => {
+        let count = 0;
+        timeout = window.setInterval(() => {
+          count++;
 
-            onProgress?.(500 * count, 1500);
+          onProgress?.(500 * count, 1500);
 
-            if (count === 3) {
-              window.clearInterval(timeout);
+          if (count === 3) {
+            window.clearInterval(timeout);
 
-              resolve({
-                error: false,
-                data: Date.now().toString(),
-              });
-            }
-          }, 1500);
-        }),
-      });
-    });
+            resolve({
+              error: false,
+              data: Date.now().toString(),
+            });
+          }
+        }, 1500);
+      }),
+    };
   }
 }
 
@@ -40,34 +38,66 @@ class CodexDataSlowMock extends CodexData {
   override upload(
     _: File,
     onProgress?: (loaded: number, total: number) => void
-  ): Promise<UploadResponse> {
-    return new Promise<UploadResponse>((resolve) => {
-      let timeout: number;
+  ): UploadResponse {
+    let timeout: number;
 
-      resolve({
-        abort: () => {
-          window.clearInterval(timeout);
-        },
-        result: new Promise((resolve) => {
-          let count = 0;
-          timeout = window.setInterval(() => {
-            count++;
+    return {
+      abort: () => {
+        window.clearInterval(timeout);
+      },
+      result: new Promise((resolve) => {
+        let count = 0;
+        timeout = window.setInterval(() => {
+          count++;
 
-            onProgress?.(500 * count, 1500);
+          onProgress?.(500 * count, 1500);
 
-            if (count === 3) {
-              window.clearInterval(timeout);
+          if (count === 3) {
+            window.clearInterval(timeout);
 
-              resolve({
-                error: false,
-                data: Date.now().toString(),
-              });
-            }
-          }, 1500);
-        }),
-      });
-    });
+            resolve({
+              error: false,
+              data: Date.now().toString(),
+            });
+          }
+        }, 1500);
+      }),
+    }
   }
 }
 
 export const CodexDataSlowSdk = new CodexDataSlowMock("");
+
+class CodexDataErrorMock extends CodexData {
+  override upload(
+    _: File,
+    onProgress?: (loaded: number, total: number) => void
+  ): UploadResponse {
+    let timeout: number;
+
+    return {
+      abort: () => {
+        window.clearInterval(timeout);
+      },
+      result: new Promise((resolve) => {
+        let count = 0;
+        timeout = window.setInterval(() => {
+          count++;
+
+          onProgress?.(500 * count, 1500);
+
+          if (count === 3) {
+            window.clearInterval(timeout);
+
+            resolve({
+              error: true,
+              data: new CodexError("Some error here"),
+            });
+          }
+        }, 1500);
+      }),
+    }
+  }
+}
+
+export const CodexDataErrorSdk = new CodexDataErrorMock("");

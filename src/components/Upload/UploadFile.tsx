@@ -12,7 +12,6 @@ import { Toast } from "../Toast/Toast";
 import { UploadStatus } from "./types";
 import { CircleCheck, TriangleAlert, CircleX, CircleStop } from "lucide-react";
 import { Spinner } from "../Spinner/Spinner";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { CodexData } from "@codex-storage/sdk-js";
 import { WebFileIcon } from "../WebFileIcon/WebFileIcon";
 import { ButtonIcon } from "../ButtonIcon/ButtonIcon";
@@ -56,6 +55,9 @@ type Action =
       type: "cancel";
     }
   | {
+      type: "delete";
+    }
+  | {
       type: "error";
       error: string;
     };
@@ -81,20 +83,24 @@ function reducer(state: State, action: Action) {
     case "completed": {
       return {
         ...state,
+
+        // Just to ensure the file upload is in done status,
+        // in case of the onprogress callback function was not called
         status: "done" as UploadStatus,
+
         cid: action.cid,
       };
     }
 
     case "cancel": {
-      if (state.status === "progress") {
-        return {
-          ...state,
-          status: "error" as UploadStatus,
-          error: "The upload has been cancelled.",
-        };
-      }
+      return {
+        ...state,
+        status: "error" as UploadStatus,
+        error: "The upload has been cancelled.",
+      };
+    }
 
+    case "delete": {
       return {
         progress: { loaded: 0, total: 0 },
         cid: "",
@@ -125,8 +131,7 @@ export function UploadFile({
   // useWorker,
 }: UploadFileProps) {
   const abort = useRef<(() => void) | null>(null);
-  const queryClient = useQueryClient();
-  const worker = useRef<Worker | null>(null);
+  // const worker = useRef<Worker | null>(null);
   const [toast, setToast] = useState({ time: 0, message: "" });
   const [state, dispatch] = useReducer<Reducer<State, Action>>(reducer, {
     progress: { loaded: 0, total: 0 },
@@ -135,46 +140,26 @@ export function UploadFile({
     status: "progress" as UploadStatus,
     error: "",
   });
-  const { mutateAsync } = useMutation({
-    mutationKey: ["upload"],
-    mutationFn: (file: File) => {
-      const res = codexData.upload(file, onProgress);
 
-      abort.current = res.abort;
+  const upload = useCallback(async () => {
+    const { abort: a, result } = codexData.upload(file, onProgress);
 
-      return res.result.then((safe) =>
-        safe.error
-          ? Promise.reject(safe.data.message)
-          : Promise.resolve(safe.data)
-      );
-    },
-    onError: (error) => {
-      // worker.current?.terminate();
-      dispatch({ type: "error", error: error.message });
-    },
-    onSuccess: (cid: string) => {
-      onInternalSuccess(cid);
-    },
-  });
+    abort.current = a;
+
+    const res = await result;
+
+    if (res.error) {
+      dispatch({ type: "error", error: res.data.message });
+
+      return;
+    }
+
+    dispatch({ type: "completed", cid: state.cid });
+
+    onSuccess?.(state.cid, file);
+  }, [state.cid, codexData, onSuccess, file]);
+
   const init = useRef(false);
-
-  const onInternalSuccess = useCallback(
-    (cid: string) => {
-      worker.current?.terminate();
-
-      queryClient.invalidateQueries({
-        queryKey: ["cids"],
-      });
-
-      if (onSuccess) {
-        onSuccess(cid, file);
-        dispatch({ type: "reset" });
-      } else {
-        dispatch({ type: "completed", cid });
-      }
-    },
-    [onSuccess, dispatch, queryClient, file]
-  );
 
   const onProgress = (loaded: number, total: number) => {
     dispatch({
@@ -204,7 +189,7 @@ export function UploadFile({
       reader.readAsDataURL(file);
     }
 
-    mutateAsync(file);
+    upload();
 
     // if (useWorker) {
     //   worker.current = new Worker(new URL("./worker", import.meta.url), {
@@ -239,24 +224,28 @@ export function UploadFile({
     // } else {
     //   mutateAsync(file);
     // }
-  }, [file, mutateAsync, onInternalSuccess, codexData]);
+  }, [file, upload, codexData]);
 
   const onCancel = () => {
-    if (worker.current) {
-      worker.current.postMessage({ type: "abort" });
-    } else {
-      abort.current?.();
-    }
+    // if (worker.current) {
+    //   worker.current.postMessage({ type: "abort" });
+    // } else {
+    //   abort.current?.();
+    // }
+    abort.current?.();
 
-    dispatch({ type: "cancel" });
+    const type = state.status === "progress" ? "cancel" : "delete";
+    dispatch({ type });
   };
 
   const onInternalClose = () => {
-    if (worker.current) {
-      worker.current.postMessage({ type: "abort" });
-    } else {
-      abort.current?.();
-    }
+    // if (worker.current) {
+    //   worker.current.postMessage({ type: "abort" });
+    // } else {
+    //   abort.current?.();
+    // }
+
+    abort.current?.();
 
     onClose(id);
   };
@@ -274,7 +263,7 @@ export function UploadFile({
   const parts = file.name.split(".");
   const extension = parts.pop();
   const filename = parts.join(".");
-  const { cid, error, preview, progress, status } = state;
+  const { cid, error = "", preview, progress, status } = state;
   const onAction = state.status === "progress" ? onCancel : onInternalClose;
   const percent =
     progress.total > 0 ? (progress.loaded / progress.total) * 100 : 0;
@@ -350,7 +339,7 @@ export function UploadFile({
         </>
       )}
 
-      {error && <SimpleText variant="error">{error}</SimpleText>}
+      <SimpleText variant="error">{error ? error : <>&nbsp;</>}</SimpleText>
 
       <Toast message={toast.message} time={toast.time} variant="success" />
     </div>
