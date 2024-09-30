@@ -79,6 +79,12 @@ type Props = {
    * --codex-color-warning
    */
   style?: CustomStyleCSS;
+
+  /**
+   * Success message displayed when a file is updated.
+   * Default: File uploaded successfully.
+   */
+  successMessage?: string;
 };
 
 export function Upload({
@@ -91,6 +97,7 @@ export function Upload({
   onDeleteItem,
   onSuccess,
   codexData,
+  successMessage = "File uploaded successfully",
   // useWorker = !!window.Worker,
 }: Props) {
   const { deleteFile, files, uploadFiles, warning } = useUploadStategy(
@@ -174,6 +181,7 @@ export function Upload({
           id={id}
           onSuccess={onSuccess}
           codexData={codexData}
+          successMessage={successMessage}
           // useWorker={useWorker}
         />
       ))}

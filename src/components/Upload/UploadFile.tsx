@@ -1,14 +1,6 @@
-import {
-  useRef,
-  useState,
-  useReducer,
-  Reducer,
-  useEffect,
-  useCallback,
-} from "react";
+import { useRef, useReducer, Reducer, useEffect, useCallback } from "react";
 import { attributes } from "../utils/attributes";
 import { PrettyBytes } from "../utils/bytes";
-import { Toast } from "../Toast/Toast";
 import { UploadStatus } from "./types";
 import { CircleCheck, TriangleAlert, CircleX, CircleStop } from "lucide-react";
 import { Spinner } from "../Spinner/Spinner";
@@ -23,6 +15,7 @@ type UploadFileProps = {
   id: string;
   onSuccess: ((cid: string, file: File) => void) | undefined;
   codexData: CodexData;
+  successMessage: string;
   // useWorker: boolean;
 };
 
@@ -128,11 +121,11 @@ export function UploadFile({
   id,
   onSuccess,
   codexData,
+  successMessage,
   // useWorker,
 }: UploadFileProps) {
   const abort = useRef<(() => void) | null>(null);
   // const worker = useRef<Worker | null>(null);
-  const [toast, setToast] = useState({ time: 0, message: "" });
   const [state, dispatch] = useReducer<Reducer<State, Action>>(reducer, {
     progress: { loaded: 0, total: 0 },
     cid: "",
@@ -250,16 +243,6 @@ export function UploadFile({
     onClose(id);
   };
 
-  const onCopy = () => {
-    if (cid) {
-      navigator.clipboard.writeText(cid);
-      setToast({
-        time: Date.now(),
-        message: "The CID has been copied to your clipboard.",
-      });
-    }
-  };
-
   const parts = file.name.split(".");
   const extension = parts.pop();
   const filename = parts.join(".");
@@ -271,78 +254,72 @@ export function UploadFile({
   const ActionIcon = () => <UploadActionIcon status={status} />;
 
   return (
-    <div className={"uploadFile"}>
-      <div className="uploadFile-info">
-        <div className="uploadFile-infoLeft">
-          {preview ? (
-            <img
-              src={preview}
-              width="24"
-              alt="Preview"
-              className="uploadFile-preview"
-            />
-          ) : (
-            <WebFileIcon type={file.type} />
-          )}
-          <div className="uploadFile-infoText">
-            <b
-              className="uploadFile-name"
-              {...attributes({
-                "aria-invalid": status === "error",
-                "data-done": status === "done",
-              })}
-            >
-              <span className="uploadFile-filename">{filename}</span>
-              <span>.{extension}</span>
-            </b>
-            <div>
-              <small>{PrettyBytes(file.size)}</small>
+    <>
+      <div className={"uploadFile"}>
+        <div className="uploadFile-info">
+          <div className="uploadFile-infoLeft">
+            {preview ? (
+              <img
+                src={preview}
+                width="24"
+                alt="Preview"
+                className="uploadFile-preview"
+              />
+            ) : (
+              <WebFileIcon type={file.type} />
+            )}
+            <div className="uploadFile-infoText">
+              <b
+                className="uploadFile-name"
+                {...attributes({
+                  "aria-invalid": status === "error",
+                  "data-done": status === "done",
+                })}
+              >
+                <span className="uploadFile-filename">{filename}</span>
+                <span>.{extension}</span>
+              </b>
+              <div>
+                <small>{PrettyBytes(file.size)}</small>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="uploadFile-infoRight">
-          <UploadStatusIcon status={status} />
+          <div className="uploadFile-infoRight">
+            <UploadStatusIcon status={status} />
 
-          <ButtonIcon
-            variant="small"
-            onClick={onAction}
-            Icon={ActionIcon}
-          ></ButtonIcon>
-        </div>
-      </div>
-
-      <div className="uploadFile-progress">
-        <progress
-          className="uploadFile-progressBar"
-          {...attributes({
-            max: file ? progress.total.toString() : false,
-            value: file ? progress.loaded.toString() : false,
-            "aria-invalid": status === "error",
-          })}
-        />
-        <span className="uploadFile-progressBarPercent">
-          {percent.toFixed(2)} %
-        </span>
-      </div>
-
-      {!!cid && (
-        <>
-          <div className="text--primary">
-            <span>Success !</span> Click on the CID to copy it to your
-            clipboard.
+            <ButtonIcon
+              variant="small"
+              onClick={onAction}
+              Icon={ActionIcon}
+            ></ButtonIcon>
           </div>
-          <a>
-            <small className="uploadFile-cid" onClick={onCopy}>
-              {cid}
-            </small>
-          </a>
-        </>
-      )}
+        </div>
 
-      <SimpleText variant="error">{error ? error : <>&nbsp;</>}</SimpleText>
+        <div className="uploadFile-progress">
+          <progress
+            className="uploadFile-progressBar"
+            {...attributes({
+              max: file ? progress.total.toString() : false,
+              value: file ? progress.loaded.toString() : false,
+              "aria-invalid": status === "error",
+            })}
+          />
+          <span className="uploadFile-progressBarPercent">
+            {percent.toFixed(2)} %
+          </span>
+        </div>
 
-      <Toast message={toast.message} time={toast.time} variant="success" />
-    </div>
+        <div className="uploadFile-message">
+          {cid ? (
+            <div className="text--primary">{successMessage}</div>
+          ) : (
+            <SimpleText variant="error">
+              {error ? error : <>&nbsp;</>}
+            </SimpleText>
+          )}
+        </div>
+      </div>
+    </>
   );
 }
 
