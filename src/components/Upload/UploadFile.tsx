@@ -154,10 +154,10 @@ export function UploadFile({
       return;
     }
 
-    dispatch({ type: "completed", cid: state.cid });
+    dispatch({ type: "completed", cid: res.data });
 
-    onSuccess?.(state.cid, file);
-  }, [state.cid, codexData, onSuccess, file]);
+    onSuccess?.(res.data, file);
+  }, [codexData, onSuccess, file]);
 
   const init = useRef(false);
 
