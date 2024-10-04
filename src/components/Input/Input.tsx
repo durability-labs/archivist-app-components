@@ -85,6 +85,8 @@ type Props = {
   min?: number | string;
 
   max?: number | string;
+
+  maxLength?: number;
 };
 
 export const Input = forwardRef<HTMLInputElement, Props>(
@@ -108,6 +110,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
       step,
       name,
       inputClassName,
+      maxLength,
       type = "text",
       min,
       max,
@@ -155,6 +158,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
             step={step}
             min={min}
             max={max}
+            maxLength={maxLength}
           />
         </div>
 
