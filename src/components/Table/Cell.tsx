@@ -1,7 +1,15 @@
-import "./Cell.css";
+import { ReactNode } from "react";
+import "./cell.css";
 
-type Props = {
-  value: string;
-};
+export type CellProps = {
+  children: ReactNode | string;
+} & React.DetailedHTMLProps<
+  React.TdHTMLAttributes<HTMLTableCellElement>,
+  HTMLTableCellElement
+>;
 
-export const Cell = ({ value }: Props) => <span>{value}</span>;
+export const Cell = ({ children, className = "", ...rest }: CellProps) => (
+  <td className={"cell" + className} {...rest}>
+    {children}
+  </td>
+);

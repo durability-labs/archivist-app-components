@@ -1,6 +1,7 @@
-import "./Table.css";
-import { ReactNode } from "react";
+import "./table.css";
 import { Search } from "lucide-react";
+import { Row, RowProps } from "./Row";
+import { Fragment, ReactElement } from "react";
 
 type Props = {
   /**
@@ -8,17 +9,12 @@ type Props = {
    */
   headers: string[];
 
-  /**
-   * The ReactNode cells in two dimensions array,
-   * one for the lines
-   * one for the data representation
-   */
-  cells: ReactNode[][];
-
   className?: string;
+
+  rows: ReactElement<RowProps, typeof Row>[];
 };
 
-export function Table({ headers, cells, className = "" }: Props) {
+export function Table({ headers, rows, className = "" }: Props) {
   return (
     <div className={`table-container ${className}`}>
       <table className={"table"}>
@@ -32,22 +28,16 @@ export function Table({ headers, cells, className = "" }: Props) {
           </tr>
         </thead>
         <tbody>
-          {cells.map((row, index) => (
-            <tr key={index} className="table-tbodyTr">
-              {headers.map((header, idx) => (
-                <td key={header} className="table-tbodyTd">
-                  {row[idx]}
-                </td>
-              ))}
-            </tr>
+          {rows.map((Row, index) => (
+            <Fragment key={index}>{Row}</Fragment>
           ))}
         </tbody>
       </table>
 
-      {!cells.length && (
+      {!rows.length && (
         <div className="table-placeholder">
           <Search />
-          <p className="table-placeholderText">No search results.</p>
+          <p className="table-placeholderText">No data.</p>
         </div>
       )}
     </div>

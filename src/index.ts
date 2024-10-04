@@ -7,7 +7,7 @@ export { Upload } from "./components/Upload/Upload";
 export { Card } from "./components/Card/Card";
 export { Select } from "./components/Select/Select";
 export { Toast } from "./components/Toast/Toast";
-export { SpaceAllocation } from "./components/SpaceAllocation/SpaceAllocation";
+export { SpaceAllocation, type SpaceAllocationItem } from "./components/SpaceAllocation/SpaceAllocation";
 export { EmptyPlaceholder } from "./components/EmptyPlaceholder/EmptyPlaceholder";
 export { Dropdown, type DropdownOption } from "./components/Dropdown/Dropdown";
 export { Failure } from "./components/Failure/Failure";
@@ -16,11 +16,9 @@ export { Spinner } from "./components/Spinner/Spinner";
 export { WebFileIcon } from "./components/WebFileIcon/WebFileIcon";
 export { Stepper } from "./components/Stepper/Stepper";
 export { Backdrop } from "./components/Backdrop/Backdrop";
-export { ActionCell } from "./components/Table/ActionCell";
-export { BreakCell } from "./components/Table/BreakCell";
-export { Cell } from "./components/Table/Cell";
-export { StateCell } from "./components/Table/StateCell";
+export { Cell, type CellProps } from "./components/Table/Cell";
 export { Table } from "./components/Table/Table";
+export { Row, type RowProps } from "./components/Table/Row";
 export {
   Menu,
   type MenuItem,

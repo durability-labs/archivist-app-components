@@ -1,0 +1,8 @@
+.row {
+  border-bottom: 1px solid var(--codex-border-color);
+  transition: background-color 0.35s;
+}
+
+.row:hover {
+  background-color: var(--codex-background-light);
+}

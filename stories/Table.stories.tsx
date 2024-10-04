@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Table } from "../src/components/Table/Table";
 import "./Table.stories.css";
-import { StateCell } from "../src/components/Table/StateCell";
-import { ActionCell } from "../src/components/Table/ActionCell";
-import { BreakCell } from "../src/components/Table/BreakCell";
+import { Row } from "../src/components/Table/Row";
+import { Cell } from "../src";
 
 const meta = {
   title: "Components/Table",
@@ -20,77 +19,40 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    cells: [
-      [
-        <span>Ox45678FDGHJKLBSA21</span>,
-        <span>My file</span>,
-        <span>Some data</span>,
-        <ActionCell
-          action="Action"
-          onClick={() => console.info("Hello")}
-        ></ActionCell>,
-      ],
+    rows: [
+      <Row
+        cells={[
+          <Cell>Ox45678FDGHJKLBSA21</Cell>,
+          <Cell>My file</Cell>,
+          <Cell>Some data</Cell>,
+          <Cell>Some data</Cell>,
+        ]}
+      ></Row>,
     ],
-    headers: ["id", "title", "other", "actions"],
+    headers: ["id", "title", "other"],
   },
 };
 
 export const Scroll: Story = {
   args: {
     className: "tableSmall",
-    cells: [
-      [
-        <span>Ox45678FDGHJKLBSA21</span>,
-        <span>My file</span>,
-        <span>Some data</span>,
-        <ActionCell
-          action="Action"
-          onClick={() => console.info("Hello")}
-        ></ActionCell>,
-      ],
+    rows: [
+      <Row
+        cells={[
+          <Cell>Ox45678FDGHJKLBSA21</Cell>,
+          <Cell>My file</Cell>,
+          <Cell>Some data</Cell>,
+          <Cell>Some data</Cell>,
+        ]}
+      ></Row>,
     ],
     headers: ["id", "title", "other", "actions"],
   },
 };
 
-export const BreakableCell: Story = {
-  args: {
-    cells: [
-      [
-        <BreakCell value="veryverylongvaluetobreak"></BreakCell>,
-        <span>My file</span>,
-        <span>Some data</span>,
-        <ActionCell
-          action="Action"
-          onClick={() => console.info("Hello")}
-        ></ActionCell>,
-      ],
-    ],
-    headers: ["break", "title", "other", "actions"],
-    className: "tableSmall",
-  },
-};
-
-export const State: Story = {
-  args: {
-    cells: [
-      [
-        <BreakCell value="veryverylongvaluetobreak"></BreakCell>,
-        <span>My file</span>,
-        <StateCell type="error" value="cancelled"></StateCell>,
-        <ActionCell
-          action="Action"
-          onClick={() => console.info("Hello")}
-        ></ActionCell>,
-      ],
-    ],
-    headers: ["id", "title", "state", "actions"],
-  },
-};
-
 export const Empty: Story = {
   args: {
-    cells: [],
+    rows: [],
     headers: ["id", "title", "state", "actions"],
   },
 };
