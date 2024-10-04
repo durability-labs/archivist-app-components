@@ -1,4 +1,4 @@
-import { ChangeEvent, CSSProperties, LegacyRef } from "react";
+import { ChangeEvent, CSSProperties, LegacyRef, ReactNode } from "react";
 import "./inputGroup.css";
 import { Input } from "../Input/Input";
 import { Select } from "../Select/Select";
@@ -82,6 +82,8 @@ type Props = {
   max?: number | string;
 
   inputRef?: LegacyRef<HTMLInputElement>;
+
+  extra?: ReactNode;
 };
 
 export function InputGroup({
@@ -106,6 +108,7 @@ export function InputGroup({
   inputRef,
   min,
   max,
+  extra,
 }: Props) {
   return (
     <div className={`inputGroup ${className}`} style={style}>
@@ -146,7 +149,12 @@ export function InputGroup({
             )}
           </div>
         </div>
-        {helper && <small className="inputGroup-helper">{helper}</small>}
+        <div className="inputGroup-helpers">
+          <span>
+            {helper && <small className="inputGroup-helper">{helper}</small>}
+          </span>
+          {extra}
+        </div>
       </div>
     </div>
   );

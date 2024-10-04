@@ -37,3 +37,9 @@ select.inputGroup-select {
 .inputGroup-inputContainer {
   flex: 1;
 }
+
+.inputGroup-helpers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
