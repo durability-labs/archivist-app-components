@@ -21,38 +21,6 @@
   border-radius: var(--codex-border-radius);
 }
 
-.nodeSpaceAllocation-quota-0 {
-  background-color: var(--codex-color-primary);
-}
-
-.nodeSpaceAllocation-quota-1 {
-  background-color: #f9fa93;
-}
-
-.nodeSpaceAllocation-quota-2 {
-  background-color: var(--codex-color);
-}
-
-.nodeSpaceAllocation-quota-3 {
-  background-color: #cd853f;
-}
-
-.nodeSpaceAllocation-quota-4 {
-  background-color: #d2b48c;
-}
-
-.nodeSpaceAllocation-quota-5 {
-  background-color: #ffdab9;
-}
-
-.nodeSpaceAllocation-quota-6 {
-  background-color: #ffb74d;
-}
-
-.nodeSpaceAllocation-quota-7 {
-  background-color: #9c27b0;
-}
-
 .nodeSpaceAllocation-legend {
   display: flex;
   gap: 0.75rem;

@@ -2,11 +2,23 @@ import { SimpleText } from "../SimpleText/SimpleText";
 import { PrettyBytes } from "../utils/bytes";
 import "./spaceAllocation.css";
 
+export type SpaceAllocationItem = {
+  // The title displayed
+  title: string;
+
+  // The dataset size
+  size: number;
+
+  // The custom classname
+  className?: string;
+
+  // The color can be any html color value valid,
+  // rgb, hexa...
+  color: string;
+};
+
 type Props = {
-  data: {
-    title: string;
-    size: number;
-  }[];
+  data: SpaceAllocationItem[];
 };
 
 export function SpaceAllocation({ data }: Props) {
@@ -15,20 +27,24 @@ export function SpaceAllocation({ data }: Props) {
   return (
     <>
       <div className="nodeSpaceAllocation-bar">
-        {data.map((d, index) => (
+        {data.map((d) => (
           <span
             key={d.title}
-            className={`nodeSpaceAllocation-barItem nodeSpaceAllocation-barQuota nodeSpaceAllocation-quota-${index}`}
-            style={{ width: (d.size / total) * 100 + "%" }}
+            className={`nodeSpaceAllocation-barItem nodeSpaceAllocation-barQuota ${d.className || ""}`}
+            style={{
+              width: (d.size / total) * 100 + "%",
+              backgroundColor: d.color,
+            }}
           ></span>
         ))}
       </div>
 
       <div className="nodeSpaceAllocation-legend">
-        {data.map((d, index) => (
-          <div key={d.title} className="nodeSpaceAllocation-legendRow">
+        {data.map((d) => (
+          <div key={d.title} className={"nodeSpaceAllocation-legendRow"}>
             <div
-              className={`nodeSpaceAllocation-legendItem nodeSpaceAllocation-quota nodeSpaceAllocation-quota-${index}`}
+              className={`nodeSpaceAllocation-legendItem nodeSpaceAllocation-quota`}
+              style={{ backgroundColor: d.color }}
             ></div>
             <div className="nodeSpaceAllocation-legendItem-text">
               <small>{d.title}</small>
