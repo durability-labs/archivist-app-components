@@ -74,21 +74,14 @@
   );
 }
 
+.uploadFile-progressBar[value]::-moz-progress-bar,
 .uploadFile-progressBar[value]::-webkit-progress-value {
   border-radius: var(--codex-border-radius);
   background-color: var(--codex-color-primary);
 }
 
+.uploadFile-progressBar[aria-invalid]::-moz-progress-bar,
 .uploadFile-progressBar[aria-invalid]::-webkit-progress-value {
-  background-color: rgb(var(--codex-color-error));
-}
-
-.uploadFile-progressBar[aria-invalid]::-moz-progress-bar {
-  border-radius: var(--codex-border-radius);
-  background-color: var(--codex-color-primary);
-}
-
-.uploadFile-progressBar[value]::-moz-progress-bar {
   background-color: rgb(var(--codex-color-error));
 }
 
