@@ -60,29 +60,33 @@
   border-radius: var(--codex-border-radius);
 }
 
-.uploadFile-progressBar[value] {
+.uploadFile-progressBar {
   height: 0.5rem;
   width: 100%;
   border: none;
 }
 
 .uploadFile-progressBar[value]::-webkit-progress-bar {
-  border-radius: var(--codex-border-radius);
-  background-color: var(
-    --codex-upload-background,
-    var(--codex-background-secondary)
-  );
+  background-color: var(--codex-background-light);
+  border-radius: 50px;
 }
 
-.uploadFile-progressBar[value]::-moz-progress-bar,
 .uploadFile-progressBar[value]::-webkit-progress-value {
-  border-radius: var(--codex-border-radius);
-  background-color: var(--codex-color-primary);
+  background: var(--codex-color-primary);
+  border-radius: 50px;
 }
 
-.uploadFile-progressBar[aria-invalid]::-moz-progress-bar,
+.uploadFile-progressBar[value]::-moz-progress-bar {
+  border-radius: 50px;
+  background: var(--codex-color-primary);
+}
+
+.uploadFile-progressBar[aria-invalid]::-moz-progress-bar {
+  background: rgb(var(--codex-color-error));
+}
+
 .uploadFile-progressBar[aria-invalid]::-webkit-progress-value {
-  background-color: rgb(var(--codex-color-error));
+  background: rgb(var(--codex-color-error));
 }
 
 .uploadFile-filename {
