@@ -15,6 +15,7 @@
 
 .placeholder-subtitle {
   margin-bottom: 0.25rem;
+  max-width: 600px;
 }
 
 .placeholder-button {
