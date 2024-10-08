@@ -1,5 +1,7 @@
 .modal {
-  transition: transform 0.15s;
+  transition:
+    transform 0.25s,
+    opacity 0.25s;
   max-width: 800px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -8,7 +10,7 @@
   max-height: 100%;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%) scale(0);
+  transform: translateX(-50%);
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -17,12 +19,12 @@
   border-radius: var(--codex-border-radius);
 }
 
-.modal--open {
-  transform: translate(-50%, -50%) scale(1);
+.modal--internalOpen {
+  transform: translate(-50%, -50%);
+  opacity: 1;
 }
 
 .modal--open {
-  opacity: 1;
   z-index: 10;
 }
 

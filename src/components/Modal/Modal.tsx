@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Backdrop } from "../Backdrop/Backdrop";
 import { Button } from "../Button/Button";
 import { classnames } from "../utils/classnames";
@@ -67,11 +67,28 @@ export function Modal({
   children,
   onAction,
 }: Props) {
+  const [internalOpen, setInternalOpen] = useState(open);
+
+  useEffect(() => {
+    setInternalOpen(open);
+  }, [open]);
+
+  const internalClose = () => {
+    setInternalOpen(false);
+    setTimeout(onClose, 250);
+  };
+
   return (
     <>
-      <Backdrop open={open} onClose={onClose} />
+      <Backdrop open={internalOpen} onClose={internalClose} />
 
-      <div className={classnames(["modal"], ["modal--open", open])}>
+      <div
+        className={classnames(
+          ["modal"],
+          ["modal--internalOpen", internalOpen],
+          ["modal--open", open]
+        )}
+      >
         <div className="modal-body">{open && children}</div>
 
         <div
@@ -84,7 +101,7 @@ export function Modal({
             <Button
               label={labelCloseButton}
               variant="outline"
-              onClick={onClose}
+              onClick={internalClose}
               disabled={disableCloseButton}
             />
           )}
