@@ -163,6 +163,7 @@ export function Upload({
           </SimpleText>
         </div>
         <input
+          data-testid="upload"
           type="file"
           hidden
           ref={input}
