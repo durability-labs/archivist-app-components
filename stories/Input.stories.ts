@@ -54,10 +54,19 @@ export const Disabled: Story = {
   },
 };
 
-export const CustomStyle: Story = {
+export const AutoInvalid: Story = {
   args: {
-    id: "custom",
-    label: "Label",
-    style: { "--codex-input-border": "1px solid red" },
+    id: "autoinvalid",
+    label: "Auto invalid",
+    pattern: "a",
+    mode: "auto"
+  },
+};
+
+export const IsInvalid: Story = {
+  args: {
+    id: "autoinvalid",
+    label: "Auto invalid",
+    isInvalid: true
   },
 };

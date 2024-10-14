@@ -3,7 +3,8 @@ import {
   ComponentType,
   CSSProperties,
   forwardRef,
-  KeyboardEvent,
+  InputHTMLAttributes,
+  useState,
 } from "react";
 import { attributes } from "../utils/attributes";
 import { classnames } from "../utils/classnames";
@@ -20,48 +21,14 @@ export interface InputCustomStyleCSS extends CSSProperties {
 }
 
 type Props = {
-  label?: string;
-
   id: string;
 
-  /**
-   * OnChange event triggered every time the input value changed.
-   */
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void | Promise<void>;
-
-  onFocus?: () => void | Promise<void>;
-
-  onBlur?: () => unknown | Promise<unknown>;
-
-  onClick?: (() => void) | undefined;
-
-  onMouseEnter?: () => void;
-
-  onMouseLeave?: () => void;
-
-  onKeyUp?: (e: KeyboardEvent<HTMLInputElement>) => void;
-
-  placeholder?: string;
-
-  value?: string;
-
-  /**
-   * Apply custom css variables.
-   * --codex-input-background
-   * --codex-color
-   * --codex-border-radius
-   * --codex-input-border
-   * --codex-color-primary
-   * --codex-input-background-disabled
-   */
-  style?: InputCustomStyleCSS;
+  label?: string;
 
   /**
    * Helper text to add indication about your input.
    */
   helper?: string;
-
-  disabled?: boolean;
 
   /**
    * Add an icon on the left.
@@ -69,25 +36,18 @@ type Props = {
   Icon?: ComponentType;
 
   /**
+   * If the mode is "auto", the component will check the invalid state
+   * on change and add an invalid state if it is invalid.
+   */
+  mode?: "auto";
+
+  isInvalid?: boolean;
+
+  /**
    * Apply a class to the input element
    */
   inputClassName?: string;
-
-  /**
-   * Default is text
-   */
-  type?: string;
-
-  step?: string;
-
-  name?: string;
-
-  min?: number | string;
-
-  max?: number | string;
-
-  maxLength?: number;
-};
+} & InputHTMLAttributes<HTMLInputElement>;
 
 export const Input = forwardRef<HTMLInputElement, Props>(
   (
@@ -95,28 +55,29 @@ export const Input = forwardRef<HTMLInputElement, Props>(
       id,
       label,
       helper,
-      disabled,
-      value,
-      onBlur,
-      onFocus,
-      placeholder,
-      onChange,
-      onMouseEnter,
-      onMouseLeave,
-      onClick,
-      onKeyUp,
       style,
       Icon,
-      step,
-      name,
       inputClassName,
-      maxLength,
-      type = "text",
-      min,
-      max,
+      disabled = false,
+      onChange,
+      mode,
+      isInvalid = false,
+      ...rest
     },
     ref
   ) => {
+    const [invalid, setInvalid] = useState(isInvalid);
+
+    const onInternalChange = (e: ChangeEvent<HTMLInputElement>) => {
+      if (mode === "auto") {
+        setInvalid(e.currentTarget.checkValidity() !== true);
+      }
+
+      onChange?.(e);
+    };
+
+    console.info(rest);
+
     return (
       <>
         {label && (
@@ -133,38 +94,29 @@ export const Input = forwardRef<HTMLInputElement, Props>(
           )}
           <input
             id={id}
-            name={name}
             ref={ref}
-            onClick={onClick}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
             className={classnames(
               ["input"],
+              ["input--invalid", invalid || isInvalid],
               ["input-icon-input", !!Icon],
               [inputClassName || ""]
             )}
+            onChange={onInternalChange}
             style={style}
             {...attributes({
               disabled,
               "aria-disabled": disabled,
             })}
-            value={value}
-            placeholder={placeholder}
-            onBlur={onBlur}
-            onFocus={onFocus}
-            onChange={onChange}
-            onKeyUp={onKeyUp}
-            type={type}
-            step={step}
-            min={min}
-            max={max}
-            maxLength={maxLength}
+            {...rest}
           />
         </div>
 
         {helper && (
           <div>
-            <SimpleText className="input-helper-text" variant="light">
+            <SimpleText
+              className="input-helper-text"
+              variant={invalid || isInvalid ? "error" : "light"}
+            >
               {helper}
             </SimpleText>
           </div>
