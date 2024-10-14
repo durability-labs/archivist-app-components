@@ -31,6 +31,6 @@ export { Tooltip } from "./components/Tooltip/Tooltip";
 export { Collapse } from "./components/Collapse/Collapse";
 export { Placeholder } from "./components/Placeholder/Placeholder";
 export { Sheets } from "./components/Sheets/Sheets";
-export { Tabs } from "./components/Tabs/Tabs";
+export { Tabs, type TabProps } from "./components/Tabs/Tabs";
 export * from "./components/Stepper/useStepperReducer";
 export { Modal } from "./components/Modal/Modal";

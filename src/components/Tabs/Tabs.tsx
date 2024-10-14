@@ -2,11 +2,15 @@ import { ComponentType } from "react";
 import "./tabs.css";
 import { classnames } from "../utils/classnames";
 
+export type TabProps = {
+  label: string;
+  className?: string;
+  Icon?: ComponentType;
+  IconAfter?: ComponentType<{ onClick?: () => void }>;
+};
+
 type Props = {
-  tabs: {
-    label: string;
-    Icon?: ComponentType;
-  }[];
+  tabs: TabProps[];
 
   onTabChange: (index: number) => void | Promise<void>;
 
@@ -24,12 +28,14 @@ export function Tabs({ tabs, onTabChange, tabIndex }: Props) {
           key={tab.label}
           className={classnames(
             ["tabs-tab"],
-            ["tabs-tab--active", tabIndex === index]
+            ["tabs-tab--active", tabIndex === index],
+            [tab.className || ""]
           )}
           onClick={() => onTabChange(index)}
         >
           {tab.Icon && <tab.Icon />}
           <span>{tab.label}</span>
+          {tab.IconAfter && <tab.IconAfter />}
         </div>
       ))}
     </div>
