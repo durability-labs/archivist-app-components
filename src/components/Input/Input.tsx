@@ -76,8 +76,6 @@ export const Input = forwardRef<HTMLInputElement, Props>(
       onChange?.(e);
     };
 
-    console.info(rest);
-
     return (
       <>
         {label && (
