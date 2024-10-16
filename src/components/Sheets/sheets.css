@@ -1,5 +1,5 @@
 .sheets {
-  position: absolute;
+  position: fixed;
   transition: transform 0.25s;
   background-color: var(--codex-background-secondary);
   z-index: 2;
