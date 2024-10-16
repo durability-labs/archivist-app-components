@@ -50,6 +50,31 @@ export const Scroll: Story = {
   },
 };
 
+export const Sort: Story = {
+  args: {
+    className: "tableSmall",
+    rows: [
+      <Row
+        cells={[
+          <Cell>Ox45678FDGHJKLBSA22</Cell>,
+          <Cell>My file</Cell>,
+          <Cell>1</Cell>,
+          <Cell>Some data</Cell>,
+        ]}
+      ></Row>,
+      <Row
+        cells={[
+          <Cell>Ox45678FDGHJKLBSA23</Cell>,
+          <Cell>My file</Cell>,
+          <Cell>2</Cell>,
+          <Cell>Some data</Cell>,
+        ]}
+      ></Row>,
+    ],
+    headers: [["id"], ["title"], ["other", () => {}], ["actions"]],
+  },
+};
+
 export const Empty: Story = {
   args: {
     rows: [],
