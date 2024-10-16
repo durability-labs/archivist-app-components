@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import { Plus } from "lucide-react";
+import { Copy, Download, Plus } from "lucide-react";
 import { ButtonIcon } from "../src/components/ButtonIcon/ButtonIcon";
 
 const meta = {
@@ -39,6 +39,20 @@ export const Disabled: Story = {
   args: {
     Icon: Plus,
     disabled: true,
+  },
+};
+
+export const BuzzAnimation: Story = {
+  args: {
+    Icon: Copy,
+    animation: "buzz"
+  },
+};
+
+export const BounceAnimation: Story = {
+  args: {
+    Icon: Download,
+    animation: "bounce"
   },
 };
 

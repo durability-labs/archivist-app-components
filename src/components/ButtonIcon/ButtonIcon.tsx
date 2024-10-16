@@ -1,4 +1,9 @@
-import { ComponentType, CSSProperties } from "react";
+import {
+  AnimationEventHandler,
+  ComponentType,
+  CSSProperties,
+  useState,
+} from "react";
 import "./buttonIcon.css";
 import { attributes } from "../utils/attributes";
 
@@ -9,7 +14,10 @@ interface CustomStyleCSS extends CSSProperties {
 }
 
 type Props = {
-  Icon: ComponentType;
+  Icon: ComponentType<{
+    className?: string;
+    onAnimationEnd?: AnimationEventHandler | undefined;
+  }>;
 
   variant?: "big" | "small";
 
@@ -33,6 +41,11 @@ type Props = {
    * Apply custom classname.
    */
   className?: string;
+
+  /**
+   * Apply an animation on click
+   */
+  animation?: "buzz" | "bounce";
 };
 
 export function ButtonIcon({
@@ -41,19 +54,30 @@ export function ButtonIcon({
   style,
   onMouseEnter,
   onMouseLeave,
+  className = "",
+  animation,
   disabled = false,
   variant = "big",
 }: Props) {
+  const [animationClassName, setAnimationClassName] = useState("");
+
+  const onInternalClick = () => {
+    setAnimationClassName("buttonIcon--" + animation);
+    onClick?.();
+  };
+
+  const onAnimationEnd = () => setAnimationClassName("");
+
   return (
     <button
-      className={`buttonIcon buttonIcon--${variant}`}
+      className={`buttonIcon buttonIcon--${variant} ${className}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      onClick={onClick}
+      onClick={onInternalClick}
       style={style}
       {...attributes({ disabled: disabled, "aria-disabled": disabled })}
     >
-      <Icon />
+      <Icon className={animationClassName} onAnimationEnd={onAnimationEnd} />
     </button>
   );
 }
