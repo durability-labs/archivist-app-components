@@ -17,7 +17,7 @@ export { WebFileIcon } from "./components/WebFileIcon/WebFileIcon";
 export { Stepper } from "./components/Stepper/Stepper";
 export { Backdrop } from "./components/Backdrop/Backdrop";
 export { Cell, type CellProps } from "./components/Table/Cell";
-export { Table } from "./components/Table/Table";
+export { Table, type TabSortState } from "./components/Table/Table";
 export { Row, type RowProps } from "./components/Table/Row";
 export {
   Menu,

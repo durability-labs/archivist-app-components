@@ -1,10 +1,10 @@
 import "./table.css";
 import { ArrowDownUp, Search } from "lucide-react";
 import { Row, RowProps } from "./Row";
-import { Fragment, ReactElement, useState } from "react";
+import { Fragment, ReactElement, useEffect, useState } from "react";
 import { classnames } from "../utils/classnames";
 
-type State = "asc" | "desc" | "";
+export type TabSortState = "asc" | "desc" | null;
 
 type Props = {
   /**
@@ -13,7 +13,7 @@ type Props = {
    * Or a tuple containing the sort function with the column
    * index in argument
    */
-  headers: string[] | [string, ((state: State) => void)?][];
+  headers: string[] | [string, ((state: TabSortState) => void)?][];
 
   /**
    * Default: -1
@@ -25,16 +25,8 @@ type Props = {
   rows: ReactElement<RowProps, typeof Row>[];
 };
 
-const nextState = (state: "asc" | "desc" | "") => {
-  switch (state) {
-    case "":
-      return "desc";
-    case "asc":
-      return "";
-    case "desc":
-      return "asc";
-  }
-};
+const nextState = (state: "asc" | "desc" | null) =>
+  state === "desc" ? "asc" : "desc";
 
 export function Table({
   headers,
@@ -42,7 +34,14 @@ export function Table({
   defaultSortIndex = -1,
   className = "",
 }: Props) {
-  const [sortSelected, setSortSelected] = useState([defaultSortIndex, "asc"]);
+  const [sortSelected, setSortSelected] = useState<[number, TabSortState]>([
+    defaultSortIndex,
+    "desc",
+  ]);
+
+  useEffect(() => {
+    setSortSelected([defaultSortIndex, "desc"]);
+  }, [defaultSortIndex]);
 
   const onFilterSelected = (col: number) => {
     const [currentCol, currentState] = sortSelected;
@@ -52,10 +51,10 @@ export function Table({
       return;
     }
 
-    const nxt = nextState(currentState as State);
+    const nxt = nextState(currentState);
 
-    if (nxt === "") {
-      setSortSelected([-1, ""]);
+    if (!nxt) {
+      setSortSelected([-1, null]);
     } else {
       setSortSelected([col, nxt]);
     }
@@ -68,8 +67,8 @@ export function Table({
           <tr className="table-theadTr">
             {headers.map((col, index) => {
               const [name, sort] = Array.isArray(col) ? col : [col];
-              const state = index === sortSelected[0] ? sortSelected[1] : "";
-              const nxt = nextState(state as State);
+              const state = index === sortSelected[0] ? sortSelected[1] : null;
+              const nxt = nextState(state);
 
               return (
                 <th
