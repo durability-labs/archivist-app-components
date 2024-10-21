@@ -34,6 +34,8 @@ type Props = {
   center?: boolean;
 
   bold?: boolean;
+
+  onClick?: () => void;
 };
 
 export function SimpleText({
@@ -41,6 +43,7 @@ export function SimpleText({
   className = "",
   center,
   size = "normal",
+  onClick,
   style,
   children,
   bold,
@@ -49,14 +52,14 @@ export function SimpleText({
 
   if (size === "small") {
     return (
-      <small className={c} style={style}>
+      <small onClick={onClick} className={c} style={style}>
         {children}
       </small>
     );
   }
 
   return (
-    <span className={c} style={style}>
+    <span onClick={onClick} className={c} style={style}>
       {children}
     </span>
   );
