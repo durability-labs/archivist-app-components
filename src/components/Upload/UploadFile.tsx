@@ -55,6 +55,17 @@ type Action =
       error: string;
     };
 
+const getFileInfo = function (filename: string) {
+  if (filename.includes(".")) {
+    const parts = filename.split(".");
+    const extension = parts.pop();
+    const name = parts.join(".");
+    return { filename: name, extension };
+  }
+
+  return { filename, extension: "" };
+};
+
 function reducer(state: State, action: Action) {
   switch (action.type) {
     case "progress": {
@@ -243,9 +254,7 @@ export function UploadFile({
     onClose(id);
   };
 
-  const parts = file.name.split(".");
-  const extension = parts.pop();
-  const filename = parts.join(".");
+  const { filename, extension } = getFileInfo(file.name);
   const { cid, error = "", preview, progress, status } = state;
   const onAction = state.status === "progress" ? onCancel : onInternalClose;
   const percent =
@@ -277,7 +286,7 @@ export function UploadFile({
                 })}
               >
                 <span className="uploadFile-filename">{filename}</span>
-                <span>.{extension}</span>
+                {extension && <span>.{extension}</span>}
               </b>
               <div>
                 <small>{PrettyBytes(file.size)}</small>
