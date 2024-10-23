@@ -19,13 +19,6 @@ export { Backdrop } from "./components/Backdrop/Backdrop";
 export { Cell, type CellProps } from "./components/Table/Cell";
 export { Table, type TabSortState } from "./components/Table/Table";
 export { Row, type RowProps } from "./components/Table/Row";
-export {
-  Menu,
-  type MenuItem,
-  type MenuItemComponentProps,
-} from "./components/Menu/Menu";
-export { AppBar } from "./components/AppBar/AppBar";
-export { Page } from "./components/Page/Page";
 export { NetworkIndicator } from "./components/NetworkIndicator/NetworkIndicator";
 export { Tooltip } from "./components/Tooltip/Tooltip";
 export { Collapse } from "./components/Collapse/Collapse";
