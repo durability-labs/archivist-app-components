@@ -32,7 +32,7 @@
     "React"
   ],
   "dependencies": {
-    "lucide-react": "^0.441.0"
+    "lucide-react": "^0.453.0"
   },
   "peerDependencies": {
     "@codex-storage/sdk-js": ">=0.0.7",
