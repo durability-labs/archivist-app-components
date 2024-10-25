@@ -47,6 +47,8 @@ type Props = {
    * Apply a class to the input element
    */
   inputClassName?: string;
+
+  inputContainerClassName?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export const Input = forwardRef<HTMLInputElement, Props>(
@@ -58,6 +60,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
       style,
       Icon,
       inputClassName,
+      inputContainerClassName = "",
       disabled = false,
       onChange,
       mode,
@@ -84,7 +87,12 @@ export const Input = forwardRef<HTMLInputElement, Props>(
           </label>
         )}
 
-        <div className={classnames(["input-icon", !!Icon])}>
+        <div
+          className={classnames(
+            ["input-icon", !!Icon],
+            [inputContainerClassName]
+          )}
+        >
           {Icon && (
             <div className="input-iconElement">
               <Icon />

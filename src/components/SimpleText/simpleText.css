@@ -7,7 +7,7 @@
 }
 
 .text--light {
-  color: var(--codex-color-light);
+  color: var(--codex-input-label-color);
 }
 
 .text--center {

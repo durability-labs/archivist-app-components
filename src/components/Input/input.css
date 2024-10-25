@@ -1,29 +1,32 @@
 .input {
-  background-color: var(
-    --codex-input-background,
-    var(--codex-background-secondary)
-  );
-  color: var(--codex-color);
+  background-color: var(--codex-input-background);
+  color: white;
   border-radius: var(--codex-border-radius);
-  border: var(--codex-input-border, 1px solid var(--codex-border-color));
-  padding: 0.75rem 1rem;
+  border: 1px solid var(--codex-input-border-color);
+  padding: 16px;
   outline: none;
   display: inline-block;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+  font-weight: 500;
+  font-size: 20px;
+  height: 64px;
 }
 
 .input--invalid {
-  color: rgb(var(--codex-color-error));
-  border-color: rgb(var(--codex-color-error));
+  color: var(--codex-input-color-error);
+  border-color: var(--codex-input-color-error);
 }
 
 .input-label {
-  margin-bottom: 0.5rem;
-  font-weight: 500;
+  margin-bottom: 0.75rem;
   display: block;
-  color: var(--codex-color);
+  font-family: var(--codex-input-font-family, var(--codex-font-family));
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.006em;
+  text-align: left;
+  color: var(--codex-input-label-color);
 }
 
 .input:not(.input[disabled]):active,
@@ -48,10 +51,7 @@
 }
 
 .input[disabled] {
-  background-color: var(
-    --codex-input-background-disabled,
-    var(--codex-background-light)
-  );
+  background-color: var(--codex-input-background-disabled);
   cursor: not-allowed;
 }
 
@@ -98,8 +98,8 @@
   font-size: 0.9rem;
 }
 
-@media (min-width: 801px) {
+/* @media (min-width: 801px) {
   .input {
     min-width: 20rem;
   }
-}
+} */
