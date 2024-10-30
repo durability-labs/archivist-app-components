@@ -60,8 +60,5 @@ export const CustomStyle: Story = {
   args: {
     Icon: Plus,
     variant: "big",
-    style: {
-      "--codex-button-icon-background": "red",
-    },
   },
 };

@@ -85,9 +85,6 @@ export const CustomStyle: Story = {
   args: {
     label: "Button",
     variant: "primary",
-    style: {
-      "--codex-color-primary": "red",
-      "--codex-button-color-box-shadow": "#f85723",
-    },
+
   },
 };

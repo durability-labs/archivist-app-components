@@ -82,7 +82,6 @@ export const CustomStyle: Story = {
   args: {
     placeholder: "Select your file",
     options: [],
-    style: { "--codex-input-border": "1px solid red" },
     value: "",
     id: "dropdown",
     label: "Dropdown",

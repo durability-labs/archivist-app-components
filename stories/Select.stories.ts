@@ -30,17 +30,7 @@ export const Default: Story = {
       ["value 1", "Text 1"],
       ["value 2", "Text 2"],
     ],
+    value: "value 1"
   },
 };
 
-export const CustomStyle: Story = {
-  args: {
-    id: "select",
-    label: "Select",
-    options: [
-      ["value 1", "Text 1"],
-      ["value 2", "Text 2"],
-    ],
-    style: { "--codex-select-border": "1px solid red" },
-  },
-};

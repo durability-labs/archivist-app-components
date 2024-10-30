@@ -26,6 +26,5 @@ export const CustomStyle: Story = {
   args: {
     title: "Hello",
     children: React.createElement("div", {}, "Hello World !"),
-    style: { "--codex-border-radius": "0px" },
   },
 };
