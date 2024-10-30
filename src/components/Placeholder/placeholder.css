@@ -1,24 +1,25 @@
 .placeholder {
   text-align: center;
   margin: auto;
-}
 
-.placeholder-icon {
-  display: block;
-  margin: auto auto 0.75rem;
-}
+  > div:first-child {
+    display: block;
+    margin: auto auto 0.75rem;
+  }
 
-.placeholder-title {
-  margin-bottom: 0.25rem;
-  display: inline-block;
-}
+  b {
+    margin-bottom: 0.25rem;
+    display: inline-block;
+  }
 
-.placeholder-subtitle {
-  margin-bottom: 0.25rem;
-  max-width: 600px;
-  margin: auto;
-}
+  p {
+    margin-bottom: 0.25rem;
+    max-width: 600px;
+    margin: auto;
+    color: var(--codex-input-label-color);
+  }
 
-.placeholder-button {
-  margin: 0.75rem auto 0;
+  .button {
+    margin: 0.75rem auto 0;
+  }
 }

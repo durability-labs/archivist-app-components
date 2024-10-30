@@ -53,6 +53,8 @@ type Props = {
   disableActionButton?: boolean;
 
   children: ReactNode;
+
+  className?: string;
 };
 
 export function Modal({
@@ -60,6 +62,7 @@ export function Modal({
   onClose,
   disableActionButton,
   disableCloseButton,
+  className = "",
   displayCloseButton = true,
   displayActionButton = false,
   labelActionButton = "Action",
@@ -79,24 +82,21 @@ export function Modal({
   };
 
   return (
-    <>
+    <div
+      className={classnames(
+        ["modal"],
+        ["modal--internalOpen", internalOpen],
+        ["modal--open", open],
+        ["modal--actions", !!onAction],
+        [className]
+      )}
+    >
       <Backdrop open={internalOpen} onClose={internalClose} />
 
-      <div
-        className={classnames(
-          ["modal"],
-          ["modal--internalOpen", internalOpen],
-          ["modal--open", open]
-        )}
-      >
-        <div className="modal-body">{open && children}</div>
+      <dialog>
+        <main>{open && children}</main>
 
-        <div
-          className={classnames(
-            ["modal-buttons--between", !!onAction],
-            ["modal-buttons--center", !onAction]
-          )}
-        >
+        <footer>
           {displayCloseButton && (
             <Button
               label={labelCloseButton}
@@ -113,8 +113,8 @@ export function Modal({
               disabled={disableActionButton}
             />
           )}
-        </div>
-      </div>
-    </>
+        </footer>
+      </dialog>
+    </div>
   );
 }

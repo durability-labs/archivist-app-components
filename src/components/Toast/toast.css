@@ -18,33 +18,33 @@
   border: 1px solid rgb(var(--codex-toast-color));
   background: rgba(var(--codex-toast-color), 1);
   z-index: 20;
-}
 
-.toast-close {
-  margin-left: 0.75rem;
-}
+  &[aria-hidden] {
+    transform: translateX(1000px);
+  }
 
-.toast[aria-hidden] {
-  transform: translateX(1000px);
-}
+  &.toast--success {
+    --codex-toast-color: var(--codex-color-success);
+  }
 
-.toast-title {
-  text-transform: capitalize;
-}
+  &.toast--error {
+    --codex-toast-color: var(--codex-color-error);
+  }
 
-.toast-icon {
-  fill: rgba(var(--codex-toast-color), 0.2);
-  stroke: white;
-}
+  &.toast--default {
+    --codex-toast-color: var(--codex-color-grey);
+  }
 
-.toast--success {
-  --codex-toast-color: var(--codex-color-success);
-}
+  .button {
+    margin-left: 0.75rem;
+  }
 
-.toast--error {
-  --codex-toast-color: var(--codex-color-error);
-}
+  b {
+    text-transform: capitalize;
+  }
 
-.toast--default {
-  --codex-toast-color: var(--codex-color-grey);
+  svg {
+    fill: rgba(var(--codex-toast-color), 0.2);
+    stroke: white;
+  }
 }

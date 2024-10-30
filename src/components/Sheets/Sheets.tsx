@@ -16,17 +16,10 @@ export function Sheets({ open, onClose, children }: Props) {
   const attr = attributes({ "aria-expanded": open });
 
   return (
-    <div
-      className={classnames(
-        ["sheets-container"],
-        ["sheets-container--open", open]
-      )}
-    >
-      <Backdrop onClose={onClose} open={open} className={"sheets-backdrop"} />
+    <div className={classnames(["sheets"], ["sheets--open", open])}>
+      <Backdrop onClose={onClose} open={open} />
 
-      <div className="sheets" {...attr}>
-        {children}
-      </div>
+      <aside {...attr}>{children}</aside>
     </div>
   );
 }

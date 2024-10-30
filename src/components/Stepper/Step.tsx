@@ -2,6 +2,7 @@ import { Check } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { attributes } from "../utils/attributes";
 import { classnames } from "../utils/classnames";
+import "./Step.css";
 
 type StepProps = {
   /**
@@ -52,36 +53,22 @@ export function Step({
   return (
     <div
       className={classnames(
-        ["stepper-step", true],
-        ["stepper-step-active", isActive]
+        ["step", true],
+        ["step--active", isActive],
+        ["step--done", isDone],
+        ["step--,mounted", mounted.current]
       )}
       onClick={() => onClick?.(step)}
       {...attributes({ disabled: !onClick })}
     >
-      <div className="stepper-step-info">
-        <div
-          className={classnames(
-            ["stepper-number", true],
-            ["stepper-number-active", isActive],
-            ["stepper-number-done", isDone]
-          )}
-        >
-          <span className="stepper-numberValue">
-            {isDone ? <Check size={"1.25rem"} /> : step + 1}
-          </span>
-        </div>
+      <div>
+        <span>{isDone ? <Check size={"1.25rem"} /> : step + 1}</span>
       </div>
 
       {!isLast && (
-        <div className="stepper-step-between">
-          <div
-            className={classnames(
-              ["stepper-separator", true],
-              ["stepper-separator-done", isDone],
-              ["stepper-separator-mounted", mounted.current]
-            )}
-          ></div>
-          <span className={"stepper-text"}>{title}</span>
+        <div>
+          <hr />
+          <span>{title}</span>
         </div>
       )}
     </div>

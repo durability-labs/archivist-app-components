@@ -65,7 +65,12 @@ const ActionTemplate = (props: Props) => {
   return (
     <div style={{ padding: "6rem" }}>
       <button onClick={onOpen}>Make Modal</button>
-      <Modal onClose={onClose} open={open} onAction={onAction}>
+      <Modal
+        onClose={onClose}
+        open={open}
+        onAction={onAction}
+        displayActionButton={true}
+      >
         <p>Hello world</p>
       </Modal>
     </div>

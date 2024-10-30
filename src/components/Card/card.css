@@ -3,15 +3,15 @@
   border: 1px solid var(--codex-border-color);
   font-family: var(--codex-font-family);
   background-color: var(--codex-background-secondary);
-}
 
-.card-header {
-  border-bottom: 1px solid var(--codex-border-color);
-  padding: 1rem 1.5rem;
-  font-size: 1.15rem;
-  font-weight: bold;
-}
+  header {
+    border-bottom: 1px solid var(--codex-border-color);
+    padding: 1rem 1.5rem;
+    font-size: 1.15rem;
+    font-weight: bold;
+  }
 
-.card-body {
-  padding: 1.5rem;
+  div {
+    padding: 1.5rem;
+  }
 }

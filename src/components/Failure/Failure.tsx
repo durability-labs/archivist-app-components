@@ -1,12 +1,5 @@
 import "./failure.css";
 import { Button } from "../Button/Button";
-import { CSSProperties } from "react";
-
-interface CustomStyleCSS extends CSSProperties {
-  "--codex-code-font-size"?: string;
-  "--codex-text-contrast"?: string;
-  "--codex-font-family"?: string;
-}
 
 type Props = {
   /**
@@ -29,14 +22,6 @@ type Props = {
    * The button label
    */
   button?: string;
-
-  /**
-   * Apply custom css variables.
-   * --codex-code-font-size
-   * --codex-text-contrast
-   * --codex-font-family
-   */
-  style?: CustomStyleCSS;
 };
 
 export function Failure({
@@ -48,9 +33,9 @@ export function Failure({
 }: Props) {
   return (
     <div className="failure">
-      <h1 className="failure-code">{code}</h1>
-      <h2 className="failure-title">{title}</h2>
-      <div className="failure-message">{message}</div>
+      <h1>{code}</h1>
+      <h2>{title}</h2>
+      <div>{message}</div>
       {onClick && <Button label={button} onClick={onClick} />}
     </div>
   );

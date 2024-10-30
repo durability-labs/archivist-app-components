@@ -1,6 +1,7 @@
 import { ComponentType } from "react";
 import "./tabs.css";
 import { classnames } from "../utils/classnames";
+import { attributes } from "../utils/attributes";
 
 export type TabProps = {
   label: string;
@@ -26,11 +27,8 @@ export function Tabs({ tabs, onTabChange, tabIndex }: Props) {
       {tabs.map((tab, index) => (
         <div
           key={tab.label}
-          className={classnames(
-            ["tabs-tab"],
-            ["tabs-tab--active", tabIndex === index],
-            [tab.className || ""]
-          )}
+          {...attributes({ "aria-selected": tabIndex === index })}
+          className={classnames([tab.className || ""])}
           onClick={() => onTabChange(index)}
         >
           {tab.Icon && <tab.Icon />}

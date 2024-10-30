@@ -1,15 +1,8 @@
-import { CSSProperties, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { attributes } from "../utils/attributes";
 import "./toast.css";
 import { CircleCheck, CircleX, Info, X } from "lucide-react";
 import { ButtonIcon } from "../ButtonIcon/ButtonIcon";
-
-interface CustomStyleCSS extends CSSProperties {
-  "--codex-toast-background"?: string;
-  "--codex-toast-border-color"?: string;
-  "--codex-border-radius"?: string;
-  "--codex-toast-color"?: string;
-}
 
 type Props = {
   message: string;
@@ -30,22 +23,12 @@ type Props = {
 
   className?: string;
 
-  /**
-   * Apply custom css variables.
-   * codex-toast-background
-   * codex-toast-border-color
-   * codex-border-radius
-   * codex-toast-color
-   */
-  style?: CustomStyleCSS;
-
   variant: "success" | "error" | "default";
 };
 
 export function Toast({
   message,
   time,
-  style,
   variant,
   className = "",
   duration = 3000,
@@ -84,12 +67,11 @@ export function Toast({
     <div
       className={`toast ${className} toast--${variant}`}
       {...attributes({ "aria-hidden": time == 0 || msg === "" })}
-      style={style}
     >
-      <Icon size="1.25rem" className="toast-icon" />
+      <Icon size="1.25rem" />
 
       <span>
-        <b className="toast-title">{variant} ! </b>
+        <b>{variant} ! </b>
         <span>{msg}</span>
       </span>
 

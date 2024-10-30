@@ -1,19 +1,6 @@
-import { ComponentType, CSSProperties } from "react";
+import { ComponentType } from "react";
 import "./button.css";
 import { attributes } from "../utils/attributes";
-
-interface CustomStyleCSS extends CSSProperties {
-  "--codex-color-primary"?: string;
-  "--codex-border-radius"?: string;
-  "--codex-border-color"?: string;
-  "--codex-font-family"?: string;
-  "--codex-color-on-primary"?: string;
-  "--codex-color-disabled"?: string;
-  "--codex-color-outline"?: string;
-  "--codex-button-loader"?: string;
-  "--codex-button-background-busy"?: string;
-  "--codex-button-color-box-shadow"?: string;
-}
 
 type Props = {
   /**
@@ -50,21 +37,6 @@ type Props = {
    * Apply custom classname.
    */
   className?: string;
-
-  /**
-   * Apply custom css variables.
-   * --codex-color-primary
-   * --codex-border-radius
-   * --codex-border-color
-   * --codex-font-family
-   * --codex-color-on-primary: The colors when the button is primary
-   * --codex-color-disabled: The disabled background color
-   * --codex-color-outline: The color when the button is outline
-   * --codex-button-loader: The url svg image for the spinner
-   * --codex-button-background-busy: The background color image when the button is busy
-   * --codex-button-color-box-shadow: The shadow color on focus
-   */
-  style?: CustomStyleCSS;
 };
 
 export function Button({
@@ -75,7 +47,6 @@ export function Button({
   onMouseLeave,
   fetching = false,
   disabled = false,
-  style,
   variant = "primary",
   onClick,
 }: Props) {
@@ -84,7 +55,6 @@ export function Button({
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      style={style}
       className={`button ${className} button--${variant}`}
       {...attributes({
         disabled: disabled || fetching,
@@ -93,11 +63,11 @@ export function Button({
       })}
     >
       {Icon && (
-        <div className="button-icon">
+        <div>
           <Icon />
         </div>
       )}
-      <span className="button-label">{label}</span>
+      <span>{label}</span>
     </button>
   );
 }

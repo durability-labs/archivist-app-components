@@ -1,17 +1,10 @@
 import { Button } from "../Button/Button";
 import "./stepper.css";
-import { CSSProperties, Dispatch, ReactNode } from "react";
+import { Dispatch, ReactNode } from "react";
 import { Spinner } from "../Spinner/Spinner";
 import { Step } from "./Step";
 import { StepperAction, StepperState } from "./useStepperReducer";
-
-interface CustomStyleCSS extends CSSProperties {
-  "--codex-background"?: string;
-  "--codex-border-radius"?: string;
-  "--codex-stepper-background": string;
-  "--codex-color-primary": string;
-  "--codex-border-color": string;
-}
+import { classnames } from "../utils/classnames";
 
 type Props = {
   /**
@@ -23,8 +16,6 @@ type Props = {
    * The current component to show.
    */
   children: ReactNode;
-
-  style?: CustomStyleCSS;
 
   /**
    * The duration between steps
@@ -69,7 +60,6 @@ export function Stepper({
   titles,
   children,
   state,
-  style,
   dispatch,
   className = "",
   backLabel = "Back",
@@ -95,8 +85,13 @@ export function Stepper({
   };
 
   return (
-    <div className={"stepper " + className} style={style}>
-      <div className="stepper-steps">
+    <div
+      className={classnames(
+        ["stepper " + className],
+        ["stepper--progress", state.progress]
+      )}
+    >
+      <header>
         {titles.map((title, index) => (
           <Step
             title={title}
@@ -108,19 +103,13 @@ export function Stepper({
             onClick={state.step > index ? () => onChangeStep(index) : undefined}
           />
         ))}
-      </div>
+      </header>
 
-      <div className="stepper-body">
-        {state.progress ? (
-          <div className="stepper-progress">
-            <Spinner width={"3rem"} />
-          </div>
-        ) : (
-          <>{children}</>
-        )}
-      </div>
+      <main>
+        {state.progress ? <Spinner width={"3rem"} /> : <>{children}</>}
+      </main>
 
-      <div className="stepper-buttons">
+      <footer>
         <Button
           label={backLabel}
           variant="outline"
@@ -132,7 +121,7 @@ export function Stepper({
           onClick={() => onChangeStep(state.step + 1)}
           disabled={!state.isNextEnable}
         />
-      </div>
+      </footer>
     </div>
   );
 }

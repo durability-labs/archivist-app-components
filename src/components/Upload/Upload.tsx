@@ -1,5 +1,5 @@
 import { FileStack, Upload as UploadIcon } from "lucide-react";
-import { ChangeEvent, CSSProperties, DragEventHandler, useRef } from "react";
+import { ChangeEvent, DragEventHandler, useRef } from "react";
 import { attributes } from "../utils/attributes.ts";
 import "./upload.css";
 import { UploadFile } from "./UploadFile.tsx";
@@ -7,17 +7,6 @@ import { useUploadStategy } from "./useUploadStrategy.ts";
 import { classnames } from "../utils/classnames.ts";
 import { ButtonIcon } from "../ButtonIcon/ButtonIcon.tsx";
 import { CodexData } from "@codex-storage/sdk-js";
-import { SimpleText } from "../SimpleText/SimpleText.tsx";
-
-interface CustomStyleCSS extends CSSProperties {
-  "--codex-border-color"?: string;
-  "--codex-border-radius"?: string;
-  "--codex-upload-background"?: string;
-  "--codex-color-primary"?: string;
-  "--codex-color"?: string;
-  "--codex-color-error"?: string;
-  "--codex-color-warning"?: string;
-}
 
 type Props = {
   /**
@@ -67,18 +56,6 @@ type Props = {
    * Default is !!window.Worker.
    */
   // useWorker?: boolean;
-
-  /**
-   * Apply custom css variables.
-   * --codex-border-color
-   * --codex-border-radius
-   * --codex-upload-background
-   * --codex-color-primary
-   * --codex-color
-   * --codex-color-error
-   * --codex-color-warning
-   */
-  style?: CustomStyleCSS;
 
   /**
    * Success message displayed when a file is updated.
@@ -151,17 +128,16 @@ export function Upload({
         onMouseLeave={onMouseLeave}
       >
         <ButtonIcon Icon={multiple ? FileStack : UploadIcon}></ButtonIcon>
-        <div className="upload-text">
-          <div>
-            <b>
-              Drop your {multiple ? "file(s)" : "file"} here or{" "}
-              <span className="text--primary">browse</span>
-            </b>
-          </div>
-          <SimpleText size="small" variant="light" center>
-            {multiple ? "Up to 10 files" : "Choose one single file"}
-          </SimpleText>
-        </div>
+
+        <p>
+          <b>
+            Drop your {multiple ? "file(s)" : "file"} here or{" "}
+            <span>browse</span>
+          </b>
+        </p>
+
+        <small> {multiple ? "Up to 10 files" : "Choose one single file"}</small>
+
         <input
           data-testid="upload"
           type="file"
@@ -171,7 +147,7 @@ export function Upload({
           {...attributes({ multiple: multiple })}
         />
 
-        {warning && <SimpleText variant="warning">{warning}</SimpleText>}
+        {warning && <span>{warning}</span>}
       </div>
 
       {files.map(({ id, file }) => (

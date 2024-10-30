@@ -7,7 +7,7 @@ import { Spinner } from "../Spinner/Spinner";
 import { CodexData } from "@codex-storage/sdk-js";
 import { WebFileIcon } from "../WebFileIcon/WebFileIcon";
 import { ButtonIcon } from "../ButtonIcon/ButtonIcon";
-import { SimpleText } from "../SimpleText/SimpleText";
+import "./UploadFile.css";
 
 type UploadFileProps = {
   file: File;
@@ -263,37 +263,32 @@ export function UploadFile({
   const ActionIcon = () => <UploadActionIcon status={status} />;
 
   return (
-    <>
-      <div className={"uploadFile"}>
-        <div className="uploadFile-info">
-          <div className="uploadFile-infoLeft">
+    <div
+      className="upload-file"
+      {...attributes({
+        "aria-invalid": status === "error",
+        "data-done": status === "done",
+      })}
+    >
+      <div>
+        <header>
+          <div>
             {preview ? (
-              <img
-                src={preview}
-                width="24"
-                alt="Preview"
-                className="uploadFile-preview"
-              />
+              <img src={preview} width="24" alt="Preview" />
             ) : (
               <WebFileIcon type={file.type} />
             )}
-            <div className="uploadFile-infoText">
-              <b
-                className="uploadFile-name"
-                {...attributes({
-                  "aria-invalid": status === "error",
-                  "data-done": status === "done",
-                })}
-              >
-                <span className="uploadFile-filename">{filename}</span>
+            <p>
+              <b>
+                <span>{filename}</span>
                 {extension && <span>.{extension}</span>}
               </b>
               <div>
                 <small>{PrettyBytes(file.size)}</small>
               </div>
-            </div>
+            </p>
           </div>
-          <div className="uploadFile-infoRight">
+          <div>
             <UploadStatusIcon status={status} />
 
             <ButtonIcon
@@ -302,33 +297,27 @@ export function UploadFile({
               Icon={ActionIcon}
             ></ButtonIcon>
           </div>
-        </div>
+        </header>
 
-        <div className="uploadFile-progress">
+        <main>
           <progress
-            className="uploadFile-progressBar"
             {...attributes({
               max: file ? progress.total.toString() : false,
               value: file ? progress.loaded.toString() : false,
-              "aria-invalid": status === "error",
             })}
           />
-          <span className="uploadFile-progressBarPercent">
-            {percent.toFixed(2)} %
-          </span>
-        </div>
+          <span>{percent.toFixed(2)} %</span>
+        </main>
 
-        <div className="uploadFile-message">
+        <footer>
           {cid ? (
-            <div className="text--primary">{successMessage}</div>
+            <span>{successMessage}</span>
           ) : (
-            <SimpleText variant="error">
-              {error ? error : <>&nbsp;</>}
-            </SimpleText>
+            <span> {error ? error : <>&nbsp;</>}</span>
           )}
-        </div>
+        </footer>
       </div>
-    </>
+    </div>
   );
 }
 

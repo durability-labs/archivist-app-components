@@ -1,8 +1,8 @@
 import "./table.css";
 import { ArrowDownUp, Search } from "lucide-react";
-import { Row, RowProps } from "./Row";
-import { Fragment, ReactElement, useEffect, useState } from "react";
+import { Fragment, ReactElement, ReactNode, useEffect, useState } from "react";
 import { classnames } from "../utils/classnames";
+import { attributes } from "../utils/attributes";
 
 export type TabSortState = "asc" | "desc" | null;
 
@@ -61,10 +61,16 @@ export function Table({
   };
 
   return (
-    <div className={`table-container ${className}`}>
-      <table className={"table"}>
-        <thead className="table-thead">
-          <tr className="table-theadTr">
+    <div
+      className={classnames(
+        ["table"],
+        [className],
+        ["table--empty", !!rows.length]
+      )}
+    >
+      <table>
+        <thead>
+          <tr>
             {headers.map((col, index) => {
               const [name, sort] = Array.isArray(col) ? col : [col];
               const state = index === sortSelected[0] ? sortSelected[1] : null;
@@ -72,9 +78,14 @@ export function Table({
 
               return (
                 <th
-                  className={classnames(
-                    ["table-theadTh"],
-                    ["table-theadTh--clickable", !!sort]
+                  {...attributes(
+                    sort
+                      ? {
+                          role: "button",
+                          "aria-sort":
+                            state === "asc" ? "ascending" : "descending",
+                        }
+                      : {}
                   )}
                   key={name}
                   onClick={() => {
@@ -82,14 +93,9 @@ export function Table({
                     sort?.(nxt);
                   }}
                 >
-                  <div className="table-theadTh-content">
+                  <div>
                     <span>{name}</span>
-                    {sort && (
-                      <ArrowDownUp
-                        className={"table-theadTh-icon--" + state}
-                        size={"1rem"}
-                      ></ArrowDownUp>
-                    )}
+                    {sort && <ArrowDownUp size={"1rem"}></ArrowDownUp>}
                   </div>
                 </th>
               );
@@ -104,11 +110,39 @@ export function Table({
       </table>
 
       {!rows.length && (
-        <div className="table-placeholder">
+        <div>
           <Search />
-          <p className="table-placeholderText">No data.</p>
+          <p>No data.</p>
         </div>
       )}
     </div>
+  );
+}
+
+export type CellProps = {
+  children: ReactNode | string;
+} & React.DetailedHTMLProps<
+  React.TdHTMLAttributes<HTMLTableCellElement>,
+  HTMLTableCellElement
+>;
+
+export const Cell = ({ children, className = "", ...rest }: CellProps) => (
+  <td className={className} {...rest}>
+    {children}
+  </td>
+);
+
+export type RowProps = {
+  cells: ReactElement<CellProps, typeof Cell>[];
+  className?: string;
+};
+
+export function Row({ cells, className = "" }: RowProps) {
+  return (
+    <tr className={className}>
+      {cells.map((Cell, index) => (
+        <Fragment key={index}>{Cell}</Fragment>
+      ))}
+    </tr>
   );
 }

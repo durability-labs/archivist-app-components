@@ -20,14 +20,17 @@ export const Default: Story = {
       {
         title: "Space allocated",
         size: 10000000,
+        color: "red"
       },
       {
         title: "New space allocation",
         size: 10000000 * 0.2,
+        color: "yellow"
       },
       {
         title: "Remaining space",
         size: 10000000 * 0.2,
+        color: "green"
       },
     ],
   },

@@ -1,17 +1,6 @@
-import {
-  AnimationEventHandler,
-  ComponentType,
-  CSSProperties,
-  useState,
-} from "react";
+import { AnimationEventHandler, ComponentType, useState } from "react";
 import "./buttonIcon.css";
 import { attributes } from "../utils/attributes";
-
-interface CustomStyleCSS extends CSSProperties {
-  "--codex-button-icon-background"?: string;
-  "--codex-border-color"?: string;
-  "--codex-color-disabled"?: string;
-}
 
 type Props = {
   Icon: ComponentType<{
@@ -30,14 +19,6 @@ type Props = {
   disabled?: boolean;
 
   /**
-   * Apply custom css variables.
-   * --codex-button-icon-background
-   * --codex-border-color
-   * --codex-color-disabled
-   */
-  style?: CustomStyleCSS;
-
-  /**
    * Apply custom classname.
    */
   className?: string;
@@ -51,7 +32,6 @@ type Props = {
 export function ButtonIcon({
   Icon,
   onClick,
-  style,
   onMouseEnter,
   onMouseLeave,
   className = "",
@@ -74,7 +54,6 @@ export function ButtonIcon({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={onInternalClick}
-      style={style}
       {...attributes({ disabled: disabled, "aria-disabled": disabled })}
     >
       <Icon className={animationClassName} onAnimationEnd={onAnimationEnd} />

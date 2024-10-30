@@ -1,28 +1,28 @@
-.failure-code {
-  font-size: var(--codex-code-font-size, 6rem);
-  line-height: 1;
-  color: var(--codex-text-contrast);
-  font-family: var(--codex-font-family);
-  margin: 0;
-}
-
 .failure {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   flex: 1;
-}
 
-.failure-title {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-  font-weight: 600;
-  margin: 0.75rem 0;
-  color: var(--codex-text-contrast);
-}
+  h1 {
+    font-size: var(--codex-code-font-size, 6rem);
+    line-height: 1;
+    color: var(--codex-text-contrast);
+    font-family: var(--codex-font-family);
+    margin: 0;
+  }
 
-.failure-message {
-  margin-bottom: 0.75rem;
-  mix-blend-mode: difference;
+  h2 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 600;
+    margin: 0.75rem 0;
+    color: var(--codex-text-contrast);
+  }
+
+  div {
+    margin-bottom: 0.75rem;
+    mix-blend-mode: difference;
+  }
 }

@@ -9,34 +9,34 @@
   word-break: break-word;
   display: flex;
   gap: 1rem;
-}
 
-.alert-icon {
-  display: flex;
-  width: 1rem;
-  color: rgb(var(--codex-alert-color));
-}
+  b {
+    text-transform: capitalize;
+    margin-bottom: 0.25rem;
+    display: inline-block;
+  }
 
-.alert-circleIcon {
-  background: rgba(var(--codex-alert-color), 0.2);
-  border-radius: 75px;
-  height: 1.75rem;
-  min-width: 1.75rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  span {
+    background: rgba(var(--codex-alert-color), 0.2);
+    border-radius: 75px;
+    height: 1.75rem;
+    min-width: 1.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-.alert-title {
-  text-transform: capitalize;
-  margin-bottom: 0.25rem;
-  display: inline-block;
-}
+    span {
+      display: flex;
+      width: 1rem;
+      color: rgb(var(--codex-alert-color));
+    }
+  }
 
-.alert--success {
-  --codex-alert-color: var(--codex-color-success);
-}
+  &.alert--success {
+    --codex-alert-color: var(--codex-color-success);
+  }
 
-.alert--warning {
-  --codex-alert-color: var(--codex-color-warning);
+  &.alert--warning {
+    --codex-alert-color: var(--codex-color-warning);
+  }
 }

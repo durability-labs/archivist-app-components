@@ -1,70 +1,131 @@
 .table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.table-placeholder {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2rem;
-}
-
-.table-placeholderText {
-  margin-top: 0.5rem;
-  margin-bottom: 0;
-}
-
-.table-container {
-  border: 1px solid var(--codex-border-color);
-  background-color: var(--codex-background-secondary);
   padding: 2rem;
   border-radius: var(--codex-border-radius);
   overflow-x: auto;
   overflow-y: hidden;
-}
 
-.table-theadTr {
-  border-bottom: 1px solid var(--codex-border-color);
-}
+  table {
+    border-spacing: 0 12px;
+    width: 100%;
 
-.table-theadTh {
-  color: var(--codex-color-light);
-  font-weight: normal;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  text-align: left;
-  padding: 1rem;
-}
+    thead {
+      tr {
+        border-bottom: 1px solid var(--codex-border-color);
+        border-radius: 8px;
 
-.table-theadTh--clickable {
-  cursor: pointer;
-}
+        th {
+          color: var(--codex-color-light);
+          font-weight: normal;
+          text-transform: uppercase;
+          font-size: 0.9rem;
+          text-align: left;
+          height: 36px;
+          padding: 0 16px;
+          box-sizing: border-box;
+          background-color: #232323;
 
-.table-theadTh-content {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
+          &[role="button"] {
+            cursor: pointer;
+          }
 
-.table-theadTh-content svg {
-  position: relative;
-  top: -2px;
-  cursor: pointer;
-}
+          div {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+          }
 
-.table-theadTh-content svg path {
-  opacity: 0.5;
-  transition: opacity 0.35s;
-}
+          svg {
+            position: relative;
+            top: -2px;
+            cursor: pointer;
+          }
 
-.table-theadTh-icon--desc path:nth-child(1),
-.table-theadTh-icon--desc path:nth-child(2) {
-  opacity: 1;
-}
+          svg path {
+            opacity: 0.5;
+            transition: opacity 0.35s;
+          }
 
-.table-theadTh-icon--asc path:nth-child(3),
-.table-theadTh-icon--asc path:nth-child(4) {
-  opacity: 1;
+          th[aria-sort="descending"] path:nth-child(1),
+          th[aria-sort="descending"] path:nth-child(2) {
+            opacity: 1;
+          }
+
+          th[aria-sort="ascending"] path:nth-child(3),
+          th[aria-sort="ascending"] path:nth-child(4) {
+            opacity: 1;
+          }
+
+          &:first-child {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+          }
+
+          &:last-child {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+          }
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid var(--codex-border-color);
+        transition: background-color 0.35s;
+        border-radius: 8px;
+        position: relative;
+
+        &:hover {
+          background-color: var(--codex-background-light);
+        }
+
+        td {
+          text-align: left;
+          height: 64px;
+          box-sizing: border-box;
+          background-color: #232323;
+          padding: 0 16px;
+          font-family: Inter;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+          letter-spacing: -0.006em;
+
+          &:first-child {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+          }
+
+          &:last-child {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+          }
+        }
+
+        &::after {
+          content: " ";
+          width: 100%;
+          height: 1px;
+          display: inline-block;
+          background: #96969633;
+          position: absolute;
+          bottom: -7px;
+          left: 0;
+        }
+      }
+    }
+  }
+
+  > div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+
+    p {
+      margin-top: 0.5rem;
+      margin-bottom: 0;
+    }
+  }
 }

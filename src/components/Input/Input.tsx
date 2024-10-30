@@ -1,7 +1,6 @@
 import {
   ChangeEvent,
   ComponentType,
-  CSSProperties,
   forwardRef,
   InputHTMLAttributes,
   useState,
@@ -9,16 +8,6 @@ import {
 import { attributes } from "../utils/attributes";
 import { classnames } from "../utils/classnames";
 import "./input.css";
-import { SimpleText } from "../SimpleText/SimpleText";
-
-export interface InputCustomStyleCSS extends CSSProperties {
-  "--codex-input-background"?: string;
-  "--codex-color"?: string;
-  "--codex-border-radius"?: string;
-  "--codex-input-border"?: string;
-  "--codex-color-primary"?: string;
-  "--codex-input-background-disabled"?: string;
-}
 
 type Props = {
   id: string;
@@ -80,54 +69,39 @@ export const Input = forwardRef<HTMLInputElement, Props>(
     };
 
     return (
-      <>
-        {label && (
-          <label className="input-label" htmlFor={id}>
-            {label}
-          </label>
+      <div
+        className={classnames(
+          ["input"],
+          ["input--invalid", invalid || isInvalid],
+          ["input--icon", !!Icon],
+          [inputClassName || ""]
         )}
+      >
+        {label && <label htmlFor={id}>{label}</label>}
 
-        <div
-          className={classnames(
-            ["input-icon", !!Icon],
-            [inputContainerClassName]
-          )}
-        >
+        <div className={classnames([inputContainerClassName])}>
           {Icon && (
-            <div className="input-iconElement">
+            <div>
               <Icon />
             </div>
           )}
           <input
             id={id}
             ref={ref}
-            className={classnames(
-              ["input"],
-              ["input--invalid", invalid || isInvalid],
-              ["input-icon-input", !!Icon],
-              [inputClassName || ""]
-            )}
+            className={classnames([inputClassName || ""])}
             onChange={onInternalChange}
             style={style}
             {...attributes({
               disabled,
               "aria-disabled": disabled,
+              "aria-invalid": invalid || isInvalid,
             })}
             {...rest}
           />
         </div>
 
-        {helper && (
-          <div>
-            <SimpleText
-              className="input-helper-text"
-              variant={invalid || isInvalid ? "error" : "light"}
-            >
-              {helper}
-            </SimpleText>
-          </div>
-        )}
-      </>
+        {helper && <small>{helper}</small>}
+      </div>
     );
   }
 );

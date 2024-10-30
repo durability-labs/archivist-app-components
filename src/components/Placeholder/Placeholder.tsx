@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
 import { Button } from "../Button/Button";
 import "./placeholder.css";
-import { SimpleText } from "../SimpleText/SimpleText";
 
 type Props = {
   title: string;
@@ -35,14 +34,10 @@ export function Placeholder({
 }: Props) {
   return (
     <div className={"placeholder " + className}>
-      <div className="placeholder-icon">{Icon}</div>
-      <b className="placeholder-title">{title}</b>
+      <div>{Icon}</div>
+      <b>{title}</b>
 
-      {subtitle && (
-        <div className="placeholder-subtitle">
-          <SimpleText variant="light">{subtitle}</SimpleText>
-        </div>
-      )}
+      {subtitle && <p>subtitle</p>}
 
       <div className="placeholder-message">{message} </div>
 

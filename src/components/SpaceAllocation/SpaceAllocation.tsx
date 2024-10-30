@@ -1,4 +1,3 @@
-import { SimpleText } from "../SimpleText/SimpleText";
 import { PrettyBytes } from "../utils/bytes";
 import "./spaceAllocation.css";
 
@@ -25,36 +24,31 @@ export function SpaceAllocation({ data }: Props) {
   const total = data.reduce((acc, val) => acc + val.size, 0);
 
   return (
-    <>
-      <div className="nodeSpaceAllocation-bar">
+    <div className="space-allocation">
+      <header>
         {data.map((d) => (
           <span
             key={d.title}
-            className={`nodeSpaceAllocation-barItem nodeSpaceAllocation-barQuota ${d.className || ""}`}
+            className={`${d.className || ""}`}
             style={{
               width: (d.size / total) * 100 + "%",
               backgroundColor: d.color,
             }}
           ></span>
         ))}
-      </div>
+      </header>
 
-      <div className="nodeSpaceAllocation-legend">
+      <ul className="nodeSpaceAllocation-legend">
         {data.map((d) => (
-          <div key={d.title} className={"nodeSpaceAllocation-legendRow"}>
-            <div
-              className={`nodeSpaceAllocation-legendItem nodeSpaceAllocation-quota`}
-              style={{ backgroundColor: d.color }}
-            ></div>
-            <div className="nodeSpaceAllocation-legendItem-text">
-              <small>{d.title}</small>
-              <SimpleText variant="light" size="small">
-                {PrettyBytes(d.size)}
-              </SimpleText>
-            </div>
-          </div>
+          <li key={d.title}>
+            <span style={{ backgroundColor: d.color }}></span>
+            <p>
+              <span>{d.title}</span>
+              <small> {PrettyBytes(d.size)}</small>
+            </p>
+          </li>
         ))}
-      </div>
-    </>
+      </ul>
+    </div>
   );
 }

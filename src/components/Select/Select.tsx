@@ -1,13 +1,5 @@
-import { ChangeEvent, CSSProperties } from "react";
+import { ChangeEvent } from "react";
 import "./select.css";
-
-interface CustomStyleCSS extends CSSProperties {
-  "--codex-select-background"?: string;
-  "--codex-color"?: string;
-  "--codex-border-radius"?: string;
-  "--codex-select-border"?: string;
-  "--codex-select-icon-url"?: string;
-}
 
 type Props = {
   label: string;
@@ -33,11 +25,6 @@ type Props = {
 
   onMouseLeave?: () => void;
 
-  /**
-   * Apply custom css variables.
-   */
-  style?: CustomStyleCSS;
-
   defaultValue?: string;
 
   value: string;
@@ -54,36 +41,29 @@ export function Select({
   onFocus,
   onMouseEnter,
   onMouseLeave,
-  style,
   className = "",
   defaultValue,
   value,
 }: Props) {
   return (
-    <>
-      <label htmlFor={id} className="select-label">
-        {label}
-      </label>
-      <div>
-        <select
-          id={id}
-          className={`select ${className}`}
-          onChange={onChange}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
-          style={style}
-          defaultValue={defaultValue}
-          value={value}
-        >
-          {options.map(([oval, text]) => (
-            <option key={oval} value={oval}>
-              {text}
-            </option>
-          ))}
-        </select>
-      </div>
-    </>
+    <div className={"select " + className}>
+      <label htmlFor={id}>{label}</label>
+      <select
+        id={id}
+        onChange={onChange}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        defaultValue={defaultValue}
+        value={value}
+      >
+        {options.map(([oval, text]) => (
+          <option key={oval} value={oval}>
+            {text}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 }

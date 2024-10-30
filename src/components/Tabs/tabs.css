@@ -3,50 +3,39 @@
   margin-top: 1rem;
   gap: 1rem;
   position: relative;
-}
 
-.tabs-tab {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding-bottom: 1rem;
-  cursor: pointer;
-  transition: 0.35s opacity;
-  z-index: 1;
-  position: relative;
-}
+  &::after {
+    width: 100%;
+    background-color: var(--codex-background-light);
+    content: " ";
+    position: absolute;
+    height: 2px;
+    top: 11px;
+    top: 31px;
+  }
 
-.tabs::after {
-  width: 100%;
-  background-color: var(--codex-background-light);
-  content: " ";
-  position: absolute;
-  height: 2px;
-  top: 11px;
-  top: 31px;
-}
+  div {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding-bottom: 1rem;
+    cursor: pointer;
+    transition: 0.35s opacity;
+    z-index: 1;
+    position: relative;
 
-.tabs-tab:not(.files-headerTab--active) {
-  opacity: 0.7;
-}
+    &:hover {
+      opacity: 0.85;
+    }
 
-.tabs-tab:hover {
-  opacity: 0.85;
-}
-
-.tabs-tab--active:after {
-  width: 100%;
-  background-color: var(--codex-color-contrast);
-  content: " ";
-  position: absolute;
-  height: 2px;
-  top: 11px;
-  top: 31px;
-}
-
-.tabs-icon {
-  width: 1rem;
-  height: 1rem;
-  display: flex;
-  place-items: center;
+    &[aria-selected]:after {
+      width: 100%;
+      background-color: var(--codex-color-contrast);
+      content: " ";
+      position: absolute;
+      height: 2px;
+      top: 11px;
+      top: 31px;
+    }
+  }
 }

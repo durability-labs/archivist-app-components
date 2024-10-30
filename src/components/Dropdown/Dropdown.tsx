@@ -8,14 +8,8 @@ import {
 import "./dropdown.css";
 import { attributes } from "../utils/attributes";
 import { Backdrop } from "../Backdrop/Backdrop";
-import { Input, InputCustomStyleCSS } from "../Input/Input";
+import { Input } from "../Input/Input";
 import { classnames } from "../utils/classnames";
-
-interface CustomStyleCSS extends InputCustomStyleCSS {
-  "--codex-dropdown-panel-background"?: string;
-  "--codex-dropdown-border"?: string;
-  "--codex-dropdown-option-background-hover"?: string;
-}
 
 export type DropdownOption = {
   /**
@@ -70,14 +64,6 @@ type Props = {
 
   onMouseLeave?: () => void;
 
-  /**
-   * Apply custom css variables.
-   * --codex-dropdown-panel-background
-   * --codex-dropdown-border
-   * --codex-dropdown-option-background-hover
-   */
-  style?: CustomStyleCSS;
-
   label: string;
 
   id: string;
@@ -85,7 +71,6 @@ type Props = {
 
 export function Dropdown({
   placeholder,
-  style,
   options,
   label,
   id,
@@ -134,12 +119,10 @@ export function Dropdown({
   const attr = attributes({ "aria-expanded": focused });
 
   return (
-    <>
-      <label className="dropdown-label" htmlFor={id}>
-        {label}
-      </label>
+    <div className={"dropdown " + className}>
+      <label htmlFor={id}>{label}</label>
 
-      <div className={`dropdown ${className}`} style={style}>
+      <div>
         <Backdrop onClose={onClose} open={focused} />
 
         <Input
@@ -157,28 +140,20 @@ export function Dropdown({
           id={id}
         />
 
-        <div className="dropdown-panel" {...attr}>
+        <ul className="dropdown-panel" {...attr}>
           {filtered.length ? (
             filtered.map((o) => (
-              <div
-                className="dropdown-option"
-                onClick={() => onSelect(o)}
-                key={o.title}
-              >
+              <li onClick={() => onSelect(o)} key={o.title}>
                 {o.Icon && <o.Icon />}
-                <div>
-                  <span className="dropdown-title">{o.title}</span>
-                  {o.subtitle && (
-                    <span className="dropdown-subtitle">{o.subtitle}</span>
-                  )}
-                </div>
-              </div>
+                <span>{o.title}</span>
+                {o.subtitle && <span>{o.subtitle}</span>}
+              </li>
             ))
           ) : (
-            <p className="dropdown-noResults">No results found</p>
+            <p>No results found</p>
           )}
-        </div>
+        </ul>
       </div>
-    </>
+    </div>
   );
 }

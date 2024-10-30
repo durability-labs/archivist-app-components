@@ -1,12 +1,7 @@
-import { ChangeEvent, CSSProperties, LegacyRef, ReactNode } from "react";
+import { ChangeEvent, LegacyRef, ReactNode } from "react";
 import "./inputGroup.css";
 import { Input } from "../Input/Input";
 import { Select } from "../Select/Select";
-
-export interface CustomStyleCSS extends CSSProperties {
-  "--codex-border-radius"?: string;
-  "--codex-border-color"?: string;
-}
 
 type Props = {
   label: string;
@@ -63,13 +58,6 @@ type Props = {
 
   step?: string;
 
-  /**
-   * Apply custom css variables.
-   * --codex-border-radius
-   * --codex-border-color
-   */
-  style?: CustomStyleCSS;
-
   name?: string;
 
   /**
@@ -91,7 +79,6 @@ export function InputGroup({
   name,
   helper,
   type = "text",
-  style,
   group,
   className = "",
   inputClassName = "",
@@ -111,17 +98,17 @@ export function InputGroup({
   extra,
 }: Props) {
   return (
-    <div className={`inputGroup ${className}`} style={style}>
-      <div className="inputGroup-container">
-        <div className="inputGroup-element">
-          <div className="inputGroup-inputContainer">
+    <div className={`inputGroup input-group ${className}`}>
+      <div>
+        <div>
+          <div>
             <Input
               ref={inputRef}
               id={id}
               name={name}
               label={label}
               onChange={onChange}
-              inputClassName={"inputGroup-input " + inputClassName}
+              inputClassName={inputClassName}
               type={type}
               value={value}
               step={step}
@@ -149,12 +136,10 @@ export function InputGroup({
             )}
           </div>
         </div>
-        <div className="inputGroup-helpers">
-          <span>
-            {helper && <small className="inputGroup-helper">{helper}</small>}
-          </span>
+        <p>
+          <span>{helper && <small>{helper}</small>}</span>
           {extra}
-        </div>
+        </p>
       </div>
     </div>
   );
