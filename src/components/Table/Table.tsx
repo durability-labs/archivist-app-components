@@ -3,6 +3,7 @@ import { ArrowDownUp, Search } from "lucide-react";
 import { Fragment, ReactElement, ReactNode, useEffect, useState } from "react";
 import { classnames } from "../utils/classnames";
 import { attributes } from "../utils/attributes";
+import { SortIcon } from "./SortIcon";
 
 export type TabSortState = "asc" | "desc" | null;
 
@@ -95,7 +96,7 @@ export function Table({
                 >
                   <div>
                     <span>{name}</span>
-                    {sort && <ArrowDownUp size={"1rem"}></ArrowDownUp>}
+                    {sort && <SortIcon />}
                   </div>
                 </th>
               );
