@@ -1,5 +1,5 @@
 import "./table.css";
-import { ArrowDownUp, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { Fragment, ReactElement, ReactNode, useEffect, useState } from "react";
 import { classnames } from "../utils/classnames";
 import { attributes } from "../utils/attributes";
