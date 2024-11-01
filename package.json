@@ -41,6 +41,7 @@
     "postcss-nesting": "^13.0.1"
   },
   "devDependencies": {
+    "@codex-storage/sdk-js": "^0.0.14",
     "@chromatic-com/storybook": "^2.0.2",
     "@storybook/addon-essentials": "^8.2.9",
     "@storybook/addon-interactions": "^8.2.9",
