@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/codex-storage/codex-marketplace-ui-components"
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "type": "module",
   "scripts": {
     "prepack": "npm run build",

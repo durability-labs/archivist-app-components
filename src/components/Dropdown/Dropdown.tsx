@@ -9,7 +9,6 @@ import "./dropdown.css";
 import { attributes } from "../utils/attributes";
 import { Backdrop } from "../Backdrop/Backdrop";
 import { Input } from "../Input/Input";
-import { classnames } from "../utils/classnames";
 
 export type DropdownOption = {
   /**
