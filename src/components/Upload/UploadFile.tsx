@@ -146,7 +146,10 @@ export function UploadFile({
   });
 
   const upload = useCallback(async () => {
-    const { abort: a, result } = codexData.upload(file, onProgress);
+    const { abort: a, result } = codexData.upload(file, onProgress, {
+      filename: file.name,
+      mimetype: file.type,
+    });
 
     abort.current = a;
 
