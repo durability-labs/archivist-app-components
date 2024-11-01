@@ -127,7 +127,6 @@ export function Dropdown({
 
         <Input
           ref={inputRef}
-          inputClassName={classnames(["dropdown-input"])}
           onChange={onChange}
           onFocus={onInternalFocus}
           onBlur={onInternalBlur}
@@ -140,7 +139,7 @@ export function Dropdown({
           id={id}
         />
 
-        <ul className="dropdown-panel" {...attr}>
+        <ul {...attr}>
           {filtered.length ? (
             filtered.map((o) => (
               <li onClick={() => onSelect(o)} key={o.title}>

@@ -42,7 +42,7 @@ export function ButtonIcon({
   const [animationClassName, setAnimationClassName] = useState("");
 
   const onInternalClick = () => {
-    setAnimationClassName("buttonIcon--" + animation);
+    setAnimationClassName("button-icon--" + animation);
     onClick?.();
   };
 
@@ -50,7 +50,7 @@ export function ButtonIcon({
 
   return (
     <button
-      className={`buttonIcon buttonIcon--${variant} ${className}`}
+      className={`button-icon button-icon--${variant} ${className}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={onInternalClick}
