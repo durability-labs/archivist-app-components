@@ -8,7 +8,7 @@
   }
 
   input {
-    background-color: var(--codex-input-background);
+    background-color: #14141499;
     color: white;
     border-radius: var(--codex-border-radius);
     border: 1px solid var(--codex-input-border-color);

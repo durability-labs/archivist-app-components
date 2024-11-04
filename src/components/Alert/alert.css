@@ -1,5 +1,5 @@
 .alert {
-  border-top: 2px solid rgb(var(--codex-alert-color));
+  border-bottom: 2px solid rgb(var(--codex-alert-color));
   background-color: rgba(var(--codex-alert-color), 0.1);
   color: 1px solid var(--codex-alert-color);
   border-radius: var(--codex-border-radius);
@@ -17,17 +17,14 @@
   }
 
   span {
-    background: rgba(var(--codex-alert-color), 0.2);
-    border-radius: 75px;
-    height: 1.75rem;
-    min-width: 1.75rem;
+    height: 20px;
+    min-width: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
 
     span {
       display: flex;
-      width: 1rem;
       color: rgb(var(--codex-alert-color));
     }
   }
@@ -38,5 +35,7 @@
 
   &.alert--warning {
     --codex-alert-color: var(--codex-color-warning);
+    background-color: #fbc64b33;
+    border-color: #ffc800;
   }
 }

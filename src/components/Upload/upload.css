@@ -1,9 +1,6 @@
 .upload {
   border: 1px dashed var(--codex-border-color);
-  background-color: var(
-    --codex-upload-background,
-    var(--codex-background-secondary)
-  );
+  background-color: #14141499;
   min-height: 150px;
   border-radius: var(--codex-border-radius);
   justify-content: space-between;
