@@ -1,4 +1,3 @@
-import { PrettyBytes } from "../utils/bytes";
 import "./spaceAllocation.css";
 
 export type SpaceAllocationItem = {
@@ -38,13 +37,13 @@ export function SpaceAllocation({ data }: Props) {
         ))}
       </header>
 
-      <ul className="nodeSpaceAllocation-legend">
+      <ul>
         {data.map((d) => (
           <li key={d.title}>
             <span style={{ backgroundColor: d.color }}></span>
             <p>
               <span>{d.title}</span>
-              <small> {PrettyBytes(d.size)}</small>
+              {/* <small> {PrettyBytes(d.size)}</small> */}
             </p>
           </li>
         ))}

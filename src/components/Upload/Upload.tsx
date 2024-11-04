@@ -1,12 +1,11 @@
-import { FileStack, Upload as UploadIcon } from "lucide-react";
 import { ChangeEvent, DragEventHandler, useRef } from "react";
 import { attributes } from "../utils/attributes.ts";
 import "./upload.css";
 import { UploadFile } from "./UploadFile.tsx";
 import { useUploadStategy } from "./useUploadStrategy.ts";
 import { classnames } from "../utils/classnames.ts";
-import { ButtonIcon } from "../ButtonIcon/ButtonIcon.tsx";
 import { CodexData } from "@codex-storage/sdk-js";
+import { UploadIcon } from "./UploadIcon.tsx";
 
 type Props = {
   /**
@@ -118,7 +117,7 @@ export function Upload({
   return (
     <>
       <div
-        className={classnames(["upload"], ["upload-warning", !!warning])}
+        className={classnames(["upload"], ["upload--warning", !!warning])}
         tabIndex={1}
         onClick={onInternalClick}
         onDragOver={onDragPrevents}
@@ -127,16 +126,19 @@ export function Upload({
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <ButtonIcon Icon={multiple ? FileStack : UploadIcon}></ButtonIcon>
-
-        <p>
+        <div>
           <b>
             Drop your {multiple ? "file(s)" : "file"} here or{" "}
             <span>browse</span>
           </b>
-        </p>
 
-        <small> {multiple ? "Up to 10 files" : "Choose one single file"}</small>
+          <small>
+            {" "}
+            {multiple ? "Up to 10 files" : "Choose one single file"}
+          </small>
+        </div>
+
+        <UploadIcon></UploadIcon>
 
         <input
           data-testid="upload"

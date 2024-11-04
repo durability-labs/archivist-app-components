@@ -1,17 +1,20 @@
 .card {
-  border-radius: var(--codex-border-radius);
-  border: 1px solid var(--codex-border-color);
-  font-family: var(--codex-font-family);
-  background-color: var(--codex-background-secondary);
+  border: 1px solid #96969633;
+  border-radius: 16px;
+  padding: 16px;
 
   header {
-    border-bottom: 1px solid var(--codex-border-color);
-    padding: 1rem 1.5rem;
-    font-size: 1.15rem;
-    font-weight: bold;
-  }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
 
-  div {
-    padding: 1.5rem;
+    h5 {
+      font-family: Inter;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      letter-spacing: -0.011em;
+    }
   }
 }

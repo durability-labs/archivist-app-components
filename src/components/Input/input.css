@@ -1,4 +1,12 @@
 .input {
+  &.input--big {
+    --codex-input-height: 64px;
+  }
+
+  &.input--medium {
+    --codex-input-height: 40px;
+  }
+
   input {
     background-color: var(--codex-input-background);
     color: white;
@@ -10,8 +18,21 @@
     box-sizing: border-box;
     font-weight: 500;
     font-size: 20px;
-    height: 64px;
+    height: var(--codex-input-height);
     position: relative;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.006em;
+
+    &::placeholder {
+      font-family: Inter;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: -0.006em;
+    }
   }
 
   &.input--invalid input {

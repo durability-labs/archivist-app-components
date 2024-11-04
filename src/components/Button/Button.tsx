@@ -37,6 +37,8 @@ type Props = {
    * Apply custom classname.
    */
   className?: string;
+
+  size?: "medium" | "small";
 };
 
 export function Button({
@@ -45,6 +47,7 @@ export function Button({
   Icon,
   onMouseEnter,
   onMouseLeave,
+  size = "medium",
   fetching = false,
   disabled = false,
   variant = "primary",
@@ -55,7 +58,7 @@ export function Button({
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className={`button ${className} button--${variant}`}
+      className={`button ${className} button--${variant} button--${size}`}
       {...attributes({
         disabled: disabled || fetching,
         "aria-disabled": disabled || fetching,

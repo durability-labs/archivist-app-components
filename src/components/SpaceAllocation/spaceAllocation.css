@@ -1,20 +1,25 @@
 .space-allocation {
   header {
-    height: 10px;
+    height: 26px;
     display: flex;
-    gap: 0.75rem;
-    margin-bottom: 0.5rem;
+    gap: 5px;
+    margin-bottom: 16px;
 
     span {
       display: inline-block;
       height: 100%;
-      border-radius: var(--codex-border-radius);
+      border-radius: 4px;
+      height: 26px;
+      font-family: Inter;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
     }
   }
 
   ul {
     display: flex;
-    gap: 0.75rem;
+    gap: 16px;
     flex-wrap: wrap;
     padding-left: 0;
 
@@ -22,15 +27,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 0.5rem;
+      gap: 4px;
 
       > span {
-        width: 1rem;
-        height: 1rem;
-        border-radius: var(--codex-border-radius);
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        border: 2px solid #0e121b;
       }
 
-      p {
+      /* p {
         display: flex;
         flex-direction: column;
         line-height: 1rem;
@@ -40,7 +46,7 @@
         small {
           color: var(--codex-input-label-color);
         }
-      }
+      } */
     }
   }
 }
