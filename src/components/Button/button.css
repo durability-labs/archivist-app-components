@@ -5,6 +5,7 @@
 
   &.button--small {
     --codex-button-padding: 6px 10px;
+    height: 40px;
   }
 
   border-radius: 8px;

@@ -23,6 +23,7 @@
     background-repeat: no-repeat;
     background-size: 1.25em 1.25em;
     box-sizing: border-box;
+    height: 40px;
 
     @media (min-width: 801px) {
       & {

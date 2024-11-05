@@ -47,7 +47,7 @@ export function Select({
 }: Props) {
   return (
     <div className={"select " + className}>
-      <label htmlFor={id}>{label}</label>
+      {label && <label htmlFor={id}>{label}</label>}
       <select
         id={id}
         onChange={onChange}
