@@ -10,6 +10,7 @@
   cursor: pointer;
   transition: box-shadow 0.35s;
   border: none;
+  gap: 6px;
 
   &.button-icon--big {
     width: 4rem;

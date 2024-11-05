@@ -13,27 +13,24 @@
   aside {
     position: fixed;
     transition: transform 0.25s;
-    background-color: var(--codex-background-secondary);
     z-index: 2;
     justify-content: space-between;
 
-    @media (min-width: 1000px) {
-      & {
-        width: 300px;
-        height: 100%;
-        bottom: 0;
-        top: 0;
-        transform: translatex(1300px);
-        right: 0;
-      }
-
-      &[aria-expanded] {
-        transform: translatex(0);
-        z-index: 10;
-      }
+    & {
+      width: 400px;
+      height: 100%;
+      bottom: 0;
+      top: 0;
+      transform: translatex(1300px);
+      right: 0;
     }
 
-    @media (max-width: 999px) {
+    &[aria-expanded] {
+      transform: translatex(0);
+      z-index: 10;
+    }
+
+    /* @media (max-width: 999px) {
       & {
         width: 100%;
         height: auto;
@@ -48,6 +45,6 @@
         transform: translatey(0);
         z-index: 10;
       }
-    }
+    } */
   }
 }

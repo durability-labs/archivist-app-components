@@ -1,16 +1,46 @@
+import "./SortIcon.css";
+
 export function SortIcon() {
   return (
-    <svg
-      width="9"
-      height="14"
-      viewBox="0 0 9 14"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M8.34261 4.91667L4.17594 0.75L0.00927734 4.91667H8.34261ZM8.34261 9.08333L4.17594 13.25L0.00927734 9.08333H8.34261Z"
-        fill="#969696"
-      />
-    </svg>
+    <span className="sort-icon">
+      <svg
+        width="20"
+        height="10"
+        viewBox="0 0 20 10"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clipPath="url(#clip0_326_785)">
+          <path
+            d="M14.1666 7.91667L9.99992 3.75L5.83325 7.91667H14.1666ZM14.1666 12.0833L9.99992 16.25L5.83325 12.0833H14.1666Z"
+            fill="#969696"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_326_785">
+            <rect width="20" height="10" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+      <svg
+        width="20"
+        height="10"
+        viewBox="0 0 20 10"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clipPath="url(#clip0_326_787)">
+          <path
+            d="M14.1666 -2.08333L9.99992 -6.25L5.83325 -2.08333H14.1666ZM14.1666 2.08333L9.99992 6.25L5.83325 2.08333H14.1666Z"
+            fill="#969696"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_326_787">
+            <rect width="20" height="10" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+    </span>
   );
 }
