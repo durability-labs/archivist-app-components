@@ -281,7 +281,7 @@ export function UploadFile({
             ) : (
               <WebFileIcon type={file.type} />
             )}
-            <p>
+            <div className="preview">
               <b>
                 <span>{filename}</span>
                 {extension && <span>.{extension}</span>}
@@ -289,7 +289,7 @@ export function UploadFile({
               <div>
                 <small>{PrettyBytes(file.size)}</small>
               </div>
-            </p>
+            </div>
           </div>
           <div>
             <UploadStatusIcon status={status} />
