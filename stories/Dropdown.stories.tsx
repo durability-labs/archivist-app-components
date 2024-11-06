@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Dropdown, DropdownOption } from "../src/components/Dropdown/Dropdown";
-import { PdfIcon } from "../src/components/WebFileIcon/PdfIcon";
-import { ImageIcon } from "../src/components/WebFileIcon/ImageIcon";
+import PdfIcon from "../../assets/icons/pdf-file.svg?react";
+import ImageIcon from "../../assets/icons/image-file.svg?react";
 import { ChangeEvent, useState } from "react";
 import { fn } from "@storybook/test";
 
