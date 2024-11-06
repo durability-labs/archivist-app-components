@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Dropdown, DropdownOption } from "../src/components/Dropdown/Dropdown";
-import PdfIcon from "../../assets/icons/pdf-file.svg?react";
-import ImageIcon from "../../assets/icons/image-file.svg?react";
 import { ChangeEvent, useState } from "react";
 import { fn } from "@storybook/test";
+import { WebFileIcon } from "../src/components/WebFileIcon/WebFileIcon";
 
 const meta = {
   title: "Forms/Dropdown",
@@ -63,12 +62,12 @@ const Template = (p: Props) => {
       options={[
         {
           title: "File1.pdf",
-          Icon: PdfIcon,
+          Icon: () => <WebFileIcon type="application/pdf"></WebFileIcon>,
           subtitle: "cid1",
         },
         {
           title: "File2.jpg",
-          Icon: ImageIcon,
+          Icon: () => <WebFileIcon type="image/png"></WebFileIcon>,
           subtitle: "cid2",
         },
       ]}
