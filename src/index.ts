@@ -21,3 +21,4 @@ export { Sheets } from "./components/Sheets/Sheets";
 export { Tabs, type TabProps } from "./components/Tabs/Tabs";
 export * from "./components/Stepper/useStepperReducer";
 export { Modal } from "./components/Modal/Modal";
+export { WebFileIcon } from "./components/WebFileIcon/WebFileIcon"
