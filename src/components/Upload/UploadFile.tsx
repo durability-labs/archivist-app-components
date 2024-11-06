@@ -5,9 +5,9 @@ import { UploadStatus } from "./types";
 import { CircleCheck, TriangleAlert, CircleX, CircleStop } from "lucide-react";
 import { Spinner } from "../Spinner/Spinner";
 import { CodexData } from "@codex-storage/sdk-js";
-import { WebFileIcon } from "../WebFileIcon/WebFileIcon";
 import { ButtonIcon } from "../ButtonIcon/ButtonIcon";
 import "./UploadFile.css";
+import { WebFileIcon } from "../WebFileIcon/WebFileIcon";
 
 type UploadFileProps = {
   file: File;

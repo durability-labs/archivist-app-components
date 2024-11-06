@@ -1,9 +1,14 @@
 import "./table.css";
-import { Search } from "lucide-react";
-import { Fragment, ReactElement, ReactNode, useEffect, useState } from "react";
+import {
+  ComponentType,
+  Fragment,
+  ReactElement,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react";
 import { classnames } from "../utils/classnames";
 import { attributes } from "../utils/attributes";
-import { SortIcon } from "./SortIcon";
 
 export type TabSortState = "asc" | "desc" | null;
 
@@ -24,6 +29,8 @@ type Props = {
   className?: string;
 
   rows: ReactElement<RowProps, typeof Row>[];
+
+  SortIcon: ComponentType;
 };
 
 const nextState = (state: "asc" | "desc" | null) =>
@@ -32,6 +39,7 @@ const nextState = (state: "asc" | "desc" | null) =>
 export function Table({
   headers,
   rows,
+  SortIcon,
   defaultSortIndex = -1,
   className = "",
 }: Props) {
@@ -112,8 +120,7 @@ export function Table({
 
       {!rows.length && (
         <div>
-          <Search />
-          <p>No data.</p>
+          <p>No data available.</p>
         </div>
       )}
     </div>

@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/codex-storage/codex-marketplace-ui-components"
   },
-  "version": "0.0.36",
+  "version": "0.0.37",
   "type": "module",
   "scripts": {
     "prepack": "npm run build",
@@ -41,6 +41,8 @@
     "postcss-nesting": "^13.0.1"
   },
   "devDependencies": {
+    "vite-plugin-svgr": "^4.3.0",
+    "@svgr/plugin-svgo": "^8.1.0",
     "@codex-storage/sdk-js": "^0.0.15",
     "@chromatic-com/storybook": "^2.0.2",
     "@storybook/addon-essentials": "^8.2.9",

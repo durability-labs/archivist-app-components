@@ -1,10 +1,10 @@
-import { AudioIcon } from "./AudioIcon";
-import { ImageIcon } from "./ImageIcon";
-import { VideoIcon } from "./VideoIcon";
-import { PdfIcon } from "./PdfIcon";
-import { ExcelIcon } from "./ExcelIcon";
-import { DocIcon } from "./DocIcon";
-import { AnyFileIcon } from "./AnyFileIcon";
+import AudioIcon from "../../assets/icons/audio-file.svg?react";
+import VideoIcon from "../../assets/icons/video-file.svg?react";
+import ImageIcon from "../../assets/icons/image-file.svg?react";
+import PdfIcon from "../../assets/icons/pdf-file.svg?react";
+import ExcelIcon from "../../assets/icons/excel-file.svg?react";
+import DocIcon from "../../assets/icons/doc-file.svg?react";
+import AnyFileIcon from "../../assets/icons/any-file.svg?react";
 
 type Props = {
   type: string;
@@ -13,33 +13,33 @@ type Props = {
 
 export function WebFileIcon({ type, size = 24 }: Props) {
   if (type.startsWith("audio")) {
-    return <AudioIcon size={size} />;
+    return <AudioIcon width={size} />;
   }
 
   if (type.startsWith("image")) {
-    return <ImageIcon size={size} />;
+    return <ImageIcon width={size} />;
   }
 
   if (type.startsWith("video")) {
-    return <VideoIcon size={size} />;
+    return <VideoIcon width={size} />;
   }
 
   switch (type) {
     case "application/pdf": {
-      return <PdfIcon size={size} />;
+      return <PdfIcon width={size} />;
     }
 
     case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
     case "application/vnd.ms-excel": {
-      return <ExcelIcon size={size} />;
+      return <ExcelIcon width={size} />;
     }
 
     case "application/msdoc": {
-      return <DocIcon size={size} />;
+      return <DocIcon width={size} />;
     }
 
     default: {
-      return <AnyFileIcon size={size} />;
+      return <AnyFileIcon width={size} />;
     }
   }
 }

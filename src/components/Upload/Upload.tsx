@@ -1,11 +1,10 @@
-import { ChangeEvent, DragEventHandler, useRef } from "react";
+import { ChangeEvent, ComponentType, DragEventHandler, useRef } from "react";
 import { attributes } from "../utils/attributes.ts";
 import "./upload.css";
 import { UploadFile } from "./UploadFile.tsx";
 import { useUploadStategy } from "./useUploadStrategy.ts";
 import { classnames } from "../utils/classnames.ts";
 import { CodexData } from "@codex-storage/sdk-js";
-import { UploadIcon } from "./UploadIcon.tsx";
 
 type Props = {
   /**
@@ -61,6 +60,8 @@ type Props = {
    * Default: File uploaded successfully.
    */
   successMessage?: string;
+
+  Icon?: ComponentType;
 };
 
 export function Upload({
@@ -68,6 +69,7 @@ export function Upload({
   onMouseLeave,
   onClick,
   onFileChange,
+  Icon,
   multiple = true,
   editable = true,
   onDeleteItem,
@@ -138,7 +140,7 @@ export function Upload({
           </small>
         </div>
 
-        <UploadIcon></UploadIcon>
+        {Icon && <Icon></Icon>}
 
         <input
           data-testid="upload"
