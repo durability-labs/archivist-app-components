@@ -70,7 +70,7 @@ export const Sort: Story = {
         ]}
       ></Row>,
     ],
-    headers: [["id"], ["title"], ["other", () => {}], ["actions"]],
+    headers: [["id"], ["title", () => {}], ["other", () => {}], ["actions"]],
     defaultSortIndex: 2,
   },
 };

@@ -1,14 +1,9 @@
 import "./table.css";
-import {
-  ComponentType,
-  Fragment,
-  ReactElement,
-  ReactNode,
-  useEffect,
-  useState,
-} from "react";
+import { Fragment, ReactElement, ReactNode, useEffect, useState } from "react";
 import { classnames } from "../utils/classnames";
 import { attributes } from "../utils/attributes";
+import AscIcon from "../../assets/icons/asc.svg?react";
+import DescIcon from "../../assets/icons/desc.svg?react";
 
 export type TabSortState = "asc" | "desc" | null;
 
@@ -29,8 +24,6 @@ type Props = {
   className?: string;
 
   rows: ReactElement<RowProps, typeof Row>[];
-
-  SortIcon: ComponentType;
 };
 
 const nextState = (state: "asc" | "desc" | null) =>
@@ -39,7 +32,6 @@ const nextState = (state: "asc" | "desc" | null) =>
 export function Table({
   headers,
   rows,
-  SortIcon,
   defaultSortIndex = -1,
   className = "",
 }: Props) {
@@ -92,7 +84,11 @@ export function Table({
                       ? {
                           role: "button",
                           "aria-sort":
-                            state === "asc" ? "ascending" : "descending",
+                            state === "asc"
+                              ? "ascending"
+                              : state == null
+                                ? ""
+                                : "descending",
                         }
                       : {}
                   )}
@@ -104,7 +100,12 @@ export function Table({
                 >
                   <div>
                     <span>{name}</span>
-                    {sort && <SortIcon />}
+                    {sort && (
+                      <span className="sort-icon">
+                        <AscIcon />
+                        <DescIcon />
+                      </span>
+                    )}
                   </div>
                 </th>
               );
