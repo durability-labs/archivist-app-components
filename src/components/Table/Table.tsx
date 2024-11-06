@@ -138,9 +138,9 @@ export type RowProps = {
   className?: string;
 };
 
-export function Row({ cells, className = "" }: RowProps) {
+export function Row({ cells, className = "", ...rest }: RowProps) {
   return (
-    <tr className={className}>
+    <tr {...rest} className={className}>
       {cells.map((Cell, index) => (
         <Fragment key={index}>{Cell}</Fragment>
       ))}
