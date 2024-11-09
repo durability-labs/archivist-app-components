@@ -1,119 +1,124 @@
 .step {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: opacity 0.35s;
-
-  &:not([disabled]):not(.step--active):hover {
-    cursor: pointer;
-    opacity: 0.8;
+  &:not(:last-child) {
+    flex: 1;
   }
 
-  @media (min-width: 801px) {
-    &:not(:last-child) {
-      flex: 1;
-    }
+  --codex-step-background-color: white;
+  --codex-step-border-color: #e1e4ea;
+  --codex-step-label-color: #969696;
+  --codex-step-small-color: #96969699;
+  --codex-step-hr-color: #96969699;
+  --codex-step-animation: step-back;
+
+  &.step--done {
+    --codex-step-background-color: transparent;
+    --codex-step-border-color: transparent;
+    --codex-step-small-color: #1fc16b99;
+    --codex-step-label-color: #1fc16b;
+    --codex-step-hr-color: #1fc16b;
+    --codex-step-animation: step;
   }
 
   > div:first-child {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    transition: opacity 0.35s;
-
-    width: 1.75rem;
-    height: 1.75rem;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    transition: background-color 0.35s;
-    background-color: var(
-      --codex-stepper-background,
-      var(--codex-background-light)
-    );
+    gap: 16px;
+    transition:
+      box-shadow 0.35s,
+      background-color 0.35s;
+    flex: 1;
+    height: 20px;
+    position: relative;
 
     span {
       display: flex;
       align-items: center;
       justify-content: center;
-      mix-blend-mode: difference;
+      background-color: var(--codex-step-background-color);
+      border: 1px solid var(--codex-step-border-color);
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      color: #525866;
+      font-family: Inter;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: box-shadow 0.35s;
+
+      &:hover {
+        box-shadow: 0 0 0 2px var(--codex-border-color);
+      }
     }
-  }
-
-  &.step--active > div:first-child,
-  &.step--done > div:first-child {
-    background-color: var(--codex-color-primary);
-  }
-
-  div:nth-child(2) {
-    display: flex;
-    flex: 1;
-    position: relative;
-    place-items: center;
 
     hr {
       border: 0;
-      height: 1px;
+      height: 4px;
       flex: 1;
-      background-color: var(
-        --codex-stepper-background,
-        var(--codex-background-light)
-      );
+      background-color: #969696;
+      border-radius: 40px;
       position: relative;
       margin-bottom: 8px;
 
-      @media (max-width: 800px) {
-        & {
-          display: none;
-        }
+      &::before {
+        background-color: var(--codex-step-hr-color);
+        height: 4px;
+        content: " ";
+        position: absolute;
+        z-index: 1;
+        animation-duration: 1s;
+        animation-name: var(--codex-step-animation);
+        animation-fill-mode: forwards;
+        border-radius: 40px;
       }
     }
+  }
 
-    &::before {
-      background-color: var(--codex-color-primary);
-      height: 1px;
-      content: " ";
-      position: absolute;
-      top: 8px;
-      animation-duration: 1s;
-      animation-name: step-back;
-      animation-fill-mode: forwards;
-      opacity: 0;
-      /* animation-direction: reverse; */
+  > div:nth-child(2) {
+    display: block;
+    padding-left: 38px;
+
+    small {
+      font-family: Inter;
+      font-size: 8px;
+      font-weight: 700;
+      line-height: 8px;
+      text-align: left;
+      color: var(--codex-step-small-color);
+      display: block;
     }
 
     span {
-      position: absolute;
-      top: 10px;
+      font-family: Inter;
       font-size: 14px;
-
-      @media (max-width: 800px) {
-        & {
-          display: none;
-        }
-      }
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: -0.006em;
+      text-align: left;
+      color: var(--codex-step-label-color);
     }
   }
+}
 
-  &.step--done {
-    div:nth-child(2) {
-      &::before {
-        background-color: var(--codex-color-primary);
-        display: inline-block;
-        animation-duration: 1s;
-        animation-name: step;
-        animation-fill-mode: forwards;
-        opacity: 1;
-      }
-    }
+@keyframes step-back {
+  0% {
+    width: 100%;
   }
 
-  &.step--mounted {
-    div:nth-child(2) {
-      &::before {
-        opacity: 1;
-      }
-    }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes step {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
   }
 }

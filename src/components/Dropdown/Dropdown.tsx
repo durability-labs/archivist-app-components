@@ -66,6 +66,8 @@ type Props = {
   label: string;
 
   id: string;
+
+  size?: "big" | "medium";
 };
 
 export function Dropdown({
@@ -81,6 +83,7 @@ export function Dropdown({
   onSelected,
   value = "",
   className = "",
+  size = "big",
 }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
   const lower = value.toLocaleLowerCase();
@@ -119,12 +122,13 @@ export function Dropdown({
 
   return (
     <div className={"dropdown " + className}>
-      <label htmlFor={id}>{label}</label>
+      {label && <label htmlFor={id}>{label}</label>}
 
       <div>
         <Backdrop onClose={onClose} open={focused} />
 
         <Input
+          autoComplete="off"
           ref={inputRef}
           onChange={onChange}
           onFocus={onInternalFocus}
@@ -136,12 +140,13 @@ export function Dropdown({
           value={value}
           label={""}
           id={id}
+          size={size as any}
         />
 
         <ul {...attr}>
           {filtered.length ? (
             filtered.map((o) => (
-              <li onClick={() => onSelect(o)} key={o.title}>
+              <li onClick={() => onSelect(o)} key={o.title + o.subtitle}>
                 {o.Icon && <o.Icon />}
                 <span>{o.title}</span>
                 {o.subtitle && <span>{o.subtitle}</span>}

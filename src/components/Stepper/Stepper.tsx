@@ -5,6 +5,8 @@ import { Spinner } from "../Spinner/Spinner";
 import { Step } from "./Step";
 import { StepperAction, StepperState } from "./useStepperReducer";
 import { classnames } from "../utils/classnames";
+import PreviousIcon from "../../assets/icons/previous.svg?react";
+import NextIcon from "../../assets/icons/next.svg?react";
 
 type Props = {
   /**
@@ -94,6 +96,7 @@ export function Stepper({
       <header>
         {titles.map((title, index) => (
           <Step
+            index={index + 1}
             title={title}
             step={index}
             isActive={index === state.step}
@@ -115,11 +118,13 @@ export function Stepper({
           variant="outline"
           onClick={() => onChangeStep(state.step - 1)}
           disabled={!state.isBackEnable}
+          Icon={PreviousIcon}
         />
         <Button
           label={nextLabel}
           onClick={() => onChangeStep(state.step + 1)}
           disabled={!state.isNextEnable}
+          IconAfter={NextIcon}
         />
       </footer>
     </div>

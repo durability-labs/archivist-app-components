@@ -1,8 +1,8 @@
-import { Check } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { attributes } from "../utils/attributes";
 import { classnames } from "../utils/classnames";
 import "./Step.css";
+import ValidIcon from "../../assets/icons/valid.svg?react";
 
 type StepProps = {
   /**
@@ -34,6 +34,8 @@ type StepProps = {
    * Event triggered when a step number is clicked on
    */
   onClick?: (step: number) => void;
+
+  index: number;
 };
 
 export function Step({
@@ -42,6 +44,7 @@ export function Step({
   isLast,
   isDone,
   title,
+  index,
   onClick,
 }: StepProps) {
   const mounted = useRef(false);
@@ -62,12 +65,13 @@ export function Step({
       {...attributes({ disabled: !onClick })}
     >
       <div>
-        <span>{isDone ? <Check size={"1.25rem"} /> : step + 1}</span>
+        <span>{isDone ? <ValidIcon /> : step + 1}</span>
+        <hr />
       </div>
 
       {!isLast && (
         <div>
-          <hr />
+          <small>STEP {index}</small>
           <span>{title}</span>
         </div>
       )}

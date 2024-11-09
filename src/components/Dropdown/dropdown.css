@@ -71,10 +71,7 @@
     background-position: right 0.5rem center;
     background-repeat: no-repeat;
     background-size: 1.25em 1.25em;
-
-    &:focus {
-      z-index: 11;
-    }
+    z-index: 11;
   }
 
   p {

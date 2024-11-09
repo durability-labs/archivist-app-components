@@ -1,8 +1,10 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ComponentType, ReactNode, useEffect, useState } from "react";
 import { Backdrop } from "../Backdrop/Backdrop";
 import { Button } from "../Button/Button";
 import { classnames } from "../utils/classnames";
 import "./modal.css";
+import CloseIcon from "../../assets/icons/close.svg?react";
+import { ButtonIcon } from "../ButtonIcon/ButtonIcon";
 
 type Props = {
   open: boolean;
@@ -55,6 +57,10 @@ type Props = {
   children: ReactNode;
 
   className?: string;
+
+  title?: string;
+
+  Icon?: ComponentType<{ width: number | string | undefined }>;
 };
 
 export function Modal({
@@ -68,6 +74,8 @@ export function Modal({
   labelActionButton = "Action",
   labelCloseButton = "Close",
   children,
+  title,
+  Icon,
   onAction,
 }: Props) {
   const [internalOpen, setInternalOpen] = useState(open);
@@ -94,26 +102,43 @@ export function Modal({
       <Backdrop open={internalOpen} onClose={internalClose} />
 
       <dialog>
+        {title && (
+          <header>
+            <div>
+              {Icon && <Icon width={24}></Icon>}
+              <h6>{title}</h6>
+            </div>
+            <ButtonIcon
+              onClick={internalClose}
+              Icon={CloseIcon}
+              variant="small"
+            ></ButtonIcon>
+          </header>
+        )}
+
         <main>{open && children}</main>
 
-        <footer>
-          {displayCloseButton && (
-            <Button
-              label={labelCloseButton}
-              variant="outline"
-              onClick={internalClose}
-              disabled={disableCloseButton}
-            />
-          )}
+        {displayCloseButton ||
+          (displayActionButton && (
+            <footer>
+              {displayCloseButton && (
+                <Button
+                  label={labelCloseButton}
+                  variant="outline"
+                  onClick={internalClose}
+                  disabled={disableCloseButton}
+                />
+              )}
 
-          {displayActionButton && (
-            <Button
-              label={labelActionButton}
-              onClick={onAction}
-              disabled={disableActionButton}
-            />
-          )}
-        </footer>
+              {displayActionButton && (
+                <Button
+                  label={labelActionButton}
+                  onClick={onAction}
+                  disabled={disableActionButton}
+                />
+              )}
+            </footer>
+          ))}
       </dialog>
     </div>
   );

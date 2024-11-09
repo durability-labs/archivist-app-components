@@ -33,6 +33,8 @@ type Props = {
    */
   Icon?: ComponentType;
 
+  IconAfter?: ComponentType;
+
   /**
    * Apply custom classname.
    */
@@ -45,6 +47,7 @@ export function Button({
   label,
   className = "",
   Icon,
+  IconAfter,
   onMouseEnter,
   onMouseLeave,
   size = "medium",
@@ -65,12 +68,9 @@ export function Button({
         "aria-busy": fetching,
       })}
     >
-      {Icon && (
-        <div>
-          <Icon />
-        </div>
-      )}
+      {Icon && <Icon />}
       <span>{label}</span>
+      {IconAfter && <IconAfter />}
     </button>
   );
 }

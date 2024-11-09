@@ -13,7 +13,7 @@
   padding: var(--codex-button-padding);
   display: flex;
   place-items: center;
-  gap: 8px;
+  gap: 2px;
   font-weight: 500;
   position: relative;
   border: none;
@@ -61,8 +61,7 @@
 
   &.button--primary:not(:disabled):hover {
     cursor: pointer;
-    box-shadow: 0 0 0 3px
-      var(--codex-button-color-box-shadow, var(--codex-color-primary-variant));
+    box-shadow: 0 0 0 3px var(--codex-button-color-box-shadow, #6fcb94cc);
   }
 
   &.button--outline:not(:disabled):hover {
@@ -71,7 +70,7 @@
   }
 
   &.button--primary {
-    background-color: var(--codex-color-primary);
+    background-color: #6fcb94;
     color: var(--codex-color-on-primary);
   }
 

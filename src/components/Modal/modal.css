@@ -3,7 +3,6 @@
     transition:
       transform 0.25s,
       opacity 0.25s;
-    max-width: 800px;
     overflow-y: auto;
     overflow-x: hidden;
     opacity: 0;
@@ -15,16 +14,54 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    background-color: var(--codex-background);
-    padding: 1.5rem;
-    border-radius: var(--codex-border-radius);
+    background: #232323;
+    border-radius: 16px;
     border: none;
     width: calc(100% - 6rem);
 
-    @media (min-width: 801px) {
-      & {
-        min-width: 500px;
+    & {
+      min-width: 500px;
+    }
+
+    > header {
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      > div {
+        display: flex;
+        gap: 8px;
+        align-items: center;
       }
+
+      .button-icon {
+        background-color: transparent;
+        border: 1px solid #96969633;
+      }
+
+      svg {
+        min-width: 20px;
+      }
+
+      h6 {
+        margin: 0;
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: -0.011em;
+      }
+    }
+
+    > main {
+      flex: 1;
+    }
+
+    > footer {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
     }
   }
 
@@ -35,16 +72,6 @@
 
   &.modal--open dialog {
     z-index: 10;
-  }
-
-  main {
-    flex: 1;
-  }
-
-  footer {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
   }
 
   &.modal--actions footer {

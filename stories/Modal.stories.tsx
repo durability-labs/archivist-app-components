@@ -35,10 +35,32 @@ const Template = (props: Props) => {
     setOpen(false);
   };
 
+  const Icon = () => (
+    <svg
+      width="20"
+      height="10"
+      viewBox="0 0 20 10"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clipPath="url(#clip0_326_785)">
+        <path
+          d="M14.1666 7.91667L9.99992 3.75L5.83325 7.91667H14.1666ZM14.1666 12.0833L9.99992 16.25L5.83325 12.0833H14.1666Z"
+          fill="#969696"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_326_785">
+          <rect width="20" height="10" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+
   return (
     <div style={{ padding: "6rem" }}>
       <button onClick={onOpen}>Make Modal</button>
-      <Modal onClose={onClose} open={open}>
+      <Modal title="Title" Icon={Icon} onClose={onClose} open={open}>
         <p>Hello world</p>
       </Modal>
     </div>
