@@ -3,7 +3,6 @@ export { ButtonIcon } from "./components/ButtonIcon/ButtonIcon";
 export { Input } from "./components/Input/Input";
 export { InputGroup } from "./components/InputGroup/InputGroup";
 export * from "./components/Upload/Upload";
-export { Card } from "./components/Card/Card";
 export { Select } from "./components/Select/Select";
 export { Toast } from "./components/Toast/Toast";
 export { SpaceAllocation, type SpaceAllocationItem } from "./components/SpaceAllocation/SpaceAllocation";

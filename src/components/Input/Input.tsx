@@ -57,6 +57,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
       onChange,
       mode,
       isInvalid = false,
+      value,
       ...rest
     },
     ref
@@ -101,6 +102,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
               "aria-invalid": invalid || isInvalid,
             })}
             {...rest}
+            {...(value ? { value } : {})}
           />
         </div>
 

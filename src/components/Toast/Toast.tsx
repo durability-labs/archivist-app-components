@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { attributes } from "../utils/attributes";
 import "./toast.css";
-import { CircleCheck, CircleX, Info, X } from "lucide-react";
-import { ButtonIcon } from "../ButtonIcon/ButtonIcon";
+import SuccessCircleIcon from "../../assets/icons/success-circle.svg?react";
+import ErrorCircleIcon from "../../assets/icons/error-circle.svg?react";
+import CloseIcon from "../../assets/icons/close.svg?react";
 
 type Props = {
   message: string;
@@ -23,7 +24,7 @@ type Props = {
 
   className?: string;
 
-  variant: "success" | "error" | "default";
+  variant: "success" | "error";
 };
 
 export function Toast({
@@ -57,9 +58,8 @@ export function Toast({
   };
 
   const icons = {
-    success: CircleCheck,
-    error: CircleX,
-    default: Info,
+    success: SuccessCircleIcon,
+    error: ErrorCircleIcon,
   };
   const Icon = icons[variant];
 
@@ -68,19 +68,14 @@ export function Toast({
       className={`toast ${className} toast--${variant}`}
       {...attributes({ "aria-hidden": time == 0 || msg === "" })}
     >
-      <Icon size="1.25rem" />
+      <Icon width={24} />
 
-      <span>
+      <div>
         <b>{variant} ! </b>
         <span>{msg}</span>
-      </span>
+      </div>
 
-      <ButtonIcon
-        onClick={onClose}
-        variant="small"
-        className="toast-close"
-        Icon={() => <X size="1.25rem" />}
-      ></ButtonIcon>
+      <CloseIcon width={24} onClick={onClose} />
     </div>
   );
 }

@@ -1,38 +1,41 @@
 .toast {
   position: fixed;
-  bottom: 1rem;
-  right: 1rem;
   background: var(--codex-toast-background, var(--codex-background-light));
   min-width: 150px;
-  transform: translateX(0px);
-  transition: transform 0.35s;
+  transition: top 0.35s;
+  top: 50px;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 8px;
   border: 1px solid var(--codex-toast-border-color, var(--codex-border-color));
-  border-radius: var(--codex-border-radius);
-  padding: 0.75rem;
-  padding-left: 1.5rem;
-  color: var(--codex-toast-color, --codex-color);
+  border-radius: 6px;
+  padding: 16px;
+  color: white;
   word-break: break-word;
   border: 1px solid rgb(var(--codex-toast-color));
-  background: rgba(var(--codex-toast-color), 1);
+  background: var(--codex-toast-color);
   z-index: 20;
+  backdrop-filter: blur(32px);
+  left: 0;
+  right: 0;
+  max-width: 450px;
+  margin: auto;
 
   &[aria-hidden] {
-    transform: translateX(1000px);
+    top: -1000px;
   }
 
   &.toast--success {
-    --codex-toast-color: var(--codex-color-success);
+    --codex-toast-color: #6fcb9433;
+    border-bottom: 2px solid #6fcb94;
+
+    svg {
+      color: #6fcb94;
+    }
   }
 
   &.toast--error {
-    --codex-toast-color: var(--codex-color-error);
-  }
-
-  &.toast--default {
-    --codex-toast-color: var(--codex-color-grey);
+    --codex-toast-color: rgba(var(--codex-color-error));
   }
 
   .button {
@@ -41,10 +44,29 @@
 
   b {
     text-transform: capitalize;
+    display: block;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  span {
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: left;
+    color: #ffffffcc;
   }
 
   svg {
-    fill: rgba(var(--codex-toast-color), 0.2);
-    stroke: white;
+    cursor: pointer;
   }
 }

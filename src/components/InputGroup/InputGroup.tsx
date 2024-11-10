@@ -72,6 +72,10 @@ type Props = {
   inputRef?: LegacyRef<HTMLInputElement>;
 
   extra?: ReactNode;
+
+  isInvalid?: boolean;
+
+  defaultValue?: string;
 };
 
 export function InputGroup({
@@ -96,9 +100,11 @@ export function InputGroup({
   min,
   max,
   extra,
+  isInvalid,
+  defaultValue,
 }: Props) {
   return (
-    <div className={`inputGroup input-group ${className}`}>
+    <div className={`input-group ${className}`}>
       <div>
         <div>
           <div>
@@ -118,6 +124,8 @@ export function InputGroup({
               onMouseLeave={onMouseLeave}
               onFocus={onFocus}
               onBlur={onBlur}
+              isInvalid={isInvalid}
+              defaultValue={defaultValue}
             />
           </div>
 
@@ -127,12 +135,11 @@ export function InputGroup({
                 label=""
                 id=""
                 onChange={onGroupChange}
-                className="inputGroup-select"
                 value={groupValue}
                 options={group}
               />
             ) : (
-              <div className="inputGroup-unit">{group}</div>
+              <div>{group}</div>
             )}
           </div>
         </div>

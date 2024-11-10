@@ -1,4 +1,6 @@
 .input-group {
+  box-sizing: border-box;
+
   > div {
     flex-grow: 1;
 
@@ -14,12 +16,6 @@
           border-bottom-right-radius: 0;
           border-right: none;
         }
-
-        select {
-          border-top-left-radius: 0;
-          border-bottom-left-radius: 0;
-          min-width: 110px;
-        }
       }
 
       > div:nth-child(2) {
@@ -28,8 +24,17 @@
         border: 1px solid var(--codex-border-color);
         border-top-right-radius: var(--codex-border-radius);
         border-bottom-right-radius: var(--codex-border-radius);
-        background-color: var(--codex-border-color);
-        padding: calc(0.5rem + 0.5px);
+        height: 64px;
+        box-sizing: border-box;
+
+        select {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          min-width: 110px;
+          border-color: transparent;
+          background-color: transparent;
+          box-shadow: none;
+        }
       }
     }
   }

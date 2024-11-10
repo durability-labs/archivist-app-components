@@ -50,22 +50,3 @@ const ErrorTemplate = () => {
 };
 
 export const Error = ErrorTemplate.bind({});
-
-const DefaultTemplate = () => {
-  const [time, setTime] = useState(0);
-
-  const onClick = () => setTime(Date.now());
-
-  return (
-    <div style={{ padding: "2rem" }}>
-      <button onClick={onClick}>Make Toast</button>
-      <Toast
-        variant="default"
-        message="Toast displayed with default"
-        time={time}
-      />
-    </div>
-  );
-};
-
-export const Default = DefaultTemplate.bind({});
