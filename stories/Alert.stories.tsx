@@ -43,12 +43,3 @@ export const Icon: Story = {
     title: "Success",
   },
 };
-
-export const CustomStyle: Story = {
-  args: {
-    title: "Warning",
-    children: "This is a custom style message.",
-    variant: "warning",
-    style: { "--codex-color-warning": "red" },
-  },
-};
