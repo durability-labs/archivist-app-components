@@ -89,6 +89,20 @@ export function Modal({
     setTimeout(onClose, 250);
   };
 
+  useEffect(() => {
+    const onKeyPress = (event: Event) => {
+      const e = event as KeyboardEvent;
+      if (e.key === "Escape") {
+        setInternalOpen(false);
+        setTimeout(onClose, 250);
+      }
+    };
+
+    document.addEventListener("keydown", onKeyPress);
+
+    return () => document.removeEventListener("keydown", onKeyPress);
+  }, [setInternalOpen, onClose]);
+
   return (
     <div
       className={classnames(
