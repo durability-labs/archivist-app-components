@@ -39,7 +39,7 @@ type Props = {
 
   inputContainerClassName?: string;
 
-  size?: "big" | "medium";
+  variant?: "big" | "medium";
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export const Input = forwardRef<HTMLInputElement, Props>(
@@ -51,7 +51,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
       style,
       Icon,
       inputClassName,
-      size = "big",
+      variant = "big",
       inputContainerClassName = "",
       disabled = false,
       onChange,
@@ -78,7 +78,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
           ["input"],
           ["input--invalid", invalid || isInvalid],
           ["input--icon", !!Icon],
-          ["input--" + size],
+          ["input--" + variant],
           [inputClassName || ""]
         )}
       >
