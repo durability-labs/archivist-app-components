@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import { Button } from "../src/components/Button/Button";
-import { Plus } from "lucide-react";
+import PlusIcon from "../src/assets/icons/plus.svg?react";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -47,7 +47,7 @@ export const Outline: Story = {
 export const Icon: Story = {
   args: {
     label: "Button",
-    Icon: Plus,
+    Icon: PlusIcon,
   },
 };
 

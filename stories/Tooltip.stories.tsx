@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Tooltip } from "../src/components/Tooltip/Tooltip";
-import { CheckCircle } from "lucide-react";
+import SuccessCircleIcon from "../src/assets/icons/success-circle.svg?react";
 
 const meta = {
   title: "Overlays/Tooltip",
@@ -18,6 +18,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     message: "Hello world",
-    children: <CheckCircle size={"1rem"} className="cell-stateIcon" />,
+    children: <SuccessCircleIcon className="cell-stateIcon" />,
   },
 };

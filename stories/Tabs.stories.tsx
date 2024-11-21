@@ -1,6 +1,8 @@
 import type { Meta } from "@storybook/react";
 import { useState } from "react";
-import { FilesIcon, Star } from "lucide-react";
+import AllFilesIcon from "../src/assets/icons/all.svg?react";
+import FavoriteIcon from "../src/assets/icons/favorite.svg?react";
+
 import { Tabs } from "../src/components/Tabs/Tabs";
 import { fn } from "@storybook/test";
 
@@ -33,11 +35,11 @@ const Template = (props: { onTabChange: () => void }) => {
         tabs={[
           {
             label: "All files",
-            Icon: () => <FilesIcon size={"1rem"}></FilesIcon>,
+            Icon: () => <AllFilesIcon></AllFilesIcon>,
           },
           {
             label: "Favorites",
-            Icon: () => <Star size={"1rem"}></Star>,
+            Icon: () => <FavoriteIcon></FavoriteIcon>,
           },
         ]}
       />

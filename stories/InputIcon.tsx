@@ -1,5 +1,5 @@
-import { User } from "lucide-react";
+import PlusIcon from "../src/assets/icons/plus.svg?react";
 
 export function InputIcon() {
-  return <User size="1.25rem" />;
+  return <PlusIcon width={17.5} />;
 }

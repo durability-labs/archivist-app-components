@@ -2,12 +2,15 @@ import { useRef, useReducer, Reducer, useEffect, useCallback } from "react";
 import { attributes } from "../utils/attributes";
 import { PrettyBytes } from "../utils/bytes";
 import { UploadStatus } from "./types";
-import { CircleCheck, TriangleAlert, CircleX, CircleStop } from "lucide-react";
+import { CircleStop } from "lucide-react";
 import { Spinner } from "../Spinner/Spinner";
 import { CodexData } from "@codex-storage/sdk-js";
 import { ButtonIcon } from "../ButtonIcon/ButtonIcon";
 import "./UploadFile.css";
 import { WebFileIcon } from "../WebFileIcon/WebFileIcon";
+import SuccessCircleIcon from "../../assets/icons/success-circle.svg?react";
+import WarningCircleIcon from "../../assets/icons/warning-circle.svg?react";
+import CloseIcon from "../../assets/icons/close.svg?react";
 
 type UploadFileProps = {
   file: File;
@@ -332,25 +335,19 @@ export function UploadStatusIcon({ status }: UploadStatusIconProps) {
   switch (status) {
     case "done":
       return (
-        <CircleCheck
-          size={"1.25rem"}
-          fill="currentColor"
-          className="upload-progress-check"
-          stroke="var(--codex-background)"
-        ></CircleCheck>
+        <SuccessCircleIcon width={17.5} fill="currentColor"></SuccessCircleIcon>
       );
     case "error":
       return (
-        <TriangleAlert
-          size={"1.25rem"}
+        <WarningCircleIcon
+          width={17.5}
           fill="currentColor"
-          className="upload-progress-cancelled"
           stroke="var(--codex-background)"
-        ></TriangleAlert>
+        ></WarningCircleIcon>
       );
 
     case "progress":
-      return <Spinner width={"1.25rem"} className="upload-progress-check" />;
+      return <Spinner width={"1.25rem"} />;
   }
 }
 
@@ -358,7 +355,7 @@ function UploadActionIcon({ status }: UploadStatusIconProps) {
   switch (status) {
     case "error":
     case "done":
-      return <CircleX size={"1.25rem"} />;
+      return <CloseIcon width={17.5} />;
     case "progress":
       return <CircleStop size={"1.25rem"} />;
   }

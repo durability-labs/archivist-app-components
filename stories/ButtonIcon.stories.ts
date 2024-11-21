@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import { Copy, Download, Plus } from "lucide-react";
 import { ButtonIcon } from "../src/components/ButtonIcon/ButtonIcon";
+import CopyIcon from "../src/assets/icons/copy.svg?react";
+import DownloadFileIcon from "../src/assets/icons/download-file.svg?react";
+import PlusIcon from "../src/assets/icons/plus.svg?react";
 
 const meta = {
   title: "Components/ButtonIcon",
@@ -23,42 +25,42 @@ type Story = StoryObj<typeof meta>;
 
 export const Small: Story = {
   args: {
-    Icon: Plus,
+    Icon: PlusIcon,
     variant: "small",
   },
 };
 
 export const Big: Story = {
   args: {
-    Icon: Plus,
+    Icon: PlusIcon,
     variant: "big",
   },
 };
 
 export const Disabled: Story = {
   args: {
-    Icon: Plus,
+    Icon: PlusIcon,
     disabled: true,
   },
 };
 
 export const BuzzAnimation: Story = {
   args: {
-    Icon: Copy,
+    Icon: CopyIcon,
     animation: "buzz"
   },
 };
 
 export const BounceAnimation: Story = {
   args: {
-    Icon: Download,
+    Icon: DownloadFileIcon,
     animation: "bounce"
   },
 };
 
 export const CustomStyle: Story = {
   args: {
-    Icon: Plus,
+    Icon: PlusIcon,
     variant: "big",
   },
 };
