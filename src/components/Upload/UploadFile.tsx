@@ -2,7 +2,6 @@ import { useRef, useReducer, Reducer, useEffect, useCallback } from "react";
 import { attributes } from "../utils/attributes";
 import { PrettyBytes } from "../utils/bytes";
 import { UploadStatus } from "./types";
-import { CircleStop } from "lucide-react";
 import { Spinner } from "../Spinner/Spinner";
 import { CodexData } from "@codex-storage/sdk-js";
 import { ButtonIcon } from "../ButtonIcon/ButtonIcon";
@@ -11,6 +10,7 @@ import { WebFileIcon } from "../WebFileIcon/WebFileIcon";
 import SuccessCircleIcon from "../../assets/icons/success-circle.svg?react";
 import WarningCircleIcon from "../../assets/icons/warning-circle.svg?react";
 import CloseIcon from "../../assets/icons/close.svg?react";
+import StopIcon from "../../assets/icons/stop.svg?react";
 
 type UploadFileProps = {
   file: File;
@@ -355,8 +355,8 @@ function UploadActionIcon({ status }: UploadStatusIconProps) {
   switch (status) {
     case "error":
     case "done":
-      return <CloseIcon width={17.5} />;
+      return <CloseIcon width={20} height={20} />;
     case "progress":
-      return <CircleStop size={"1.25rem"} />;
+      return <StopIcon />;
   }
 }

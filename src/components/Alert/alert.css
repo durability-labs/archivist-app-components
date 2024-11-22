@@ -5,7 +5,6 @@
   border-radius: var(--codex-border-radius);
   padding: 0.75rem 1.5rem;
   font-family: var(--codex-font-family);
-  color: var(--codex-color);
   word-break: break-word;
   display: flex;
   gap: 1rem;
@@ -26,7 +25,13 @@
     span {
       display: flex;
       color: rgb(var(--codex-alert-color));
+      fill: rgb(var(--codex-alert-color));
     }
+  }
+
+  svg {
+    color: rgba(var(--codex-alert-color));
+    min-width: 20px;
   }
 
   &.alert--success {

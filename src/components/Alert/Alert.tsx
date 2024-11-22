@@ -1,5 +1,6 @@
 import "./alert.css";
 import { ReactNode } from "react";
+import InfoCircleIcon from "../../assets/icons/info-circle.svg?react";
 
 type Props = {
   variant: "success" | "warning" | "toast";
@@ -36,6 +37,8 @@ export function Alert({
         <b>{title}</b>
         <div>{children}</div>
       </div>
+
+      <InfoCircleIcon></InfoCircleIcon>
     </div>
   );
 }
