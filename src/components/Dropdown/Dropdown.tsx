@@ -148,8 +148,10 @@ export function Dropdown({
             filtered.map((o) => (
               <li onClick={() => onSelect(o)} key={o.title + o.subtitle}>
                 {o.Icon && <o.Icon />}
-                <span>{o.title}</span>
-                {o.subtitle && <span>{o.subtitle}</span>}
+                <div>
+                  <span>{o.title}</span>
+                  {o.subtitle && <span>{o.subtitle}</span>}
+                </div>
               </li>
             ))
           ) : (

@@ -53,6 +53,12 @@
         );
       }
 
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
       span {
         display: block;
         word-break: break-all;
@@ -61,6 +67,10 @@
       span + span {
         mix-blend-mode: difference;
         font-size: 0.75rem;
+      }
+
+      svg {
+        min-width: 24px;
       }
     }
   }

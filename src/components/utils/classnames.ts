@@ -1,4 +1,4 @@
-export type Classname = [string, boolean?];
+type Classname = [string, boolean?];
 
 export const classnames = (...classnames: Classname[]) =>
   classnames
