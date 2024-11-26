@@ -357,6 +357,6 @@ function UploadActionIcon({ status }: UploadStatusIconProps) {
     case "done":
       return <CloseIcon width={17.5} height={17.5} />;
     case "progress":
-      return <StopIcon />;
+      return <StopIcon width={17.5} height={17.5} />;
   }
 }

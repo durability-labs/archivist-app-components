@@ -1,28 +1,28 @@
-@property --codex-upload-background-color {
+@property --codex-upload-file-background-color {
   syntax: "<color>";
   inherits: true;
   initial-value: rgba(20, 20, 20, 0.6);
 }
 
-@property --codex-upload-border-radius {
+@property --codex-upload-file-border-radius {
   syntax: "<length>";
   inherits: false;
   initial-value: 10px;
 }
 
-@property --codex-upload-border-color {
+@property --codex-upload-file-border-color {
   syntax: "<color>";
   inherits: false;
   initial-value: rgba(150, 150, 150, 0.2);
 }
 
-@property --codex-upload-color {
+@property --codex-upload-file-color {
   syntax: "<color>";
   inherits: true;
   initial-value: white;
 }
 
-@property --codex-upload-progress-color {
+@property --codex-upload-file-progress-color {
   syntax: "<color>";
   inherits: true;
   initial-value: rgb(38 38 38);
@@ -30,22 +30,23 @@
 
 .upload-file {
   &[aria-invalid] {
-    --codex-upload-color: rgb(251, 55, 72);
-    --codex-upload-progress-color: rgb(251, 55, 72);
+    --codex-upload-file-color: rgb(251, 55, 72);
+    --codex-upload-file-progress-color: rgb(251, 55, 72);
   }
 
   &[data-done] {
-    --codex-upload-color: rgb(111, 203, 148);
-    --codex-upload-progress-color: rgb(111, 203, 148);
+    --codex-upload-file-color: rgb(111, 203, 148);
+    --codex-upload-file-progress-color: rgb(111, 203, 148);
   }
 
   > div {
     background-color: var(
-      --codex-upload-background-color,
+      --codex-upload-file-background-color,
       rgba(20, 20, 20, 0.6)
     );
-    border-radius: var(--codex-upload-border-radius, 10px);
-    border: 1px solid var(--codex-upload-border-color, rgba(150, 150, 150, 0.2));
+    border-radius: var(--codex-upload-file-border-radius, 10px);
+    border: 1px solid
+      var(--codex-upload-file-border-color, rgba(150, 150, 150, 0.2));
     padding: 1em 2rem;
     margin-top: 0.5rem;
 
@@ -62,7 +63,7 @@
         flex-grow: 1;
 
         img {
-          border-radius: var(--codex-upload-border-radius);
+          border-radius: var(--codex-upload-file-border-radius);
         }
 
         .preview {
@@ -72,7 +73,7 @@
           b {
             display: flex;
             align-items: center;
-            color: var(--codex-upload-color);
+            color: var(--codex-upload-file-color);
 
             span {
               overflow: hidden;
@@ -80,7 +81,7 @@
               white-space: nowrap;
               max-width: 150px;
               display: inline-block;
-              color: var(--codex-upload-color);
+              color: var(--codex-upload-file-color);
             }
           }
         }
@@ -103,29 +104,32 @@
 
     progress {
       flex-grow: 1;
-      background-color: var(--codex-upload-progress-color, rgb(38 38 38));
+      background-color: var(--codex-upload-file-progress-color, rgb(38 38 38));
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
       border: none;
-      border-radius: var(--codex-upload-border-radius);
+      border-radius: var(--codex-upload-file-border-radius);
       height: 0.5rem;
       width: 100%;
       border: none;
 
       &[value]::-webkit-progress-bar {
-        background-color: var(--codex-upload-progress-color, rgb(38 38 38));
+        background-color: var(
+          --codex-upload-file-progress-color,
+          rgb(38 38 38)
+        );
         border-radius: 50px;
       }
 
       &[value]::-webkit-progress-value {
-        background-color: var(--codex-upload-color);
+        background-color: var(--codex-upload-file-color);
         border-radius: 50px;
       }
 
       &[value]::-moz-progress-bar {
         border-radius: 50px;
-        background-color: var(--codex-upload-color);
+        background-color: var(--codex-upload-file-color);
       }
     }
 
@@ -138,7 +142,7 @@
 
   footer {
     font-size: 0.85rem;
-    color: var(--codex-upload-color);
+    color: var(--codex-upload-file-color);
   }
 
   .button-icon {
