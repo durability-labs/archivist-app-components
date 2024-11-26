@@ -10,6 +10,12 @@
   initial-value: rgba(150, 150, 150, 0.2);
 }
 
+@property --codex-input-group-background-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(20, 20, 20, 0.6);
+}
+
 .input-group {
   box-sizing: border-box;
 
@@ -38,6 +44,7 @@
         border-bottom-right-radius: var(--codex-input-group-border-radius);
         height: 64px;
         box-sizing: border-box;
+        background-color: var(--codex-input-group-background-color);
 
         select {
           border-top-left-radius: 0;

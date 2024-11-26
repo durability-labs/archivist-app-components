@@ -6,7 +6,7 @@
 
 @property --codex-input-background-color {
   syntax: "<color>";
-  inherits: false;
+  inherits: true;
   initial-value: rgba(20, 20, 20, 0.6);
 }
 
