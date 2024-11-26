@@ -1,4 +1,12 @@
+@property --codex-backdrop-background-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(70, 70, 70, 0.75);
+}
+
 .backdrop {
+  background: var(--codex-backdrop-background-color, rgba(70, 70, 70, 0.75));
+
   opacity: 0;
   transition: opacity 0.25s;
   height: 100%;
@@ -6,7 +14,6 @@
   position: fixed;
   top: 0;
   left: 0;
-  background: var(--codex-background-backdrop);
   backdrop-filter: blur(2px);
   display: block;
   z-index: -1;
@@ -15,8 +22,4 @@
     z-index: 10;
     opacity: 1;
   }
-}
-
-.document-noOverflow {
-  overflow: hidden;
 }

@@ -1,21 +1,29 @@
+@property --codex-step-background-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: white;
+}
+
+@property --codex-step-color {
+  syntax: "<length>#";
+  inherits: true;
+  initial-value: 150, 150, 150;
+}
+
 .step {
   &:not(:last-child) {
     flex: 1;
   }
 
   --codex-step-background-color: white;
-  --codex-step-border-color: #e1e4ea;
-  --codex-step-label-color: #969696;
-  --codex-step-small-color: #96969699;
-  --codex-step-hr-color: #96969699;
+  --codex-step-border-color: rgb(225, 228, 234);
+  --codex-step-color: 150, 150, 150;
   --codex-step-animation: step-back;
 
   &.step--done {
     --codex-step-background-color: transparent;
     --codex-step-border-color: transparent;
-    --codex-step-small-color: #1fc16b99;
-    --codex-step-label-color: #1fc16b;
-    --codex-step-hr-color: #1fc16b;
+    --codex-step-color: 31, 193, 107;
     --codex-step-animation: step;
   }
 
@@ -40,8 +48,7 @@
       border-radius: 50%;
       width: 20px;
       height: 20px;
-      color: #525866;
-      font-family: Inter;
+      color: rgb(82, 88, 102);
       font-size: 12px;
       font-weight: 500;
       line-height: 16px;
@@ -50,7 +57,7 @@
       transition: box-shadow 0.35s;
 
       &:hover {
-        box-shadow: 0 0 0 2px var(--codex-border-color);
+        box-shadow: 0 0 0 2pxrgba (150, 150, 150, 0.2);
       }
     }
 
@@ -58,13 +65,13 @@
       border: 0;
       height: 4px;
       flex: 1;
-      background-color: #969696;
+      background-color: rgb(150, 150, 150);
       border-radius: 40px;
       position: relative;
       margin-bottom: 8px;
 
       &::before {
-        background-color: var(--codex-step-hr-color);
+        background-color: rgba(var(--codex-step-color), 1);
         height: 4px;
         content: " ";
         position: absolute;
@@ -82,23 +89,21 @@
     padding-left: 38px;
 
     small {
-      font-family: Inter;
       font-size: 8px;
       font-weight: 700;
       line-height: 8px;
       text-align: left;
-      color: var(--codex-step-small-color);
+      color: rgba(var(--codex-step-color), 0.6);
       display: block;
     }
 
     span {
-      font-family: Inter;
       font-size: 14px;
       font-weight: 400;
       line-height: 20px;
       letter-spacing: -0.006em;
       text-align: left;
-      color: var(--codex-step-label-color);
+      color: rgba(var(--codex-step-color), 1);
     }
   }
 }

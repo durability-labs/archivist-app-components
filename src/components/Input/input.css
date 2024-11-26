@@ -1,18 +1,65 @@
+@property --codex-input-height {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 64px;
+}
+
+@property --codex-input-background-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(20, 20, 20, 0.6);
+}
+
+@property --codex-input-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: white;
+}
+
+@property --codex-input-label-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgb(123, 123, 123);
+}
+
+@property --codex-input-border-radius {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 10px;
+}
+
+@property --codex-input-border-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(150, 150, 150, 0.2);
+}
+
+@property --codex-input-padding {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 16px;
+}
+
 .input {
   &.input--big {
     --codex-input-height: 64px;
+    --codex-input-padding: 16px;
   }
 
   &.input--medium {
     --codex-input-height: 40px;
+    --codex-input-padding: 10px;
   }
 
   input {
-    background-color: #14141499;
-    color: white;
-    border-radius: var(--codex-border-radius);
-    border: 1px solid var(--codex-input-border-color);
-    padding: 16px;
+    background-color: var(
+      --codex-input-background-color,
+      rgba(20, 20, 20, 0.6)
+    );
+    color: var(--codex-input-color, white);
+    border-radius: var(--codex-input-border-radius, 10px);
+    border: 1px solid var(--codex-input-border-color, rgba(150, 150, 150, 0.2));
+    padding: var(--codex-input-padding, 16px);
     outline: none;
     display: inline-block;
     box-sizing: border-box;
@@ -20,14 +67,14 @@
     font-size: 20px;
     height: var(--codex-input-height);
     position: relative;
-    font-family: Inter;
+    font-family: var(--codex-font-family);
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
     letter-spacing: -0.006em;
 
     &::placeholder {
-      font-family: Inter;
+      font-family: var(--codex-font-family);
       font-size: 14px;
       font-weight: 400;
       line-height: 20px;
@@ -36,14 +83,13 @@
   }
 
   &.input--invalid input {
-    color: var(--codex-input-color-error);
-    border-color: var(--codex-input-color-error);
+    --codex-input-color: rgb(251, 55, 72);
+    --codex-input-border-color: rgb(251, 55, 72);
   }
 
   label {
     margin-bottom: 0.75rem;
     display: block;
-    font-family: var(--codex-input-font-family, var(--codex-font-family));
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
@@ -54,11 +100,11 @@
 
   & input:not(.input[disabled]):active,
   & input:not(.input[disabled]):focus {
-    box-shadow: 0 0 0 1px var(--codex-border-color);
+    box-shadow: 0 0 0 1px var(--codex-input-border-color);
   }
 
   & input[disabled] {
-    background-color: var(--codex-input-background-disabled);
+    --codex-input-background-color: rgba(70, 70, 70, 0.75);
     cursor: not-allowed;
   }
 
@@ -86,7 +132,7 @@
     color: var(--codex-input-label-color);
   }
 
-  &.input--invalid small {
-    color: var(--codex-color-error-hexa);
+  &.input--invalid {
+    --codex-input-label-color: rgb(251, 55, 72);
   }
 }

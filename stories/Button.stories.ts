@@ -48,6 +48,7 @@ export const Icon: Story = {
   args: {
     label: "Button",
     Icon: PlusIcon,
+    variant: "outline"
   },
 };
 
@@ -78,13 +79,5 @@ export const OutlineDisabled: Story = {
     label: "Button",
     variant: "outline",
     disabled: true,
-  },
-};
-
-export const CustomStyle: Story = {
-  args: {
-    label: "Button",
-    variant: "primary",
-
   },
 };

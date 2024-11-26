@@ -1,8 +1,32 @@
+@property --codex-upload-border-radius {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 10px;
+}
+
+@property --codex-upload-border-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(105, 105, 105, 0.2);
+}
+
+@property --codex-upload-background-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(20, 20, 20, 0.6);
+}
+
+@property --codex-upload-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(150, 150, 150, 1);
+}
+
 .upload {
-  border: 1px dashed var(--codex-border-color);
-  background-color: #14141499;
+  border: 1px solid var(--codex-upload-border-color, rgba(105, 105, 105, 0.2));
+  background-color: var(--codex-upload-background-color, rgba(20, 20, 20, 0.6));
   min-height: 150px;
-  border-radius: var(--codex-border-radius);
+  border-radius: var(--codex-upload-border-radius, 10px);
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
@@ -11,7 +35,6 @@
   display: flex;
 
   b {
-    font-family: Inter;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
@@ -19,9 +42,8 @@
     display: block;
 
     span {
-      color: var(--codex-color-primary);
-      border-bottom: 1px solid var(--codex-color-primary);
-      font-family: Inter;
+      color: rgb(111, 203, 148);
+      border-bottom: 1px solid rgb(111, 203, 148);
       font-size: 16px;
       font-weight: 600;
       line-height: 24px;
@@ -30,16 +52,15 @@
   }
 
   small {
-    font-family: Inter;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
     letter-spacing: -0.006em;
     text-align: left;
-    color: #969696;
+    color: var(--codex-upload-color, rgba(150, 150, 150, 1));
   }
 
   input + span {
-    color: var(--codex-color-warning);
+    color: rgb(251, 198, 75);
   }
 }

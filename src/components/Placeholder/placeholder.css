@@ -16,7 +16,7 @@
     margin-bottom: 0.25rem;
     max-width: 600px;
     margin: auto;
-    color: var(--codex-input-label-color);
+    color: rgb(150, 150, 150);
   }
 
   .button {

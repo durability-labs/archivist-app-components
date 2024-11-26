@@ -1,8 +1,21 @@
+@property --codex-tabs-border-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(150, 150, 150, 0.2);
+}
+
+@property --codex-tabs-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgb(150, 150, 150);
+}
+
 .tabs {
   display: flex;
   margin-top: 1rem;
   position: relative;
-  border-bottom: 2px solid #96969633;
+  border-bottom: 2px solid
+    var(--codex-tabs-border-color, rgba(150, 150, 150, 0.2));
   border-radius: 6px;
   padding: 0px 8px 0px 4px;
   gap: 16px;
@@ -18,21 +31,20 @@
     top: 2px;
     border-bottom: 2px solid transparent;
     padding: 8px;
-    font-family: Inter;
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
     letter-spacing: -0.006em;
     text-align: center;
-    color: #969696;
+    color: var(--codex-tabs-color);
 
     &:hover {
       opacity: 0.85;
     }
 
     &[aria-selected] {
-      color: var(--codex-color-primary);
-      border-bottom: 2px solid var(--codex-color-primary);
+      color: rgb(111, 203, 148);
+      border-bottom: 2px solid rgb(111, 203, 148);
     }
 
     &[aria-selected]:first-child {

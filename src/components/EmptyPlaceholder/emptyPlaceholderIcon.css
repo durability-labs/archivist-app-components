@@ -1,20 +1,20 @@
-.dark\:fill-neutral-800 {
-  fill: #262626;
-}
-
-.dark\:fill-neutral-700 {
-  fill: #404040;
-}
-
-.dark\:fill-neutral-700\/30 {
-  fill: rgb(64 64 64 / 0.3);
-}
-
-.dark\:fill-neutral-700\/70 {
-  fill: rgb(64 64 64 / 0.7);
-}
-
-.emptyPlaceholderIcon {
+.empty-placeholder-icon {
   border: none;
-  color: var(--codex-background-secondary);
+  color: rgb(38 38 38);
+
+  .dark\:fill-neutral-800 {
+    fill: rgb(38, 38, 38);
+  }
+
+  .dark\:fill-neutral-700 {
+    fill: rgb(64, 64, 64);
+  }
+
+  .dark\:fill-neutral-700\/30 {
+    fill: rgb(64 64 64 / 0.3);
+  }
+
+  .dark\:fill-neutral-700\/70 {
+    fill: rgb(64 64 64 / 0.7);
+  }
 }

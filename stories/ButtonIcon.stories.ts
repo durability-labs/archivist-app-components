@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import { ButtonIcon } from "../src/components/ButtonIcon/ButtonIcon";
-import CopyIcon from "../src/assets/icons/copy.svg?react";
-import DownloadFileIcon from "../src/assets/icons/download-file.svg?react";
 import PlusIcon from "../src/assets/icons/plus.svg?react";
 
 const meta = {
@@ -44,23 +42,3 @@ export const Disabled: Story = {
   },
 };
 
-export const BuzzAnimation: Story = {
-  args: {
-    Icon: CopyIcon,
-    animation: "buzz"
-  },
-};
-
-export const BounceAnimation: Story = {
-  args: {
-    Icon: DownloadFileIcon,
-    animation: "bounce"
-  },
-};
-
-export const CustomStyle: Story = {
-  args: {
-    Icon: PlusIcon,
-    variant: "big",
-  },
-};

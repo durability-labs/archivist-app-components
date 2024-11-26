@@ -342,7 +342,7 @@ export function UploadStatusIcon({ status }: UploadStatusIconProps) {
         <WarningCircleIcon
           width={17.5}
           fill="currentColor"
-          stroke="var(--codex-background)"
+          stroke="currentColor"
         ></WarningCircleIcon>
       );
 
@@ -355,7 +355,7 @@ function UploadActionIcon({ status }: UploadStatusIconProps) {
   switch (status) {
     case "error":
     case "done":
-      return <CloseIcon width={20} height={20} />;
+      return <CloseIcon width={17.5} height={17.5} />;
     case "progress":
       return <StopIcon />;
   }

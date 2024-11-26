@@ -1,19 +1,29 @@
+@property --codex-toast-background-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(111, 203, 148, 0.2);
+}
+
+@property --codex-toast-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgb(111, 203, 148);
+}
+
 .toast {
   position: fixed;
-  background: var(--codex-toast-background, var(--codex-background-light));
   min-width: 150px;
   transition: top 0.35s;
   top: 50px;
   display: flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid var(--codex-toast-border-color, var(--codex-border-color));
-  border-radius: 6px;
   padding: 16px;
   color: white;
   word-break: break-word;
-  border: 1px solid rgb(var(--codex-toast-color));
-  background: var(--codex-toast-color);
+  border-radius: 6px;
+  border-bottom: 2px solid var(--codex-toast-color);
+  background: var(--codex-toast-background-color);
   z-index: 20;
   backdrop-filter: blur(32px);
   left: 0;
@@ -26,16 +36,17 @@
   }
 
   &.toast--success {
-    --codex-toast-color: #6fcb9433;
-    border-bottom: 2px solid #6fcb94;
+    --codex-toast-background-color: rgba(111, 203, 148, 0.2);
+    --codex-toast-color: rgb(111, 203, 148);
 
     svg {
-      color: #6fcb94;
+      color: rgb(111, 203, 148);
     }
   }
 
   &.toast--error {
-    --codex-toast-color: rgba(var(--codex-color-error));
+    --codex-toast-background-color: rgba(251, 55, 72, 0.2);
+    --codex-toast-color: rgb(251, 55, 72);
   }
 
   .button {
@@ -45,7 +56,6 @@
   b {
     text-transform: capitalize;
     display: block;
-    font-family: Inter;
     font-size: 12px;
     font-weight: 700;
     line-height: 16px;
@@ -58,15 +68,15 @@
   }
 
   span {
-    font-family: Inter;
     font-size: 12px;
     font-weight: 400;
     line-height: 16px;
     text-align: left;
-    color: #ffffffcc;
+    color: rgba(255, 255, 255, 0.8);
   }
 
   svg {
     cursor: pointer;
+    color: var(--codex-toast-color);
   }
 }

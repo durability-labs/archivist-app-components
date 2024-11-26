@@ -1,34 +1,58 @@
+@property --codex-button-icon-background-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgb(47, 47, 47);
+}
+
+@property --codex-button-icon-border-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(150, 150, 150, 0.2);
+}
+
+@property --codex-button-icon-color-disabled {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgb(47, 47, 47) 33;
+}
+
+@property --codex-button-icon-size {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 60px;
+}
+
 .button-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(
-    --codex-button-icon-background,
-    var(--codex-background-light)
-  );
+  background-color: var(--codex-button-icon-background-color, rgb(47, 47, 47));
   border-radius: 50%;
   cursor: pointer;
   transition: box-shadow 0.35s;
   border: none;
   gap: 6px;
+  border: 1px solid var(--codex-button-icon-border-color);
+  height: var(--codex-button-icon-size, 60px);
+  width: var(--codex-button-icon-size, 60px);
+  padding: 0;
 
   &.button-icon--big {
-    width: 4rem;
-    height: 4rem;
+    --codex-button-icon-size: 60px;
   }
 
   &.button-icon--small {
-    width: 2rem;
-    height: 2rem;
+    --codex-button-icon-size: 40px;
   }
 
   &:not(:disabled):hover {
     cursor: pointer;
-    box-shadow: 0 0 0 2px var(--codex-border-color);
+    box-shadow: 0 0 0 2px
+      var(--codex-button-icon-border-color, rgba(150, 150, 150, 0.2));
   }
 
   &:disabled {
-    color: var(--codex-color-disabled);
+    color: var(--codex-button-icon-color-disabled, rgb(113, 113, 113));
     cursor: not-allowed;
   }
 

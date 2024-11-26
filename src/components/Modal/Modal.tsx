@@ -124,7 +124,7 @@ export function Modal({
             </div>
             <ButtonIcon
               onClick={internalClose}
-              Icon={CloseIcon}
+              Icon={() => <CloseIcon width={20}></CloseIcon>}
               variant="small"
             ></ButtonIcon>
           </header>

@@ -28,7 +28,7 @@ export const Default: Story = {
         ]}
       ></Row>,
     ],
-    headers: ["id", "title", "other"],
+    headers: ["id", "title", "other", "other"],
   },
 };
 

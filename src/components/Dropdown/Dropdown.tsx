@@ -67,7 +67,7 @@ type Props = {
 
   id: string;
 
-  size?: "big" | "medium";
+  variant?: "big" | "medium";
 };
 
 export function Dropdown({
@@ -83,7 +83,7 @@ export function Dropdown({
   onSelected,
   value = "",
   className = "",
-  size = "big",
+  variant = "medium",
 }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
   const lower = value.toLocaleLowerCase();
@@ -140,7 +140,7 @@ export function Dropdown({
           value={value}
           label={""}
           id={id}
-          size={size as any}
+          variant={variant}
         />
 
         <ul {...attr}>

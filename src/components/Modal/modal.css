@@ -15,7 +15,7 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    background: #232323;
+    background: rgb (35, 35, 35);
     border-radius: 16px;
     border: none;
     margin: 0;
@@ -40,7 +40,7 @@
 
       .button-icon {
         background-color: transparent;
-        border: 1px solid #96969633;
+        border: 1px solid rgba(150, 150, 150, 0.2);
       }
 
       svg {
@@ -49,7 +49,6 @@
 
       h6 {
         margin: 0;
-        font-family: Inter;
         font-size: 16px;
         font-weight: 500;
         line-height: 24px;

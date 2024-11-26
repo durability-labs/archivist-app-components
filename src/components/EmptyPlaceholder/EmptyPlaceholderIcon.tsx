@@ -9,7 +9,7 @@ export function EmptyPlaceholderIcon({ width, className }: Props) {
   return (
     <svg
       width={width}
-      className={`${className} emptyPlaceholderIcon`}
+      className={`${className} empty-placeholder-icon`}
       viewBox="0 0 178 90"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
