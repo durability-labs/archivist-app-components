@@ -6,7 +6,7 @@
 
 @property --codex-toast-color {
   syntax: "<color>";
-  inherits: false;
+  inherits: true;
   initial-value: rgb(111, 203, 148);
 }
 
@@ -30,6 +30,12 @@
   right: 0;
   max-width: 450px;
   margin: auto;
+
+  @media screen and (max-width: 800px) {
+    & {
+      max-width: 300px;
+    }
+  }
 
   &[aria-hidden] {
     top: -1000px;
