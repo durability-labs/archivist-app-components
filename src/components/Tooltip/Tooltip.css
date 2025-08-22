@@ -1,10 +1,10 @@
-@property --codex-tooltip-background-color {
+@property --archivist-tooltip-background-color {
   syntax: "<color>";
   inherits: false;
   initial-value: rgb(64 64 64);
 }
 
-@property --codex-toast-border-radius {
+@property --archivist-toast-border-radius {
   syntax: "<length>";
   inherits: false;
   initial-value: 6px;
@@ -22,8 +22,8 @@
   content: attr(data-tooltip);
   animation: tooltip 0.35s cubic-bezier(0.42, 0, 0.62, 1.32) forwards;
   color: white;
-  background: var(--codex-tooltip-background-color, rgb(64 64 64));
-  border-radius: var(--codex-toast-border-radius, 6px);
+  background: var(--archivist-tooltip-background-color, rgb(64 64 64));
+  border-radius: var(--archivist-toast-border-radius, 6px);
   min-width: 150px;
   max-width: 100%;
   font-weight: 600;

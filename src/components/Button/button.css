@@ -1,28 +1,28 @@
-@property --codex-button-padding {
+@property --archivist-button-padding {
   syntax: "*";
   inherits: false;
   initial-value: 9px 10px;
 }
 
-@property --codex-button-color {
+@property --archivist-button-color {
   syntax: "<color>";
   inherits: false;
   initial-value: rgb(150, 150, 150);
 }
 
-@property --codex-button-background-color {
+@property --archivist-button-background-color {
   syntax: "<color>";
   inherits: false;
   initial-value: transparent;
 }
 
-@property --codex-button-border-color {
+@property --archivist-button-border-color {
   syntax: "<color>";
   inherits: false;
   initial-value: rgba(47, 47, 47, 1);
 }
 
-@property --codex-button-border-radius {
+@property --archivist-button-border-radius {
   syntax: "<length>";
   inherits: false;
   initial-value: 8px;
@@ -30,16 +30,16 @@
 
 .button {
   &.button--medium {
-    --codex-button-padding: 9px 10px;
+    --archivist-button-padding: 9px 10px;
   }
 
   &.button--small {
-    --codex-button-padding: 6px 10px;
+    --archivist-button-padding: 6px 10px;
     height: 40px;
   }
 
   outline: none;
-  padding: var(--codex-button-padding);
+  padding: var(--archivist-button-padding);
   display: flex;
   gap: 2px;
   font-weight: 500;
@@ -53,17 +53,17 @@
   letter-spacing: -0.006em;
   place-items: center;
   place-content: center;
-  background-color: var(--codex-button-background-color, transparent);
-  color: var(--codex-button-color, rgb(150, 150, 150));
-  border: 1px solid var(--codex-button-border-color);
-  border-radius: var(--codex-button-border-radius);
+  background-color: var(--archivist-button-background-color, transparent);
+  color: var(--archivist-button-color, rgb(150, 150, 150));
+  border: 1px solid var(--archivist-button-border-color);
+  border-radius: var(--archivist-button-border-radius);
 
   &[aria-busy] {
     cursor: wait;
   }
 
   &[aria-busy]::after {
-    --codex-button-background-color: rgba(70, 70, 70, 0.75);
+    --archivist-button-background-color: rgba(70, 70, 70, 0.75);
 
     content: " ";
     display: block;
@@ -85,13 +85,13 @@
 
   &.button--outline:not(:disabled):hover {
     cursor: pointer;
-    box-shadow: 0 0 0 2px var(--codex-button-border-color);
+    box-shadow: 0 0 0 2px var(--archivist-button-border-color);
   }
 
   &.button--primary {
-    --codex-button-color: rgba(0, 0, 0);
-    --codex-button-background-color: rgb(111, 203, 148);
-    --codex-button-border-color: rgb(151, 234, 184);
+    --archivist-button-color: rgba(0, 0, 0);
+    --archivist-button-background-color: rgb(111, 203, 148);
+    --archivist-button-border-color: rgb(151, 234, 184);
   }
 
   &:disabled {
@@ -99,18 +99,18 @@
   }
 
   &.button--primary:disabled {
-    --codex-button-border-color: rgba(111, 203, 148, 0.47);
-    --codex-button-background-color: rgba(111, 203, 148, 0.47);
+    --archivist-button-border-color: rgba(111, 203, 148, 0.47);
+    --archivist-button-background-color: rgba(111, 203, 148, 0.47);
   }
 
   &.button--outline:disabled {
-    --codex-button-background-color: rgba(70, 70, 70, 0.75);
+    --archivist-button-background-color: rgba(70, 70, 70, 0.75);
   }
 
   &.button--outline {
-    --codex-button-color: rgb(150, 150, 150);
-    --codex-button-border-color: rgba(150, 150, 150, 0.2);
-    --codex-button-background-color: rgb(47, 47, 47);
+    --archivist-button-color: rgb(150, 150, 150);
+    --archivist-button-border-color: rgba(150, 150, 150, 0.2);
+    --archivist-button-background-color: rgb(47, 47, 47);
   }
 
   span {

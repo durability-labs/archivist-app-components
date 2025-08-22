@@ -2,7 +2,7 @@ import type { Meta } from "@storybook/react";
 import { Upload } from "../src/components/Upload/Upload";
 import { fn } from "@storybook/test";
 import "./Upload.stories.css";
-import { CodexDataSdk, CodexDataSlowSdk, CodexDataErrorSdk } from "./sdk";
+import { ArchivistDataSdk, ArchivistDataSlowSdk, ArchivistDataErrorSdk } from "./sdk";
 
 const meta = {
   title: "Advanced/Upload",
@@ -37,7 +37,7 @@ type Props = {
 };
 
 const Template = (p: Props) => {
-  return <Upload multiple {...p} codexData={CodexDataSdk} />;
+  return <Upload multiple {...p} archivistData={ArchivistDataSdk} />;
 };
 
 export const Multiple = Template.bind({});
@@ -45,7 +45,7 @@ export const Multiple = Template.bind({});
 const SlowTemplate = (p: Props) => {
   return (
     <div className="demo">
-      <Upload multiple codexData={CodexDataSlowSdk} {...p} />
+      <Upload multiple archivistData={ArchivistDataSlowSdk} {...p} />
     </div>
   );
 };
@@ -59,7 +59,7 @@ const SingleTemplate = (p: Props) => {
         <Upload
           multiple={false}
           editable={false}
-          codexData={CodexDataSlowSdk}
+          archivistData={ArchivistDataSlowSdk}
           {...p}
         />
       }
@@ -76,7 +76,7 @@ const ErrorTemplate = (p: Props) => {
         <Upload
           multiple={false}
           editable={false}
-          codexData={CodexDataErrorSdk}
+          archivistData={ArchivistDataErrorSdk}
           {...p}
         />
       }

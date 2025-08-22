@@ -4,7 +4,7 @@ import "./upload.css";
 import { UploadFile } from "./UploadFile.tsx";
 import { useUploadStategy } from "./useUploadStrategy.ts";
 import { classnames } from "../utils/classnames.ts";
-import { CodexData } from "@codex-storage/sdk-js";
+import { ArchivistData } from "@durability-labs/archivist-sdk-js";
 
 type Props = {
   /**
@@ -15,7 +15,7 @@ type Props = {
 
   /**
    * Event triggered when a file is uploaded.
-   * The cid is the unique identifier of the file in Codex network.
+   * The cid is the unique identifier of the file in Archivist network.
    */
   onSuccess?: (cid: string, file: File) => void;
 
@@ -43,11 +43,11 @@ type Props = {
   editable?: boolean;
 
   /**
-   * Codex provider to upload the data.
+   * Archivist provider to upload the data.
    * If not provider is passed, the cid returned will be empty.
    * Default value: provider returning random cid.
    */
-  codexData: CodexData;
+  archivistData: ArchivistData;
 
   /**
    * If true, the upload will run in a separate web worker.
@@ -74,7 +74,7 @@ export function Upload({
   editable = true,
   onDeleteItem,
   onSuccess,
-  codexData,
+  archivistData,
   successMessage = "File uploaded successfully",
   // useWorker = !!window.Worker,
 }: Props) {
@@ -161,7 +161,7 @@ export function Upload({
           onClose={() => onClose(id)}
           id={id}
           onSuccess={onSuccess}
-          codexData={codexData}
+          archivistData={archivistData}
           successMessage={successMessage}
           // useWorker={useWorker}
         />

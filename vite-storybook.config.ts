@@ -15,10 +15,10 @@ export default defineConfig({
   })],
   worker: {
     rollupOptions: {
-      external: ["@codex-storage/sdk-js"],
+      external: ["@durability-labs/archivist-sdk-js"],
       output: {
         globals: {
-          "@codex-storage/sdk-js": "codex-sdk-js",
+          "@durability-labs/archivist-sdk-js": "archivist-sdk-js",
         },
       },
     },

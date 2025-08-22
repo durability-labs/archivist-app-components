@@ -1,32 +1,32 @@
-@property --codex-upload-border-radius {
+@property --archivist-upload-border-radius {
   syntax: "<length>";
   inherits: false;
   initial-value: 10px;
 }
 
-@property --codex-upload-border-color {
+@property --archivist-upload-border-color {
   syntax: "<color>";
   inherits: false;
   initial-value: rgba(105, 105, 105, 0.2);
 }
 
-@property --codex-upload-background-color {
+@property --archivist-upload-background-color {
   syntax: "<color>";
   inherits: false;
   initial-value: rgba(20, 20, 20, 0.6);
 }
 
-@property --codex-upload-color {
+@property --archivist-upload-color {
   syntax: "<color>";
   inherits: false;
   initial-value: rgba(150, 150, 150, 1);
 }
 
 .upload {
-  border: 1px solid var(--codex-upload-border-color, rgba(105, 105, 105, 0.2));
-  background-color: var(--codex-upload-background-color, rgba(20, 20, 20, 0.6));
+  border: 1px solid var(--archivist-upload-border-color, rgba(105, 105, 105, 0.2));
+  background-color: var(--archivist-upload-background-color, rgba(20, 20, 20, 0.6));
   min-height: 150px;
-  border-radius: var(--codex-upload-border-radius, 10px);
+  border-radius: var(--archivist-upload-border-radius, 10px);
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
@@ -57,7 +57,7 @@
     line-height: 20px;
     letter-spacing: -0.006em;
     text-align: left;
-    color: var(--codex-upload-color, rgba(150, 150, 150, 1));
+    color: var(--archivist-upload-color, rgba(150, 150, 150, 1));
   }
 
   input + span {

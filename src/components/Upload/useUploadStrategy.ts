@@ -2,13 +2,13 @@ import { useState } from "react";
 
 const MAX_FILES_ALLOWED = 10;
 
-type CodexFile = { file: File; id: string };
+type ArchivistFile = { file: File; id: string };
 
 export function useUploadStategy(
   stategy: "multiple" | "single",
   editable = true
 ) {
-  const [files, setFiles] = useState<CodexFile[]>([]);
+  const [files, setFiles] = useState<ArchivistFile[]>([]);
   const [warning, setWarning] = useState("");
 
   const uploadFiles = (incoming: File[] | FileList) => {
@@ -33,7 +33,7 @@ export function useUploadStategy(
 
     const ingest = stategy === "multiple" ? incoming : [incoming[0]];
 
-    const f: CodexFile[] = [];
+    const f: ArchivistFile[] = [];
     const length = Math.min(ingest.length, MAX_FILES_ALLOWED);
 
     for (let i = 0; i < length; i++) {

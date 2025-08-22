@@ -1,16 +1,16 @@
-@property --codex-input-group-border-radius {
+@property --archivist-input-group-border-radius {
   syntax: "<length>";
   inherits: false;
   initial-value: 10px;
 }
 
-@property --codex-input-group-border-color {
+@property --archivist-input-group-border-color {
   syntax: "<color>";
   inherits: false;
   initial-value: rgba(150, 150, 150, 0.2);
 }
 
-@property --codex-input-group-background-color {
+@property --archivist-input-group-background-color {
   syntax: "<color>";
   inherits: true;
   initial-value: rgba(20, 20, 20, 0.6);
@@ -39,12 +39,12 @@
       > div:nth-child(2) {
         display: flex;
         align-items: center;
-        border: 1px solid var(--codex-input-group-border-color);
-        border-top-right-radius: var(--codex-input-group-border-radius);
-        border-bottom-right-radius: var(--codex-input-group-border-radius);
+        border: 1px solid var(--archivist-input-group-border-color);
+        border-top-right-radius: var(--archivist-input-group-border-radius);
+        border-bottom-right-radius: var(--archivist-input-group-border-radius);
         height: 64px;
         box-sizing: border-box;
-        background-color: var(--codex-input-group-background-color);
+        background-color: var(--archivist-input-group-background-color);
 
         select {
           border-top-left-radius: 0;

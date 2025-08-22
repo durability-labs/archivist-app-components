@@ -1,10 +1,10 @@
-@property --codex-toast-background-color {
+@property --archivist-toast-background-color {
   syntax: "<color>";
   inherits: false;
   initial-value: rgba(111, 203, 148, 0.2);
 }
 
-@property --codex-toast-color {
+@property --archivist-toast-color {
   syntax: "<color>";
   inherits: true;
   initial-value: rgb(111, 203, 148);
@@ -22,8 +22,8 @@
   color: white;
   word-break: break-word;
   border-radius: 6px;
-  border-bottom: 2px solid var(--codex-toast-color);
-  background: var(--codex-toast-background-color);
+  border-bottom: 2px solid var(--archivist-toast-color);
+  background: var(--archivist-toast-background-color);
   z-index: 20;
   backdrop-filter: blur(32px);
   left: 0;
@@ -42,8 +42,8 @@
   }
 
   &.toast--success {
-    --codex-toast-background-color: rgba(111, 203, 148, 0.2);
-    --codex-toast-color: rgb(111, 203, 148);
+    --archivist-toast-background-color: rgba(111, 203, 148, 0.2);
+    --archivist-toast-color: rgb(111, 203, 148);
 
     svg {
       color: rgb(111, 203, 148);
@@ -51,8 +51,8 @@
   }
 
   &.toast--error {
-    --codex-toast-background-color: rgba(251, 55, 72, 0.2);
-    --codex-toast-color: rgb(251, 55, 72);
+    --archivist-toast-background-color: rgba(251, 55, 72, 0.2);
+    --archivist-toast-color: rgb(251, 55, 72);
   }
 
   .button {
@@ -83,6 +83,6 @@
 
   svg {
     cursor: pointer;
-    color: var(--codex-toast-color);
+    color: var(--archivist-toast-color);
   }
 }

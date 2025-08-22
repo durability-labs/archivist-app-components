@@ -1,22 +1,22 @@
-@property --codex-dropdown-color {
+@property --archivist-dropdown-color {
   syntax: "<color>";
   inherits: false;
   initial-value: rgb(150, 150, 150);
 }
 
-@property --codex-dropdown-background-color {
+@property --archivist-dropdown-background-color {
   syntax: "<color>";
   inherits: false;
   initial-value: rgba(20, 20, 20, 0.6);
 }
 
-@property --codex-dropdown-border-color {
+@property --archivist-dropdown-border-color {
   syntax: "<color>";
   inherits: false;
   initial-value: rgba(150, 150, 150, 0.2);
 }
 
-@property --codex-dropdown-border-radius {
+@property --archivist-dropdown-border-radius {
   syntax: "<length>";
   inherits: false;
   initial-value: 10px;
@@ -27,7 +27,7 @@
     margin-bottom: 8px;
     font-weight: 500;
     display: block;
-    color: var(--codex-dropdown-color);
+    color: var(--archivist-dropdown-color);
   }
 
   > div {
@@ -38,12 +38,12 @@
     position: absolute;
     padding: 0.5rem;
     background-color: var(
-      --codex-dropdown-background-color,
+      --archivist-dropdown-background-color,
       rgba(20, 20, 20, 0.6)
     );
     border: 1px solid
-      var(--codex-dropdown-border-color, rgba(150, 150, 150, 0.2));
-    border-radius: var(--codex-dropdown-border-radius, 10px);
+      var(--archivist-dropdown-border-color, rgba(150, 150, 150, 0.2));
+    border-radius: var(--archivist-dropdown-border-radius, 10px);
     left: 0;
     right: 0;
     opacity: 0;
@@ -72,7 +72,7 @@
       gap: 0.75rem;
 
       &:hover {
-        --codex-dropdown-background-color: rgba(20, 20, 20, 0.2);
+        --archivist-dropdown-background-color: rgba(20, 20, 20, 0.2);
       }
 
       div {

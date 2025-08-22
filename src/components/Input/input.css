@@ -1,40 +1,40 @@
-@property --codex-input-height {
+@property --archivist-input-height {
   syntax: "<length>";
   inherits: true;
   initial-value: 64px;
 }
 
-@property --codex-input-background-color {
+@property --archivist-input-background-color {
   syntax: "<color>";
   inherits: true;
   initial-value: rgba(20, 20, 20, 0.6);
 }
 
-@property --codex-input-color {
+@property --archivist-input-color {
   syntax: "<color>";
   inherits: false;
   initial-value: white;
 }
 
-@property --codex-input-label-color {
+@property --archivist-input-label-color {
   syntax: "<color>";
   inherits: true;
   initial-value: rgb(123, 123, 123);
 }
 
-@property --codex-input-border-radius {
+@property --archivist-input-border-radius {
   syntax: "<length>";
   inherits: false;
   initial-value: 10px;
 }
 
-@property --codex-input-border-color {
+@property --archivist-input-border-color {
   syntax: "<color>";
   inherits: false;
   initial-value: rgba(150, 150, 150, 0.2);
 }
 
-@property --codex-input-padding {
+@property --archivist-input-padding {
   syntax: "<length>";
   inherits: true;
   initial-value: 16px;
@@ -42,39 +42,39 @@
 
 .input {
   &.input--big {
-    --codex-input-height: 64px;
-    --codex-input-padding: 16px;
+    --archivist-input-height: 64px;
+    --archivist-input-padding: 16px;
   }
 
   &.input--medium {
-    --codex-input-height: 40px;
-    --codex-input-padding: 10px;
+    --archivist-input-height: 40px;
+    --archivist-input-padding: 10px;
   }
 
   input {
     background-color: var(
-      --codex-input-background-color,
+      --archivist-input-background-color,
       rgba(20, 20, 20, 0.6)
     );
-    color: var(--codex-input-color, white);
-    border-radius: var(--codex-input-border-radius, 10px);
-    border: 1px solid var(--codex-input-border-color, rgba(150, 150, 150, 0.2));
-    padding: var(--codex-input-padding, 16px);
+    color: var(--archivist-input-color, white);
+    border-radius: var(--archivist-input-border-radius, 10px);
+    border: 1px solid var(--archivist-input-border-color, rgba(150, 150, 150, 0.2));
+    padding: var(--archivist-input-padding, 16px);
     outline: none;
     display: inline-block;
     box-sizing: border-box;
     font-weight: 500;
     font-size: 20px;
-    height: var(--codex-input-height);
+    height: var(--archivist-input-height);
     position: relative;
-    font-family: var(--codex-font-family);
+    font-family: var(--archivist-font-family);
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
     letter-spacing: -0.006em;
 
     &::placeholder {
-      font-family: var(--codex-font-family);
+      font-family: var(--archivist-font-family);
       font-size: 14px;
       font-weight: 400;
       line-height: 20px;
@@ -83,8 +83,8 @@
   }
 
   &.input--invalid input {
-    --codex-input-color: rgb(251, 55, 72);
-    --codex-input-border-color: rgb(251, 55, 72);
+    --archivist-input-color: rgb(251, 55, 72);
+    --archivist-input-border-color: rgb(251, 55, 72);
   }
 
   label {
@@ -95,16 +95,16 @@
     line-height: 20px;
     letter-spacing: -0.006em;
     text-align: left;
-    color: var(--codex-input-label-color);
+    color: var(--archivist-input-label-color);
   }
 
   & input:not(.input[disabled]):active,
   & input:not(.input[disabled]):focus {
-    box-shadow: 0 0 0 1px var(--codex-input-border-color);
+    box-shadow: 0 0 0 1px var(--archivist-input-border-color);
   }
 
   & input[disabled] {
-    --codex-input-background-color: rgba(70, 70, 70, 0.75);
+    --archivist-input-background-color: rgba(70, 70, 70, 0.75);
     cursor: not-allowed;
   }
 
@@ -129,10 +129,10 @@
     margin-top: 0.25rem;
     display: inline-block;
     font-size: 0.9rem;
-    color: var(--codex-input-label-color);
+    color: var(--archivist-input-label-color);
   }
 
   &.input--invalid {
-    --codex-input-label-color: rgb(251, 55, 72);
+    --archivist-input-label-color: rgb(251, 55, 72);
   }
 }

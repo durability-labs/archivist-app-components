@@ -1,17 +1,17 @@
-@property --codex-table-border-radius {
+@property --archivist-table-border-radius {
   syntax: "<length>";
   inherits: false;
   initial-value: 16px;
 }
 
-@property --codex-table-color {
+@property --archivist-table-color {
   syntax: "<color>";
   inherits: false;
   initial-value: rgb(150, 150, 150);
 }
 
 .table {
-  border-radius: var(--codex-table-border-radius);
+  border-radius: var(--archivist-table-border-radius);
   overflow-x: auto;
 
   table {
@@ -23,7 +23,7 @@
         border-radius: 8px;
 
         th {
-          color: var(--codex-table-color);
+          color: var(--archivist-table-color);
           font-weight: normal;
           text-transform: capitalize;
           font-size: 0.9rem;

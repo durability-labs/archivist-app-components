@@ -12,10 +12,10 @@ import svgr from "vite-plugin-svgr";
 export default defineConfig({
   worker: {
     rollupOptions: {
-      external: ["@codex-storage/sdk-js"],
+      external: ["@durability-labs/archivist-sdk-js"],
       output: {
         globals: {
-          "@codex-storage/sdk-js": "codex-sdk-js",
+          "@durability-labs/archivist-sdk-js": "archivist-sdk-js",
         },
       },
     },
@@ -47,7 +47,7 @@ export default defineConfig({
       external: [
         "react",
         "react/jsx-runtime",
-        "@codex-storage/sdk-js",
+        "@durability-labs/archivist-sdk-js",
       ],
       input: Object.fromEntries(
         globSync("src/**/*.{ts,tsx}", {
@@ -66,7 +66,7 @@ export default defineConfig({
         assetFileNames: "assets/[name][extname]",
         entryFileNames: "[name].js",
         globals: {
-          "@codex-storage/sdk-js": "codex-sdk-js",
+          "@durability-labs/archivist-sdk-js": "archivist-sdk-js",
         },
       },
     },

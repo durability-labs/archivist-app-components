@@ -1,11 +1,11 @@
-@property --codex-backdrop-background-color {
+@property --archivist-backdrop-background-color {
   syntax: "<color>";
   inherits: false;
   initial-value: rgba(70, 70, 70, 0.75);
 }
 
 .backdrop {
-  background: var(--codex-backdrop-background-color, rgba(70, 70, 70, 0.75));
+  background: var(--archivist-backdrop-background-color, rgba(70, 70, 70, 0.75));
 
   opacity: 0;
   transition: opacity 0.25s;
