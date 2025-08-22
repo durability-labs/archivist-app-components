@@ -1,11 +1,11 @@
 {
-  "name": "@codex-storage/marketplace-ui-components",
-  "description": "Marketplace UI components for Codex decentralized storage network.",
+  "name": "@durability-labs/archivist-app-components",
+  "description": "App components for Archivist decentralized storage network.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/codex-storage/codex-marketplace-ui-components"
+    "url": "https://github.com/durability-labs/archivist-app-components"
   },
-  "version": "0.0.51",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "prepack": "npm run build",
@@ -25,7 +25,7 @@
     "dist"
   ],
   "keywords": [
-    "Codex",
+    "Archivist",
     "Javascript",
     "Storybook",
     "Components",
@@ -33,12 +33,12 @@
     "React"
   ],
   "peerDependencies": {
-    "@codex-storage/sdk-js": ">=0.0.14",
+    "@durability-labs/archivist-sdk-js": ">=0.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@codex-storage/sdk-js": "^0.0.15",
+    "@durability-labs/archivist-sdk-js": "^0.0.2",
     "@storybook/addon-essentials": "^8.2.9",
     "@storybook/addon-interactions": "^8.2.9",
     "@storybook/blocks": "^8.2.9",
@@ -71,7 +71,7 @@
   "engines": {
     "node": ">=18"
   },
-  "author": "Codex team",
+  "author": "Archivist team",
   "readme": "README.md",
   "license": "MIT"
 }

@@ -1,10 +1,10 @@
-@property --codex-step-background-color {
+@property --archivist-step-background-color {
   syntax: "<color>";
   inherits: true;
   initial-value: white;
 }
 
-@property --codex-step-color {
+@property --archivist-step-color {
   syntax: "<length>#";
   inherits: true;
   initial-value: 150, 150, 150;
@@ -15,16 +15,16 @@
     flex: 1;
   }
 
-  --codex-step-background-color: white;
-  --codex-step-border-color: rgb(225, 228, 234);
-  --codex-step-color: 150, 150, 150;
-  --codex-step-animation: step-back;
+  --archivist-step-background-color: white;
+  --archivist-step-border-color: rgb(225, 228, 234);
+  --archivist-step-color: 150, 150, 150;
+  --archivist-step-animation: step-back;
 
   &.step--done {
-    --codex-step-background-color: transparent;
-    --codex-step-border-color: transparent;
-    --codex-step-color: 31, 193, 107;
-    --codex-step-animation: step;
+    --archivist-step-background-color: transparent;
+    --archivist-step-border-color: transparent;
+    --archivist-step-color: 31, 193, 107;
+    --archivist-step-animation: step;
   }
 
   > div:first-child {
@@ -43,8 +43,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: var(--codex-step-background-color);
-      border: 1px solid var(--codex-step-border-color);
+      background-color: var(--archivist-step-background-color);
+      border: 1px solid var(--archivist-step-border-color);
       border-radius: 50%;
       width: 20px;
       height: 20px;
@@ -71,13 +71,13 @@
       margin-bottom: 8px;
 
       &::before {
-        background-color: rgba(var(--codex-step-color), 1);
+        background-color: rgba(var(--archivist-step-color), 1);
         height: 4px;
         content: " ";
         position: absolute;
         z-index: 1;
         animation-duration: 1s;
-        animation-name: var(--codex-step-animation);
+        animation-name: var(--archivist-step-animation);
         animation-fill-mode: forwards;
         border-radius: 40px;
       }
@@ -93,7 +93,7 @@
       font-weight: 700;
       line-height: 8px;
       text-align: left;
-      color: rgba(var(--codex-step-color), 0.6);
+      color: rgba(var(--archivist-step-color), 0.6);
       display: block;
     }
 
@@ -103,7 +103,7 @@
       line-height: 20px;
       letter-spacing: -0.006em;
       text-align: left;
-      color: rgba(var(--codex-step-color), 1);
+      color: rgba(var(--archivist-step-color), 1);
     }
   }
 }

@@ -1,6 +1,6 @@
-import { CodexData, CodexError, UploadResponse } from "@codex-storage/sdk-js";
+import { ArchivistData, ArchivistError, UploadResponse } from "@durability-labs/archivist-sdk-js";
 
-class CodexDataMock extends CodexData {
+class ArchivistDataMock extends ArchivistData {
   override upload(
     _: File,
     onProgress?: (loaded: number, total: number) => void
@@ -32,9 +32,9 @@ class CodexDataMock extends CodexData {
   }
 }
 
-export const CodexDataSdk = new CodexDataMock("");
+export const ArchivistDataSdk = new ArchivistDataMock("");
 
-class CodexDataSlowMock extends CodexData {
+class ArchivistDataSlowMock extends ArchivistData {
   override upload(
     _: File,
     onProgress?: (loaded: number, total: number) => void
@@ -66,9 +66,9 @@ class CodexDataSlowMock extends CodexData {
   }
 }
 
-export const CodexDataSlowSdk = new CodexDataSlowMock("");
+export const ArchivistDataSlowSdk = new ArchivistDataSlowMock("");
 
-class CodexDataErrorMock extends CodexData {
+class ArchivistDataErrorMock extends ArchivistData {
   override upload(
     _: File,
     onProgress?: (loaded: number, total: number) => void
@@ -91,7 +91,7 @@ class CodexDataErrorMock extends CodexData {
 
             resolve({
               error: true,
-              data: new CodexError("Some error here"),
+              data: new ArchivistError("Some error here"),
             });
           }
         }, 1500);
@@ -100,4 +100,4 @@ class CodexDataErrorMock extends CodexData {
   }
 }
 
-export const CodexDataErrorSdk = new CodexDataErrorMock("");
+export const ArchivistDataErrorSdk = new ArchivistDataErrorMock("");

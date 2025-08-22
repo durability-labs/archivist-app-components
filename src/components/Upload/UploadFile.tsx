@@ -3,7 +3,7 @@ import { attributes } from "../utils/attributes";
 import { PrettyBytes } from "../utils/bytes";
 import { UploadStatus } from "./types";
 import { Spinner } from "../Spinner/Spinner";
-import { CodexData } from "@codex-storage/sdk-js";
+import { ArchivistData } from "@durability-labs/archivist-sdk-js";
 import { ButtonIcon } from "../ButtonIcon/ButtonIcon";
 import "./UploadFile.css";
 import { WebFileIcon } from "../WebFileIcon/WebFileIcon";
@@ -17,7 +17,7 @@ type UploadFileProps = {
   onClose: (id: string) => void;
   id: string;
   onSuccess: ((cid: string, file: File) => void) | undefined;
-  codexData: CodexData;
+  archivistData: ArchivistData;
   successMessage: string;
   // useWorker: boolean;
 };
@@ -134,7 +134,7 @@ export function UploadFile({
   onClose,
   id,
   onSuccess,
-  codexData,
+  archivistData,
   successMessage,
   // useWorker,
 }: UploadFileProps) {
@@ -149,7 +149,7 @@ export function UploadFile({
   });
 
   const upload = useCallback(async () => {
-    const { abort: a, result } = codexData.upload(file, onProgress, {
+    const { abort: a, result } = archivistData.upload(file, onProgress, {
       filename: file.name,
       mimetype: file.type,
     });
@@ -167,7 +167,7 @@ export function UploadFile({
     dispatch({ type: "completed", cid: res.data });
 
     onSuccess?.(res.data, file);
-  }, [codexData, onSuccess, file]);
+  }, [archivistData, onSuccess, file]);
 
   const init = useRef(false);
 
@@ -234,7 +234,7 @@ export function UploadFile({
     // } else {
     //   mutateAsync(file);
     // }
-  }, [file, upload, codexData]);
+  }, [file, upload, archivistData]);
 
   const onCancel = () => {
     // if (worker.current) {

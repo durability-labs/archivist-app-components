@@ -1,20 +1,20 @@
-@property --codex-alert-color {
+@property --archivist-alert-color {
   syntax: "<length>#";
   inherits: false;
   initial-value: 111, 203, 148;
 }
 
-@property --codex-alert-border-radius {
+@property --archivist-alert-border-radius {
   syntax: "<length>#";
   inherits: false;
   initial-value: 6px;
 }
 
 .alert {
-  border-bottom: 2px solid rgb(var(--codex-alert-color));
-  background-color: rgba(var(--codex-alert-color), 0.2);
-  color: 1px solid var(--codex-alert-color);
-  border-radius: var(--codex-alert-border-radius);
+  border-bottom: 2px solid rgb(var(--archivist-alert-color));
+  background-color: rgba(var(--archivist-alert-color), 0.2);
+  color: 1px solid var(--archivist-alert-color);
+  border-radius: var(--archivist-alert-border-radius);
   padding: 12px;
   word-break: break-word;
   display: flex;
@@ -35,21 +35,21 @@
 
     span {
       display: flex;
-      color: rgb(var(--codex-alert-color));
-      fill: rgb(var(--codex-alert-color));
+      color: rgb(var(--archivist-alert-color));
+      fill: rgb(var(--archivist-alert-color));
     }
   }
 
   svg {
-    color: rgb(var(--codex-alert-color));
+    color: rgb(var(--archivist-alert-color));
     min-width: 20px;
   }
 
   &.alert--success {
-    --codex-alert-color: 111, 203, 148;
+    --archivist-alert-color: 111, 203, 148;
   }
 
   &.alert--warning {
-    --codex-alert-color: 251, 198, 75;
+    --archivist-alert-color: 251, 198, 75;
   }
 }

@@ -1,6 +1,6 @@
-import { Codex } from "@codex-storage/sdk-js";
+import { Archivist } from "@durability-labs/archivist-sdk-js";
 
-const codex = new Codex(import.meta.env.VITE_CODEX_API_URL);
+const archivist = new Archivist(import.meta.env.VITE_ARCHIVIST_API_URL);
 let abort: () => void;
 
 self.addEventListener("message", function (e) {
@@ -22,7 +22,7 @@ self.addEventListener("message", function (e) {
     });
   };
 
-  const res = codex.data.upload(rest.file, onProgress);
+  const res = archivist.data.upload(rest.file, onProgress);
 
   abort = res.abort;
 

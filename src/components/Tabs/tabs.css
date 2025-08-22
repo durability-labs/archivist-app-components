@@ -1,10 +1,10 @@
-@property --codex-tabs-border-color {
+@property --archivist-tabs-border-color {
   syntax: "<color>";
   inherits: false;
   initial-value: rgba(150, 150, 150, 0.2);
 }
 
-@property --codex-tabs-color {
+@property --archivist-tabs-color {
   syntax: "<color>";
   inherits: false;
   initial-value: rgb(150, 150, 150);
@@ -15,7 +15,7 @@
   margin-top: 1rem;
   position: relative;
   border-bottom: 2px solid
-    var(--codex-tabs-border-color, rgba(150, 150, 150, 0.2));
+    var(--archivist-tabs-border-color, rgba(150, 150, 150, 0.2));
   border-radius: 6px;
   padding: 0px 8px 0px 4px;
   gap: 16px;
@@ -36,7 +36,7 @@
     line-height: 20px;
     letter-spacing: -0.006em;
     text-align: center;
-    color: var(--codex-tabs-color);
+    color: var(--archivist-tabs-color);
 
     &:hover {
       opacity: 0.85;
